@@ -1,0 +1,16 @@
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/ProjectRelatedTests/APIkeyTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/AddPaymentCardTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/AccountRelatedTests/NegativeNameChangeTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/ResetPasswordTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/ProjectRelatedTests/CreateNewProjectTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/HomePageElementsTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/AccountRelatedTests/AccountTabTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/LoginRelatedTests/LoginTests.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/ProjectRelatedTests/DeleteProjectTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/AccountRelatedTests/NegativePasswordResetTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/LoginRelatedTests/NegativeLoginTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/BaseTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/LoginRelatedTests/LoginPageElementsVisibilityTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/NewAccountCreationTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/TeamMembers/AddAndDeleteTeamMembersTest.java
+/home/andrii/IdeaProjects/Satellitev2/src/test/java/tests/AccountRelatedTests/NegativeNewAccountCreationTest.java

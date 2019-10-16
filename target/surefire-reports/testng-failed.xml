@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Failed suite [Surefire suite]" verbose="0">
+  <test thread-count="1" name="Surefire test(failed)" verbose="0">
+    <classes>
+      <class name="tests.AccountRelatedTests.AccountTabTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="AccountTabTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tests.AccountRelatedTests.AccountTabTest -->
+      <class name="tests.AddPaymentCardTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="AddPaymentCardTest"/>
+        </methods>
+      </class> <!-- tests.AddPaymentCardTest -->
+      <class name="tests.LoginRelatedTests.LoginPageElementsVisibilityTest">
+        <methods>
+          <include name="elementsVisabilityTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tests.LoginRelatedTests.LoginPageElementsVisibilityTest -->
+      <class name="tests.AccountRelatedTests.NegativePasswordResetTest">
+        <methods>
+          <include name="ResetPasswordTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tests.AccountRelatedTests.NegativePasswordResetTest -->
+      <class name="tests.ResetPasswordTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="ResetPasswordTest"/>
+        </methods>
+      </class> <!-- tests.ResetPasswordTest -->
+      <class name="tests.LoginRelatedTests.NegativeLoginTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="NegativeLoginTest"/>
+        </methods>
+      </class> <!-- tests.LoginRelatedTests.NegativeLoginTest -->
+      <class name="tests.AccountRelatedTests.NegativeNewAccountCreationTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="NewAccountCreationTest"/>
+        </methods>
+      </class> <!-- tests.AccountRelatedTests.NegativeNewAccountCreationTest -->
+      <class name="tests.AccountRelatedTests.NegativeNameChangeTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="tearDown"/>
+          <include name="NegativeNameChangeTest"/>
+        </methods>
+      </class> <!-- tests.AccountRelatedTests.NegativeNameChangeTest -->
+      <class name="tests.ProjectRelatedTests.APIkeyTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="TestforTest"/>
+          <include name="CreateNewAPIKey"/>
+        </methods>
+      </class> <!-- tests.ProjectRelatedTests.APIkeyTest -->
+      <class name="tests.ProjectRelatedTests.CreateNewProjectTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="CreateNewProjectTest"/>
+        </methods>
+      </class> <!-- tests.ProjectRelatedTests.CreateNewProjectTest -->
+      <class name="tests.NewAccountCreationTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="NewAccountCreationTest"/>
+        </methods>
+      </class> <!-- tests.NewAccountCreationTest -->
+      <class name="tests.BaseTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="BaseTest"/>
+        </methods>
+      </class> <!-- tests.BaseTest -->
+      <class name="tests.ProjectRelatedTests.DeleteProjectTest">
+        <methods>
+          <include name="DeleteProjectTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tests.ProjectRelatedTests.DeleteProjectTest -->
+      <class name="tests.TeamMembers.AddAndDeleteTeamMembersTest">
+        <methods>
+          <include name="AddNewTeamMember"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tests.TeamMembers.AddAndDeleteTeamMembersTest -->
+      <class name="tests.LoginRelatedTests.LoginTests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="BaseTest"/>
+        </methods>
+      </class> <!-- tests.LoginRelatedTests.LoginTests -->
+      <class name="tests.HomePageElementsTest">
+        <methods>
+          <include name="HomePageElementsTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- tests.HomePageElementsTest -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->
