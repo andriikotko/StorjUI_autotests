@@ -41,7 +41,7 @@ public class AccountTab_Profile {
     //EDIT PROFILE POPUP
     @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[1]/h2")
     public WebElement editProfilePopupHeader;
-    @FindBy(how=How.XPATH,using="//*[@id=\"Full name\"]")
+    @FindBy(how=How.XPATH,using="//*[@id=\"Full Name\"]")
     public WebElement fullNameInput;
     @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[2]/div/h3[1]")
     public WebElement fullNameInputHeader;
