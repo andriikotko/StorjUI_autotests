@@ -55,7 +55,7 @@ public class OverviewTabReportElementsTextsTab {
         Assert.assertEquals(overviewTabReport.storageHeader.getText(), "Storage, GBh");
         Assert.assertEquals(overviewTabReport.egressHeader.getText(), "Egress, GB");
         Assert.assertEquals(overviewTabReport.objectHoursHeader.getText(), "Object Hours");
-        Assert.assertTrue(overviewTabReport.currentRollUpPeriod.getText().startsWith("Current Roll Up Period"));
+        Assert.assertTrue(overviewTabReport.currentRollUpPeriod.getText().startsWith("Roll Up Period"));
         Assert.assertEquals(overviewTabReport.downloadAdvancedReportHeader.getText(), "Download Advanced Report");
 
     }

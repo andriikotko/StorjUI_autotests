@@ -20,7 +20,7 @@ public class LoginPage {
     public WebElement eye_Symbol;
     @FindBy(how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[1]/div")
     public WebElement btnCreateAccount;
-    @FindBy(how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[1]/img")
+    @FindBy(how = How.CSS,using = "#app > div > div.login-container__wrapper > div.login-container__header > svg")
     public WebElement storjLogo;
     @FindBy(how =How.XPATH,using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/a/h3/strong")
     public WebElement linkForgotPassword;

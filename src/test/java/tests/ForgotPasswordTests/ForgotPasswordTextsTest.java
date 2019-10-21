@@ -1,5 +1,6 @@
 package tests.ForgotPasswordTests;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -22,8 +23,8 @@ public class ForgotPasswordTextsTest {
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        //driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
+       // driver.manage().window().maximize();
         driver.get(HomePage.HOMEURL);
 
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -36,7 +37,7 @@ public class ForgotPasswordTextsTest {
 
         ForgotPasswordPage forgotPasswordPage = PageFactory.initElements(driver, ForgotPasswordPage.class);
 
-        Assert.assertTrue(forgotPasswordPage.storjLogo.getAttribute("src").endsWith("static/dist/img/Logo.a3cba3e8.svg"));
+        Assert.assertTrue(forgotPasswordPage.storjLogo.getAttribute("class").endsWith("forgot-password-container__logo"));
         Assert.assertEquals(forgotPasswordPage.backToLoginButton.getText(),"Back to Login");
         Assert.assertEquals(forgotPasswordPage.forgotPasswordHeader.getText(), "Forgot Password");
         Assert.assertEquals(forgotPasswordPage.forgotPasswordNotification.getText(),"Enter your email address below and we'll get you back on track.");

@@ -46,12 +46,12 @@ public class AccountBillingAllHistoryTextsTest {
         accountTab_billing.depositHistoryViewAllButton.click();
         AccountTab_AllBillingHistory accountTab_allBillingHistory = PageFactory.initElements(driver, AccountTab_AllBillingHistory.class);
 
-        Assert.assertEquals(accountTab_allBillingHistory.allBillingHistoryHeader.getText(),"Billing history");
+        Assert.assertEquals(accountTab_allBillingHistory.allBillingHistoryHeader.getText(),"Billing History");
         Assert.assertEquals(accountTab_allBillingHistory.allBillingHistoryDateHeader.getText(),"Date");
         Assert.assertEquals(accountTab_allBillingHistory.allBillingHistoryDescriptionHeader.getText(),"Description");
         Assert.assertEquals(accountTab_allBillingHistory.allBillingHistoryStatusHeader.getText(),"Status");
         Assert.assertEquals(accountTab_allBillingHistory.allBillingHistoryAmountHeader.getText(),"Amount");
-        Assert.assertTrue(accountTab_allBillingHistory.allBillingHistoryBackButtonText.getText().endsWith("Back to account"));
+        Assert.assertTrue(accountTab_allBillingHistory.allBillingHistoryBackButtonText.getText().endsWith("Back to Account"));
        // Assert.assertTrue(accountTab_allBillingHistory.allBillingHistoryPaginator.isDisplayed());
 
 

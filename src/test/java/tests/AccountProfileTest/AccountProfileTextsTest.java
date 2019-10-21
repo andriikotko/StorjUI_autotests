@@ -1,5 +1,6 @@
 package tests.AccountProfileTest;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,8 +29,8 @@ public class AccountProfileTextsTest {
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        //driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
+        //driver.manage().window().maximize();
         driver.get(HomePage.HOMEURL);
 
         LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -60,7 +61,7 @@ public class AccountProfileTextsTest {
         Assert.assertEquals(accountTabProfile.changePasswordHeader.getText(),"Change Password");
         Assert.assertEquals(accountTabProfile.changePasswordText.getText(),"6 or more characters");
         //Assert.assertTrue(accountTabProfile.userEmailText.isDisplayed());
-        Assert.assertEquals(accountTabProfile.deleteAccountButton.getText(),"Delete account");
+        Assert.assertEquals(accountTabProfile.deleteAccountButton.getText(),"Delete Account");
 
     }
 
@@ -69,8 +70,8 @@ public class AccountProfileTextsTest {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
         accountTabProfile.editProfileButton.click();
 
-        Assert.assertEquals(accountTabProfile.editProfilePopupHeader.getText(),"Edit profile");
-        Assert.assertEquals(accountTabProfile.fullNameInputHeader.getText(), "Full name");
+        Assert.assertEquals(accountTabProfile.editProfilePopupHeader.getText(),"Edit Profile");
+        Assert.assertEquals(accountTabProfile.fullNameInputHeader.getText(), "Full Name");
         Assert.assertEquals(accountTabProfile.nicknameInputHeader.getText(),"Nickname");
         Assert.assertEquals(accountTabProfile.updateAccountButton.getText(),"Update");
         Assert.assertEquals(accountTabProfile.cancelUpdateAccountButton.getText(),"Cancel");
@@ -88,8 +89,8 @@ public class AccountProfileTextsTest {
         Assert.assertTrue(accountTabProfile.oldPasswordInput.getAttribute("placeholder").endsWith("Enter Old Password"));
         Assert.assertTrue(accountTabProfile.newPasswordInput.getAttribute("placeholder").endsWith("Enter New Password"));
         Assert.assertEquals(accountTabProfile.newPasswordInputHeader.getText(),"New Password");
-        Assert.assertTrue(accountTabProfile.confirmPasswordInput.getAttribute("placeholder").endsWith("Confirm password"));
-        Assert.assertEquals(accountTabProfile.confirmPasswordInputHeader.getText(),"Confirm password");
+        Assert.assertTrue(accountTabProfile.confirmPasswordInput.getAttribute("placeholder").endsWith("Confirm Password"));
+        Assert.assertEquals(accountTabProfile.confirmPasswordInputHeader.getText(),"Confirm Password");
         Assert.assertEquals(accountTabProfile.updatePasswordButton.getText(),"Update");
         Assert.assertEquals(accountTabProfile.cancelUpdatePasswordButton.getText(),  "Cancel");
 
@@ -144,7 +145,7 @@ public class AccountProfileTextsTest {
         accountTabProfile.deleteAccountButton.click();
 
         Assert.assertEquals(accountTabProfile.deleteAccountDialogHeader.getText(), "Delete account");
-        Assert.assertEquals(accountTabProfile.deleteAccountDialogText.getText(),"Are you sure you want to delete your account? If you do so, all your information, projects and API Keys will be deleted forever. (drop from the satellite)");
+        Assert.assertEquals(accountTabProfile.deleteAccountDialogText.getText(),"Are you sure you want to delete your account? If you do so, all your information, projects and API Keys will be deleted forever (drop from the satellite).");
         Assert.assertEquals(accountTabProfile.deleteAccountDialogEmailInputHeader.getText(),"Enter your password");
         Assert.assertTrue(accountTabProfile.deleteAccountDialogInput.getAttribute("placeholder").endsWith("Your Password"));
         Assert.assertEquals(accountTabProfile.deleteAccountDialogCancelButton.getText(),"Cancel");

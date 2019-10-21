@@ -28,7 +28,7 @@ public class RegistrationPage {
 
     /////OTHER ELEMENTS
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/img")
+    @FindBy(how = How.CSS, using = "#app > div > div.register-container__wrapper > div.register-container__header > svg")
     public WebElement logoStorj;
     @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div")
     public WebElement loginButton;

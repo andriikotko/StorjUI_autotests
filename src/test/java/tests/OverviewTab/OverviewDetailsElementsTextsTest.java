@@ -45,7 +45,7 @@ public class OverviewDetailsElementsTextsTest {
         OverviewTab_Details overviewTabDetails = PageFactory.initElements(driver, OverviewTab_Details.class);
 
         Assert.assertEquals(overviewTabDetails.headerProjectDetails.getText(), "Project Details");
-        Assert.assertEquals(overviewTabDetails.deleteProjectButton.getText(), "Delete project");
+        Assert.assertEquals(overviewTabDetails.deleteProjectButton.getText(), "Delete Project");
         Assert.assertEquals(overviewTabDetails.detailsTab.getText(), "Details");
         Assert.assertEquals(overviewTabDetails.reportTab.getText(), "Report");
         Assert.assertEquals(overviewTabDetails.projectNameHeader.getText(), "Project Name");

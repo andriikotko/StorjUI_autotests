@@ -12,7 +12,7 @@ public class ForgotPasswordPage {
         this.driver = driver;
     }
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/img")
+    @FindBy (how = How.CSS, using = "#app > div > div.forgot-password-container__wrapper > div.forgot-password-container__header > svg")
     public WebElement storjLogo;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div")
     public WebElement backToLoginButton;

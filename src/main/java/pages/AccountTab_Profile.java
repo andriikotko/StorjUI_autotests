@@ -17,19 +17,19 @@ public class AccountTab_Profile {
 //    public WebElement accountProfileBillingTab;
 //    @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/a[3]")
 //    public WebElement accountProfilePaymentTab;
-    @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[2]")
+    @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div/div[1]")
     public WebElement editProfileIcon;
     @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/h2")
     public WebElement editProfileHeader;
     @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[2]/h3")
     public WebElement editProfileText;
-    @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[2]")
+    @FindBy(how= How.CSS,using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div > div > div.profile-container__edit-profile.no-margin > svg")
     public WebElement editProfileButton;
      @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[1]/div[1]/div/h2")
     public WebElement changePasswordHeader;
      @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[1]/div[1]/div/h3")
     public WebElement changePasswordText;
-     @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[1]/div[2]")
+     @FindBy(how= How.CSS,using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div > div > div.profile-container__secondary-container > div.profile-container__secondary-container__change-password > svg")
     public WebElement editPasswordButton;
      @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/h2")
     public WebElement userEmailText;

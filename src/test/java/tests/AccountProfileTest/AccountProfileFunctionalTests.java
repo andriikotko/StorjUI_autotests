@@ -56,12 +56,13 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.nicknameInput.sendKeys("54321");
         accountTabProfile.updateAccountButton.click();
 
-        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        Assert.assertEquals(homePage.currentUserName.getText(), "54321");
+        accountTabProfile.editProfileButton.click();
+        String current_nickname = accountTabProfile.nicknameInput.getText();
+        Assert.assertEquals(current_nickname, "54321");
     }
 
     @Test
-    public void editAccountNickEmptyPositiveTest() {
+    public void editAccountNickEmptyPositiveTest() throws InterruptedException {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
         accountTabProfile.editProfileButton.click();
         accountTabProfile.fullNameInput.clear();
@@ -69,17 +70,20 @@ public class AccountProfileFunctionalTests {
 
         accountTabProfile.nicknameInput.clear();
         accountTabProfile.updateAccountButton.click();
-
-        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        Assert.assertEquals(homePage.currentUserName.getText(), "12345");
+        Thread.sleep(4000);
+        accountTabProfile.editProfileButton.click();
+        Thread.sleep(4000);
+        String current_name = accountTabProfile.fullNameInput.getText();
+        Assert.assertEquals(current_name, "12345");
     }
 
     @Test
     public void editAccountCancelTest() {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        String previous_name = homePage.currentUserName.getText();
+
         accountTabProfile.editProfileButton.click();
+        String previous_name = accountTabProfile.fullNameInput.getText();
         accountTabProfile.fullNameInput.clear();
         accountTabProfile.fullNameInput.sendKeys("NewNAme");
 
@@ -87,15 +91,18 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.nicknameInput.sendKeys("NewNick");
         accountTabProfile.cancelUpdateAccountButton.click();
 
-        Assert.assertEquals(homePage.currentUserName.getText(), previous_name);
+        accountTabProfile.editProfileButton.click();
+        String current_name = accountTabProfile.fullNameInput.getText();
+        Assert.assertEquals(current_name, previous_name);
     }
 
     @Test
     public void editAccountCloseTest() {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        String previous_name = homePage.currentUserName.getText();
+
         accountTabProfile.editProfileButton.click();
+        String previous_name = accountTabProfile.fullNameInput.getText();
         accountTabProfile.fullNameInput.clear();
         accountTabProfile.fullNameInput.sendKeys("NewNAme");
 
@@ -103,15 +110,17 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.nicknameInput.sendKeys("NewNick");
         accountTabProfile.closeUpdateAccountDialogButton.click();
 
-        Assert.assertEquals(homePage.currentUserName.getText(), previous_name);
+        accountTabProfile.editProfileButton.click();
+        String current_name = accountTabProfile.fullNameInput.getText();
+        Assert.assertEquals(current_name, previous_name);
     }
 
     @Test
     public void editAccountFullNameEmptyTest() {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        String previous_name = homePage.currentUserName.getText();
         accountTabProfile.editProfileButton.click();
+        String previous_name = accountTabProfile.fullNameInput.getText();
         accountTabProfile.fullNameInput.clear();
         accountTabProfile.fullNameInput.sendKeys("");
 
@@ -121,7 +130,9 @@ public class AccountProfileFunctionalTests {
 
         Assert.assertEquals(accountTabProfile.errorOnNameChange.getText(),"Full name expected");
         accountTabProfile.closeUpdateAccountDialogButton.click();
-        Assert.assertEquals(homePage.currentUserName.getText(), previous_name);
+        accountTabProfile.editProfileButton.click();
+        String current_name = accountTabProfile.fullNameInput.getText();
+        Assert.assertEquals(current_name, previous_name);
     }
 
     @Test
@@ -231,7 +242,7 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.updatePasswordButton.click();
 
         Assert.assertEquals(accountTabProfile.newPasswordError.getText(),"Invalid password. Use 6 or more characters");
-        Assert.assertEquals(accountTabProfile.confirmPasswordError.getText(),"Password required");
+        Assert.assertEquals(accountTabProfile.confirmPasswordError.getText(),"Invalid old password. Must be 6 or more characters");
         Assert.assertEquals(accountTabProfile.changePasswordEmptyError.getText(),"Password required");
 
         accountTabProfile.closeUpdatePasswordDialogButton.click();
@@ -304,7 +315,7 @@ public class AccountProfileFunctionalTests {
 
         Thread.sleep(4000);
 
-        wait.until(ExpectedConditions.visibilityOf(homePage.currentUserName));
+       // wait.until(ExpectedConditions.visibilityOf(homePage.currentUserName));
 
         Assert.assertTrue(driver.getCurrentUrl().endsWith("/project-overview/details"));
 
@@ -324,8 +335,6 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.deleteAccountDialogInput.sendKeys("");
         accountTabProfile.deleteAccountDialogDeleteButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOf(accountTabProfile.errorOnPasswordChange));
 
         Assert.assertEquals(accountTabProfile.errorOnPasswordChange.getText(),"unauthorized error: Old password is incorrect, please try again");
 

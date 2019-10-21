@@ -29,7 +29,7 @@ public class OverviewTab_Details extends HomePage {
     public WebElement descriptionHeader;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/h3")
     public WebElement currentProjectDescription;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]")
+    @FindBy (how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div > div:nth-child(2) > div > div:nth-child(3) > div > svg")
     public WebElement editDescriptionButton;
 
 
