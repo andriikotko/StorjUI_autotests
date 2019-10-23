@@ -18,9 +18,9 @@ public class NodeDashboardPage {
     public static Integer Height = 1000;
 
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[1]/svg")
+    @FindBy (how = How.CSS, using = "#app > div > div.header > div > div.header__content-holder__logo-area > svg")
     public WebElement dashboardStorjLogo;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[1]/div/svg")
+    @FindBy (how = How.CSS, using = "#app > div > div.header > div > div.header__content-holder__logo-area > div > svg")
     public WebElement refreshButton;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[2]")
     public WebElement nodeIDContainer;
@@ -30,7 +30,7 @@ public class NodeDashboardPage {
     public WebElement nodeIDText;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/h1")
     public WebElement nodeHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/p/text()")
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/p")
     public WebElement currentPeriod;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/p/b")
     public WebElement currentMonth;
@@ -75,7 +75,7 @@ public class NodeDashboardPage {
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/p[1]")
     public WebElement utilizationRemainingHeader;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[1]/p[1]")
-    public WebElement BandwidthHeader;
+    public WebElement bandwidthHeader;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[1]/p[2]/b")
     public WebElement bandwidthData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"bandwidth-chart\"]")
@@ -108,13 +108,13 @@ public class NodeDashboardPage {
     public WebElement payoutHeader;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/p[1]")
     public WebElement storjWalletAddressText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/svg")
+    @FindBy (how = How.CSS, using = "#app > div > div.content > div.info-area > div.payout-container > svg")
     public WebElement walletLogo;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/p[2]/b")
     public WebElement walletData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/a/div")
     public WebElement payoutButton;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/svg")
+    @FindBy (how = How.CSS, using = "#app > div > div.footer > div > svg")
     public WebElement footerLogo;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/a[1]")
     public WebElement linkToCommunity;
