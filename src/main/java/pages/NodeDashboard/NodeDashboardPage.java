@@ -19,5 +19,106 @@ public class NodeDashboardPage {
 
 
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[1]/svg")
-    public WebElement dasboardStorjLogo;
+    public WebElement dashboardStorjLogo;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[1]/div/svg")
+    public WebElement refreshButton;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[2]")
+    public WebElement nodeIDContainer;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[2]/p")
+    public WebElement nodeID;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[2]/b")
+    public WebElement nodeIDText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/h1")
+    public WebElement nodeHeader;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/p/text()")
+    public WebElement currentPeriod;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/p/b")
+    public WebElement currentMonth;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[1]")
+    public WebElement nodeStatusText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[2]")
+    public WebElement nodeStatus;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]")
+    public WebElement statusInfoTick;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]")
+    public WebElement nodeStatusInfoPopUp;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/p[2]")
+    public WebElement lastPingedText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/p[3]")
+    public WebElement uptimeText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/p[1]")
+    public WebElement lastPingedData;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/p[2]")
+    public WebElement uptimeData;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[3]/b")
+    public WebElement nodeVersionText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[4]")
+    public WebElement nodeVersion;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]")
+    public WebElement nodeVersionInfoTick;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]/div[2]")
+    public WebElement nodeVersionPopUp;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]/div[2]/div/p[1]")
+    public WebElement versionPopUpText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]/div[2]/div/p[2]")
+    public WebElement versionPopUpVersion;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]")
+    public WebElement choosingSatelliteContainer;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/p/b")
+    public WebElement chosenSatelliteText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"satelliteDropdown\"]/div")
+    public WebElement satelliteDropdown;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"satelliteDropdown\"]/div/div[1]/p")
+    public WebElement currentSatellite;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"satelliteDropdown\"]/div/div[2]")
+    public WebElement allSatellites;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/p[1]")
+    public WebElement utilizationRemainingHeader;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[1]/p[1]")
+    public WebElement BandwidthHeader;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[1]/p[2]/b")
+    public WebElement bandwidthData;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"bandwidth-chart\"]")
+    public WebElement bandwidthGraph;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[2]/p[1]")
+    public WebElement diskSpaceHeader;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[2]/p[2]/b")
+    public WebElement diskSpaceData;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"disk-space-chart\"]")
+    public WebElement diskSpaceGraph;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/p")
+    public WebElement remainingHeader;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/p[1]")
+    public WebElement bandwidthRemainingText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/p[2]")
+    public WebElement bandwidthRemainData;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div")
+    public WebElement bandwidthRemainBar;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div[2]")
+    public WebElement bandwidthRemainBarHint;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/p[1]")
+    public WebElement diskRemainText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/p[2]")
+    public WebElement diskRemainData;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div")
+    public WebElement diskRemainBar;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div/div[2]")
+    public WebElement diskRemainBarHint;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/p[2]")
+    public WebElement payoutHeader;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/p[1]")
+    public WebElement storjWalletAddressText;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/svg")
+    public WebElement walletLogo;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/p[2]/b")
+    public WebElement walletData;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/a/div")
+    public WebElement payoutButton;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/svg")
+    public WebElement footerLogo;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/a[1]")
+    public WebElement linkToCommunity;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/a[2]")
+    public WebElement linkToSupport;
+
 }
