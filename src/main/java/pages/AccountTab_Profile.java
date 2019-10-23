@@ -112,6 +112,8 @@ public class AccountTab_Profile {
     public WebElement deleteAccountDialogDeleteButton;
     @FindBy(how=How.XPATH,using ="//*[@id=\"deleteAccountPopup\"]/div[3]")
     public WebElement deleteAccountDialogCloseButton;
+    @FindBy(how=How.XPATH,using ="//*[@id=\"deleteAccountPopup\"]/div[2]/div[1]/div")
+    public WebElement emptyPasswordError;
 
 
 

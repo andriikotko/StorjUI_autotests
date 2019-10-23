@@ -1,5 +1,6 @@
 package tests.BucketsTabTest;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -23,8 +24,8 @@ public class BucketsTabTextsTest {
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        //driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
+        //driver.manage().window().maximize();
         driver.get(HomePage.HOMEURL);
 
         LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -56,7 +57,7 @@ public class BucketsTabTextsTest {
             Assert.assertTrue(bucketsTab.noBucketsLinkToDocumentation.getAttribute("href").startsWith("https://github.com/storj/storj/wiki/Uplink-CLI"));
             Assert.assertTrue(bucketsTab.noBucketsLinkToS3.getAttribute("href").startsWith("https://github.com/storj/storj/wiki/S3-Gateway"));
             Assert.assertEquals(bucketsTab.noBucketsLinkToS3.getText(), "Try our S3 Gateway");
-            Assert.assertEquals(bucketsTab.noBucketsNextStepHeader.getText(), "Next step");
+            Assert.assertEquals(bucketsTab.noBucketsNextStepHeader.getText(), "Next Step");
             Assert.assertEquals(bucketsTab.noBucketsNextStepText.getText(), "After you create a bucket using the CLI, you will be able to see your buckets and usage here. This happens within 10 minutes of creating your first bucket.");
             Assert.assertTrue(bucketsTab.noBucketsTextBeforeLinkS3.getText().startsWith("Familiar with AWS S3?"));
         } else {

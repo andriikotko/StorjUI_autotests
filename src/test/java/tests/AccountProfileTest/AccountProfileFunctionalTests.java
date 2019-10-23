@@ -48,6 +48,7 @@ public class AccountProfileFunctionalTests {
     @Test
     public void editAccountPositiveTest() {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
+        HomePage homePage = PageFactory.initElements(driver,HomePage.class);
         accountTabProfile.editProfileButton.click();
         accountTabProfile.fullNameInput.clear();
         accountTabProfile.fullNameInput.sendKeys("12345");
@@ -57,24 +58,23 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.updateAccountButton.click();
 
         accountTabProfile.editProfileButton.click();
-        String current_nickname = accountTabProfile.nicknameInput.getText();
-        Assert.assertEquals(current_nickname, "54321");
+
+        Assert.assertEquals(homePage.currentUserFirstSymbol.getText(), "5");
     }
 
     @Test
     public void editAccountNickEmptyPositiveTest() throws InterruptedException {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
+        HomePage homePage = PageFactory.initElements(driver,HomePage.class);
         accountTabProfile.editProfileButton.click();
         accountTabProfile.fullNameInput.clear();
         accountTabProfile.fullNameInput.sendKeys("12345");
 
         accountTabProfile.nicknameInput.clear();
         accountTabProfile.updateAccountButton.click();
-        Thread.sleep(4000);
         accountTabProfile.editProfileButton.click();
-        Thread.sleep(4000);
-        String current_name = accountTabProfile.fullNameInput.getText();
-        Assert.assertEquals(current_name, "12345");
+
+        Assert.assertEquals(homePage.currentUserFirstSymbol.getText(), "1");
     }
 
     @Test
@@ -336,7 +336,7 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.deleteAccountDialogDeleteButton.click();
 
 
-        Assert.assertEquals(accountTabProfile.errorOnPasswordChange.getText(),"unauthorized error: Old password is incorrect, please try again");
+        Assert.assertEquals(accountTabProfile.emptyPasswordError.getText(),"Invalid password. Must be 6 or more characters");
 
         Assert.assertTrue(driver.getCurrentUrl().endsWith("/account/profile"));
 

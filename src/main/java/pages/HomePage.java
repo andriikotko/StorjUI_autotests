@@ -9,8 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
 
     public final WebDriver driver;
-    public static String HOMEURL = "http://localhost:10002/login";
-    public static String REGISTERURL= "http://localhost:10002/register";
+    public static String HOMEURL = "http://localhost:14002/login";
+    public static String REGISTERURL= "http://localhost:14002/register";
     public static String ACCOUNT="test1@g.com";
     public static String PASSWORD="123qwe";
     public static String CHROMEDRIVERPATH = "./src/main/resources/chromedriver";
@@ -22,6 +22,8 @@ public class HomePage {
     public WebElement toggleAccount_DropDown;
     @FindBy(how = How.XPATH, using ="//*[@id=\"accountDropdownButton\"]/div/h1")
     public WebElement currentUserName;
+    @FindBy(how = How.XPATH, using ="//*[@id=\"accountDropdownButton\"]/div/div[1]/h1")
+    public WebElement currentUserFirstSymbol;
     @FindBy(how= How.XPATH,using ="//*[@id=\"accountDropdown\"]/div/div[1]")
     public WebElement account_Settings;
     @FindBy(how= How.XPATH,using ="//*[@id=\"accountDropdown\"]/div/div[1]/h2")

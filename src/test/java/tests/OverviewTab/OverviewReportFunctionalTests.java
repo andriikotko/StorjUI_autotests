@@ -59,7 +59,7 @@ public class OverviewReportFunctionalTests {
 //        driver.close();
 //        driver.switchTo().window(tabs2.get(0));
 
-        Assert.assertTrue(driver.getCurrentUrl().startsWith("http://localhost:10002/usage-report/?projectID="));
+        Assert.assertTrue(driver.getCurrentUrl().startsWith("http://localhost:14002/usage-report/?projectID="));
 
     }
     @Ignore
