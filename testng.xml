@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite"><test verbose="2" preserve-order="true" name="/home/andrii/IdeaProjects/Satellitev2">
-    <classes><class name="tests.AddPaymentCardTest">
+    <classes><class name="testsSatellite.AddPaymentCardTest">
         <methods><include name="AddPaymentCardTest"/>
-        </methods></class><class name="tests.BaseTest"><methods>
+        </methods></class><class name="testsSatellite.BaseTest"><methods>
         <include name="main"/></methods>
-    </class><class name="tests.HomePageElementsTest"><methods>
+    </class><class name="testsSatellite.HomePageElementsTest"><methods>
         <include name="HomePageElementsTest"/></methods></class>
-        <class name="tests.LoginRelatedTests.LoginPageElementsVisibilityTest"><methods>
+        <class name="testsSatellite.LoginRelatedTests.LoginPageElementsVisibilityTest"><methods>
             <include name="elementsVisabilityTest"/>
         </methods>
-        </class><class name="tests.LoginRelatedTests.NegativeLoginTest">
+        </class><class name="testsSatellite.LoginRelatedTests.NegativeLoginTest">
             <methods><include name="NegativeLoginTest"/></methods>
-        </class><class name="tests.AccountRelatedTests.NegativeNewAccountCreationTest"><methods>
+        </class><class name="testsSatellite.AccountRelatedTests.NegativeNewAccountCreationTest"><methods>
             <include name="NewAccountCreationTest"/>
-        </methods></class><class name="tests.AccountRelatedTests.NegativePasswordResetTest">
+        </methods></class><class name="testsSatellite.AccountRelatedTests.NegativePasswordResetTest">
             <methods><include name="ResetPasswordTest"/></methods></class>
-        <class name="tests.NewAccountCreationTest"><methods>
+        <class name="testsSatellite.NewAccountCreationTest"><methods>
             <include name="NewAccountCreationTest"/></methods></class>
-        <class name="tests.ProjectRelatedTests.APIkeyTest"><methods><include name="TestforTest"/></methods></class><class name="tests.ProjectRelatedTests.CreateNewProjectTest"><methods><include name="CreateNewProjectTest"/></methods></class><class name="tests.ProjectRelatedTests.DeleteProjectTest"><methods><include name="DeleteProjectTest"/></methods></class><class name="tests.TeamMembers.AddAndDeleteTeamMembersTest"><methods><include name="AddNewTeamMember"/></methods></class><class name="tests.ResetPasswordTest"><methods><include name="ResetPasswordTest"/></methods></class></classes></test></suite>
+        <class name="testsSatellite.ProjectRelatedTests.APIkeyTest"><methods><include name="TestforTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.CreateNewProjectTest"><methods><include name="CreateNewProjectTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.DeleteProjectTest"><methods><include name="DeleteProjectTest"/></methods></class><class name="testsSatellite.TeamMembers.AddAndDeleteTeamMembersTest"><methods><include name="AddNewTeamMember"/></methods></class><class name="testsSatellite.ResetPasswordTest"><methods><include name="ResetPasswordTest"/></methods></class></classes></test></suite>

@@ -8,45 +8,63 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import pages.Tabs.AccountTab_Billing;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MainForExperiments {
-    public static void main(String[] args) throws InterruptedException {
-        WebDriver driver;
+    public static void main(String[] args) throws InterruptedException, IOException {
+//        WebDriver driver;
+//
+//        System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH);
+//
+//        driver = new ChromeDriver();
+//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        //driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
+//        driver.manage().window().maximize();
+//        driver.get(HomePage.HOMEURL);
+//
+//        LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
+//
+//        LoginPage.userNameField.sendKeys(pages.HomePage.ACCOUNT);
+//        LoginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
+//        LoginPage.btn_Login.click();
+//        Thread.sleep(4500);
+//
+//        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+//        homePage.billingTab.click();
+//        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+//
+//
+//
+//        List<WebElement> list = driver.findElements(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div[3]/div"));
+//        System.out.println(list.size());
+//
+//          List<String> list2 = new ArrayList<>();
+//        for (WebElement webElement : list) {
+//            list2.add(webElement.getText());
+//        }
+//
+//        System.out.println(driver.getCurrentUrl());
+//
 
-        System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH);
+        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        //driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
-        driver.manage().window().maximize();
-        driver.get(HomePage.HOMEURL);
+        String satelliteID;
 
-        LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
-
-        LoginPage.userNameField.sendKeys(pages.HomePage.ACCOUNT);
-        LoginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
-        LoginPage.btn_Login.click();
-        Thread.sleep(4500);
-
-        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        homePage.billingTab.click();
-        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
-
-
-
-        List<WebElement> list = driver.findElements(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div[3]/div"));
-        System.out.println(list.size());
-
-          List<String> list2 = new ArrayList<>();
-        for (WebElement webElement : list) {
-            list2.add(webElement.getText());
+        while ((satelliteID = bufferedReader.readLine())!= null){
+            if (satelliteID.startsWith("storage.whitelisted-satellites:")){
+                satelliteID=satelliteID.substring(32,83);
+                break;
+            }
         }
-
-        System.out.println(driver.getCurrentUrl());
+        System.out.println(satelliteID);
 
 
     }
