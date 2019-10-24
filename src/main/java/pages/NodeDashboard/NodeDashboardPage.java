@@ -114,6 +114,8 @@ public class NodeDashboardPage {
     public WebElement walletData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/a/div")
     public WebElement payoutButton;
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/a")
+    public WebElement payoutLink;
     @FindBy (how = How.CSS, using = "#app > div > div.footer > div > svg")
     public WebElement footerLogo;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/a[1]")
