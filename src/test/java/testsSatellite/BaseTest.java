@@ -22,7 +22,7 @@ public class BaseTest {
 
 
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(HomePage.Width,HomePage.Height));
         driver.get(HomePage.HOMEURL);
 

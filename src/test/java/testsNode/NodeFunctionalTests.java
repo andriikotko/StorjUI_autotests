@@ -7,22 +7,44 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.NodeDashboard.NodeDashboardPage;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class NodeFunctionalTests {
-    WebDriver driver;
+    private WebDriver driver;
+
+    @BeforeClass
+    public void setupEnviroment (){
+//        Process p;
+//        try {
+//            String[] cmd = { "sh", "/home/andrii/Downloads/scrips/storj_setup.sh"};
+//            p = Runtime.getRuntime().exec(cmd);
+//            p.waitFor();
+//            BufferedReader reader=new BufferedReader(new InputStreamReader(
+//                    p.getInputStream()));
+//            String line;
+//            while((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+    }
 
     @BeforeMethod
     public void setUp(){
+
+
         System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
 
         driver = new ChromeDriver();
@@ -41,7 +63,7 @@ public class NodeFunctionalTests {
 
         while ((satelliteIDFromFile = bufferedReader.readLine())!= null){
             if (satelliteIDFromFile.startsWith("storage.whitelisted-satellites:")){
-                satelliteIDFromFile=satelliteIDFromFile.substring(32,83);
+                satelliteIDFromFile=satelliteIDFromFile.substring(32,82);
                 break;
             }
         }
@@ -49,6 +71,24 @@ public class NodeFunctionalTests {
         String satelliteFromPage = nodeDashboardPage.currentSatellite.getText();
 
         Assert.assertEquals(satelliteFromPage, satelliteIDFromFile);
+    }
+
+    @Test
+    public void compareWalletAddressTest() throws IOException {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String walletFromFile;
+
+        while ((walletFromFile = bufferedReader.readLine())!= null){
+            if (walletFromFile.startsWith("operator.wallet:")){
+                walletFromFile = walletFromFile.substring(17,59);
+                break;
+            }
+        }
+        String walletFromPage = nodeDashboardPage.walletData.getText();
+
+        Assert.assertEquals(walletFromPage, walletFromFile);
     }
 
     @Test

@@ -18,17 +18,17 @@ public class NodeElementsVisibilityTests {
     WebDriver driver;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width,NodeDashboardPage.Height));
+        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
         driver.get(NodeDashboardPage.DASHBOARDURL);
     }
 
     @Test
-    public void elementsVisibilityTest(){
+    public void elementsVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         Assert.assertTrue(nodeDashboardPage.dashboardStorjLogo.isDisplayed());
@@ -73,7 +73,7 @@ public class NodeElementsVisibilityTests {
     }
 
     @Test
-    public void nodeStatusHintVisibilityTest(){
+    public void nodeStatusHintVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         Actions action = new Actions(driver);
@@ -87,7 +87,7 @@ public class NodeElementsVisibilityTests {
     }
 
     @Test
-    public void nodeVersionHintVisibilityTest(){
+    public void nodeVersionHintVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         Actions action = new Actions(driver);
@@ -99,30 +99,70 @@ public class NodeElementsVisibilityTests {
     }
 
     @Test
-    public void bandwidthRemainBarHintVisibilityTest(){
+    public void bandwidthRemainBarHintVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.bandwidthRemainBar).click().perform();
 
         Assert.assertTrue(nodeDashboardPage.bandwidthRemainBarHint.isDisplayed());
-
     }
 
     @Test
-    public void diskRemainBarHintVisibilityTest(){
+    public void diskRemainBarHintVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.diskRemainBar).click().perform();
 
         Assert.assertTrue(nodeDashboardPage.diskRemainBarHint.isDisplayed());
+    }
 
+    @Test
+    public void uptimeAuditElementsVisibilityTest() {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        nodeDashboardPage.choosingSatelliteContainer.click();
+        nodeDashboardPage.currentSatellite.click();
+
+        Assert.assertTrue(nodeDashboardPage.auditUptimeHeader.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.uptimeChecksText.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.uptimeChecksHintTick.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.uptimeCheckData.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.auditChecksText.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.auditChecksHintTick.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.auditCheckData.isDisplayed());
+    }
+
+    @Test
+    public void uptimeHintVisibilityTest() {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        nodeDashboardPage.choosingSatelliteContainer.click();
+        nodeDashboardPage.currentSatellite.click();
+
+        Actions action = new Actions(driver);
+        action.moveToElement(nodeDashboardPage.uptimeChecksHintTick).click().perform();
+
+        Assert.assertTrue(nodeDashboardPage.uptimeCheckHintText.isDisplayed());
+    }
+
+    @Test
+    public void auditHintVisibilityTest() {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        nodeDashboardPage.choosingSatelliteContainer.click();
+        nodeDashboardPage.currentSatellite.click();
+
+        Actions action = new Actions(driver);
+        action.moveToElement(nodeDashboardPage.auditChecksHintTick).click().perform();
+
+        Assert.assertTrue(nodeDashboardPage.auditCheckHintText.isDisplayed());
     }
 
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }

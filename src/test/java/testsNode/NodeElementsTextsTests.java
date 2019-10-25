@@ -50,7 +50,7 @@ public class NodeElementsTextsTests {
         Assert.assertTrue(nodeDashboardPage.bandwidthData.getText().contains("B"));
 
         Assert.assertEquals(nodeDashboardPage.diskSpaceHeader.getText(), "Disk Space Used This Month");
-        Assert.assertTrue(nodeDashboardPage.diskSpaceData.getText().endsWith("B*h"));
+        Assert.assertTrue(nodeDashboardPage.diskSpaceData.getText().endsWith("*h"));
 
         Assert.assertEquals(nodeDashboardPage.remainingHeader.getText(), "Remaining on the Node");
         Assert.assertEquals(nodeDashboardPage.bandwidthRemainingText.getText(), "Bandwidth Remaining");
@@ -126,6 +126,47 @@ public class NodeElementsTextsTests {
         Assert.assertTrue(nodeDashboardPage.diskRemainBarHint.getText().endsWith("% of disk space left"));
 
     }
+
+    @Test
+    public void uptimeAuditElementsTextsTest() {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        nodeDashboardPage.choosingSatelliteContainer.click();
+        nodeDashboardPage.currentSatellite.click();
+
+        Assert.assertEquals(nodeDashboardPage.auditUptimeHeader.getText(),"Uptime & Audit Checks by Satellite");
+        Assert.assertEquals(nodeDashboardPage.uptimeChecksText.getText(),"Uptime Checks");
+        Assert.assertTrue(nodeDashboardPage.uptimeCheckData.getText().endsWith("%"));
+        Assert.assertEquals(nodeDashboardPage.auditChecksText.getText(),"Audit Checks");
+        Assert.assertTrue(nodeDashboardPage.auditCheckData.getText().endsWith("%"));
+    }
+
+    @Test
+    public void uptimeHintTextTest() {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        nodeDashboardPage.choosingSatelliteContainer.click();
+        nodeDashboardPage.currentSatellite.click();
+
+        Actions action = new Actions(driver);
+        action.moveToElement(nodeDashboardPage.uptimeChecksHintTick).click().perform();
+
+        Assert.assertEquals(nodeDashboardPage.uptimeCheckHintText.getText(),"Uptime checks occur to make sure your node is still online. This is the percentage of uptime checks you’ve passed.");
+    }
+
+    @Test
+    public void auditHintTextTest() {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        nodeDashboardPage.choosingSatelliteContainer.click();
+        nodeDashboardPage.currentSatellite.click();
+
+        Actions action = new Actions(driver);
+        action.moveToElement(nodeDashboardPage.auditChecksHintTick).click().perform();
+
+        Assert.assertEquals(nodeDashboardPage.auditCheckHintText.getText(),"Percentage of successful pings/communication between the node & satellite.");
+    }
+
 
 
     @AfterMethod

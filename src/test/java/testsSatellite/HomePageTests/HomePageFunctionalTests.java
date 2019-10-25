@@ -26,7 +26,7 @@ public class HomePageFunctionalTests {
     public void setUp() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH);
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(HomePage.Width,HomePage.Height));
         driver.get(HomePage.HOMEURL);
 
@@ -75,27 +75,27 @@ public class HomePageFunctionalTests {
         homePage.toggleAccount_DropDown.click();
 
         homePage.account_Settings.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:10002/account/profile");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/account/profile");
 
         homePage.toggleAccount_DropDown.click();
         homePage.button_LogOut.click();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:10002/login");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/login");
     }
 
     @Test
     public void switchingBetweenPages(){
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         homePage.team_tab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:10002/project-members");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/project-members");
         homePage.API_Keys_Tab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:10002/api-keys");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/api-keys");
         homePage.buckets.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:10002/buckets");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/buckets");
         homePage.profileTab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:10002/account/profile");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/account/profile");
         homePage.billingTab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:10002/account/billing");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/account/billing");
     }
 
     @Test

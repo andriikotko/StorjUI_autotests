@@ -23,7 +23,7 @@ public class OverviewDetailsFunctionalTests {
         System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH);
 
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(HomePage.Width,HomePage.Height));
         driver.get(HomePage.HOMEURL);
 
@@ -80,7 +80,7 @@ public class OverviewDetailsFunctionalTests {
 
         Assert.assertEquals(overviewTabDetails.currentProjectDescription.getText(),previousDescription);
     }
-    @Ignore
+    @Ignore  // TEMPORARY
     @Test
     public void deleteProjectEmptyFieldTest(){
         OverviewTab_Details overviewTabDetails = PageFactory.initElements(driver, OverviewTab_Details.class);
@@ -88,7 +88,7 @@ public class OverviewDetailsFunctionalTests {
 
         Assert.assertFalse(overviewTabDetails.deleteProjectDialogConfirmNotification.isEnabled());
     }
-
+    @Ignore  //TEMPORARY
     @Test
     public void deleteProjectWrongNameTest(){
         OverviewTab_Details overviewTabDetails = PageFactory.initElements(driver, OverviewTab_Details.class);
@@ -99,7 +99,7 @@ public class OverviewDetailsFunctionalTests {
 
         Assert.assertEquals(overviewTabDetails.deleteProjectDialogErrorMessage.getText(), "Name doesn't match with current project name");
     }
-
+    @Ignore  //TEMPORARY
     @Test
     public void deleteProjectElseProjectNameTest(){
         OverviewTab_Details overviewTabDetails = PageFactory.initElements(driver, OverviewTab_Details.class);
@@ -111,7 +111,7 @@ public class OverviewDetailsFunctionalTests {
         Assert.assertEquals(overviewTabDetails.deleteProjectDialogErrorMessage.getText(), "Name doesn't match with current project name");
     }
 
-
+    @Ignore  //TEMPORARY
     @Test
     public void deleteProjectCancelButtonTest() throws InterruptedException {
         OverviewTab_Details overviewTabDetails = PageFactory.initElements(driver, OverviewTab_Details.class);

@@ -39,60 +39,60 @@ public class AccountTab_Profile {
 
 
     //EDIT PROFILE POPUP
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[1]/h2")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[1]/h2")
     public WebElement editProfilePopupHeader;
     @FindBy(how=How.XPATH,using="//*[@id=\"Full Name\"]")
     public WebElement fullNameInput;
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[2]/div/h3[1]")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[2]/div/h3[1]")
     public WebElement fullNameInputHeader;
 
     @FindBy(how=How.XPATH,using="//*[@id=\"Nickname\"]")
     public WebElement nicknameInput;
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[3]/div/h3[1]")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[3]/div/h3[1]")
     public WebElement nicknameInputHeader;
 
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[4]/div[2]")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[4]/div[2]")
     public WebElement updateAccountButton;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[4]/div[1]")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[4]/div[1]")
     public WebElement cancelUpdateAccountButton;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[2]")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[2]")
     public WebElement closeUpdateAccountDialogButton;
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[2]/div/h3")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[2]/div/h3")
     public WebElement errorOnNameChange;
 
 
 
 
     //EDIT CHANGE PASSWORD POPUP
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[1]/h2")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[1]/h2")
     public WebElement editPasswordPopupHeader;
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[2]/input")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[2]/input")
     public WebElement oldPasswordInput;
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[2]/div/h3")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[2]/div/h3")
     public WebElement oldPasswordInputHeader;
 
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[3]/input")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[3]/input")
     public WebElement newPasswordInput;
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[3]/div/h3")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[3]/div/h3")
     public WebElement newPasswordInputHeader;
 
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[4]/input")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[4]/input")
     public WebElement confirmPasswordInput;
-    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[4]/div/h3")
+    @FindBy(how=How.XPATH,using="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[4]/div/h3")
     public WebElement confirmPasswordInputHeader;
 
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[5]/div[2]")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[5]/div[2]")
     public WebElement updatePasswordButton;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[5]/div[1]")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[5]/div[1]")
     public WebElement cancelUpdatePasswordButton;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[2]")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[2]")
     public WebElement closeUpdatePasswordDialogButton;
 
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[3]/div/h3")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[3]/div/h3")
     public WebElement newPasswordError;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[4]/div/h3")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[4]/div/h3")
     public WebElement confirmPasswordError;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div/div[1]/div[2]/div/h3")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/div[1]/div[2]/div/h3")
     public WebElement changePasswordEmptyError;
     @FindBy(how=How.XPATH,using ="//*[@id=\"notificationArea\"]/div/div[1]")
     public WebElement errorOnPasswordChange;
