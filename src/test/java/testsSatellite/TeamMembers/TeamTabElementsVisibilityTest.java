@@ -1,7 +1,9 @@
 package testsSatellite.TeamMembers;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,11 +11,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.Tabs.TeamTab;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TeamTabElementsVisibilityTest {
@@ -55,7 +59,7 @@ public class TeamTabElementsVisibilityTest {
         Assert.assertTrue(teamTab.membersListEmailHeader.isDisplayed());
         Assert.assertTrue(teamTab.checkboxFirstUser.isDisplayed());
         Assert.assertTrue(teamTab.avatarFirstMember.isDisplayed());
-      //  Assert.assertTrue(teamTab.membersPaginator.isDisplayed()); - should be shown then amount of members > 6
+        //  Assert.assertTrue(teamTab.membersPaginator.isDisplayed()); - should be shown then amount of members > 6
         Assert.assertTrue(teamTab.firstUserInfo.isDisplayed());
         Assert.assertTrue(teamTab.firstUserAddedDate.isDisplayed());
         Assert.assertTrue(teamTab.firstUserEmail.isDisplayed());
@@ -84,7 +88,7 @@ public class TeamTabElementsVisibilityTest {
     }
 
     @Test
-    public void wrongNewMemberErrorVisibilityTest (){
+    public void wrongNewMemberErrorVisibilityTest() {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
         teamTab.addTeamMemberButton.click();
         teamTab.addTeamMemberInput.sendKeys("asdf@dfg");
@@ -94,30 +98,43 @@ public class TeamTabElementsVisibilityTest {
     }
 
     @Test
-    public void wrongNewMemberNotificationErrorVisibilityTest (){
+    public void wrongNewMemberNotificationErrorVisibilityTest() {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
         teamTab.addTeamMemberButton.click();
         teamTab.addTeamMemberInput.sendKeys("asdf@dfg.dfgh");
         teamTab.addTeamMemberADD.click();
 
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(teamTab.addTeamMemberNotificationEmailError));
 
         Assert.assertTrue(teamTab.addTeamMemberNotificationEmailError.isDisplayed());
     }
 
     @Test
-    public  void deleteTeamMemberElementsVisibilityTest (){
+    public void deleteTeamMemberElementsVisibilityTest() {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
-        teamTab.checkboxFirstUser.click();
+        List<WebElement> list1 = driver.findElements(By.xpath("//*[@class=\"user-container item-component__item\"]"));
+        List<WebElement> ifOwnerChecking = list1.get(0).findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div[1]/div/div[2]/p"));
+        if (ifOwnerChecking.size() != 2) {
+            list1.get(0).click();
+        } else {
+            list1.get(1).click();
+        }
 
         Assert.assertTrue(teamTab.deleteTeamMemberButton.isDisplayed());
         Assert.assertTrue(teamTab.cancelDeletingTeamMemberButton.isDisplayed());
     }
+
     @Test
-    public  void deleteTeamMemberConfirmVisibilityTest (){
+    public void deleteTeamMemberConfirmVisibilityTest() {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
-        teamTab.checkboxFirstUser.click();
+        List<WebElement> list1 = driver.findElements(By.xpath("//*[@class=\"user-container item-component__item\"]"));
+        List<WebElement> ifOwnerChecking = list1.get(0).findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div[1]/div/div[2]/p"));
+        if (ifOwnerChecking.size() != 2) {
+            list1.get(0).click();
+        } else {
+            list1.get(1).click();
+        }
         teamTab.deleteTeamMemberButton.click();
 
         Assert.assertTrue(teamTab.deleteTeamMemberButtonConfirm.isDisplayed());
@@ -125,23 +142,37 @@ public class TeamTabElementsVisibilityTest {
     }
 
     @Test
-    public  void deleteTeamMemberConfirmationVisibilityTest (){
+    public void deleteTeamMemberConfirmationVisibilityTest() {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
-        teamTab.checkboxFirstUser.click();
+        List<WebElement> list1 = driver.findElements(By.xpath("//*[@class=\"user-container item-component__item\"]"));
+        List<WebElement> ifOwnerChecking = list1.get(0).findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div[1]/div/div[2]/p"));
+        if (ifOwnerChecking.size() != 2) {
+            list1.get(0).click();
+        } else {
+            list1.get(1).click();
+        }
         teamTab.addTeamMemberButton.click();
 
         Assert.assertTrue(teamTab.deleteTeamMemberConfirmNotification.isDisplayed());
     }
 
+
     @Test
-    public  void deleteTeamMemberNotificationErrorVisibilityTest (){
+    public void deleteTeamMemberNotificationErrorVisibilityTest() {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
-        teamTab.checkboxFirstUser.click();
-       //teamTab.addTeamMemberButton.click();
+        List<WebElement> list1 = driver.findElements(By.xpath("//*[@class=\"user-container item-component__item\"]"));
+        List<WebElement> ifOwnerChecking = list1.get(0).findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div[1]/div/div[2]/p"));
+        if (ifOwnerChecking.size() != 2) {
+            list1.get(0).click();
+        } else {
+            list1.get(1).click();
+        }
+
+        //teamTab.addTeamMemberButton.click();
         teamTab.deleteTeamMemberButton.click();
         teamTab.deleteTeamMemberButtonConfirm.click();
 
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(teamTab.deleteTeamMemberNotificationError));
 
         Assert.assertTrue(teamTab.deleteTeamMemberNotificationError.isDisplayed());

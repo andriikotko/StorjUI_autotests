@@ -35,8 +35,11 @@ public class TeamTab {
     @FindBy(how = How.XPATH, using = "//*[@id=\"team-container\"]/div[3]/div")
     public WebElement membersPaginator;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"team-container\"]/div[2]/div/div/div/p")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"team-container\"]/div[2]/div/div[1]/div/div[2]/p[1]")
     public WebElement firstUserInfo;
+
+    @FindBy(how = How.XPATH, using = "//*[@id=\"team-container\"]/div[2]/div/div[2]/div/div[1]")
+    public WebElement secondUserCheckbox;
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"team-container\"]/div[2]/div/div/p[1]")
     public WebElement firstUserAddedDate;
