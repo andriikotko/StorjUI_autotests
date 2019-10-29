@@ -61,22 +61,6 @@ public class AccountBillingTextsTest {
 
     }
 
-    @Test
-    public void paymentMethodsElementsTextsTest (){
-        AccountTab_PaymentMethods accountTab_billing = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
-
-
-        //   Assert.assertTrue(accountTab_billing.cardContainerstorjLogo.getAttribute("src").endsWith("/static/dist/img/Logo.a3cba3e8.svg"));
-        Assert.assertEquals(accountTab_billing.cardContainerMakeCardDefaultButton.getText(),"Make Default");
-        Assert.assertEquals(accountTab_billing.addNewCardButton.getText(),"Add Card");
-        Assert.assertEquals(accountTab_billing.cardDeleteCardButton.getText(), "Delete");
-        Assert.assertEquals(accountTab_billing.addStorjPayButton.getText(),"Add STORJ");
-
-
-
-
-    }
-
 
     @AfterMethod
     public void tearDown() {

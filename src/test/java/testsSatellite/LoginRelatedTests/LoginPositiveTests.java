@@ -59,7 +59,7 @@ public class LoginPositiveTests extends BaseTest {
     public void linkToSupport(){
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-        Assert.assertTrue(loginPage.linkToSupport.getAttribute("href").endsWith("https://support.tardigrade.io/hc/en-us"));
+        Assert.assertTrue(loginPage.linkToSupport.getAttribute("href").endsWith("mailto:support@storj.io"));
     }
 
     @Test

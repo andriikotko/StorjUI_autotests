@@ -33,7 +33,7 @@ public class AccountTab_Billing {
     public WebElement usageCharges;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div[2]/div[2]/div[1]/div/span")
     public WebElement referralCredits;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[4]/div[1]/h1")
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[5]/div[1]/h1")
     public WebElement depositBillingHeader;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[5]/div[1]/div")
     public WebElement depositHistoryViewAllButton;

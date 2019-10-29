@@ -127,8 +127,10 @@ public class AddAndDeleteTeamMembersTest {
     public  void deleteTeamMemberElementsTextsTest () throws InterruptedException {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
         List<WebElement> list1 = driver.findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div"));
-        List<WebElement> ifOwnerChecking = list1.get(0).findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div[1]/div/div[2]/p"));
-        if (ifOwnerChecking.size() != 2) {
+        //List<WebElement> ifOwnerChecking = list1.get(0).findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div[1]/div/div[2]/p"));
+        List<WebElement> ifOwnerChecking = list1.get(0).findElements(By.tagName("p"));
+        System.out.println(ifOwnerChecking.size());
+        if (ifOwnerChecking.size() != 4) {
             list1.get(0).click();
         } else {
             list1.get(1).click();

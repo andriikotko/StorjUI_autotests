@@ -63,24 +63,7 @@ public class AccountBillingElementsVisibilityTest {
 
     }
 
-    @Test
-    public void paymentMethodsElementsVisibilityTest (){
-        AccountTab_PaymentMethods accountTab_billing = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
 
-
-        Assert.assertTrue(accountTab_billing.cardContainer.isDisplayed());
-       // Assert.assertTrue(accountTab_billing.cardContainerstorjLogo.isDisplayed());
-        Assert.assertTrue(accountTab_billing.cardContainerCardInfo.isDisplayed());
-        Assert.assertTrue(accountTab_billing.cardContainerCardExpire.isDisplayed());
-      //  Assert.assertTrue(accountTab_billing.cardContainerCardAddedDate.isDisplayed());
-        Assert.assertTrue(accountTab_billing.cardContainerMakeCardDefaultButton.isDisplayed());
-        Assert.assertTrue(accountTab_billing.cardDeleteCardButton.isDisplayed());
-        Assert.assertTrue(accountTab_billing.addNewCardButton.isDisplayed());
-        Assert.assertTrue(accountTab_billing.addStorjPayButton.isDisplayed());
-
-
-
-    }
     @Test
     public void hintVisibilityTest (){
         AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);

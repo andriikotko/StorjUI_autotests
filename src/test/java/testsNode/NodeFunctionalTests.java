@@ -63,7 +63,7 @@ public class NodeFunctionalTests {
 
         while ((satelliteIDFromFile = bufferedReader.readLine())!= null){
             if (satelliteIDFromFile.startsWith("storage.whitelisted-satellites:")){
-                satelliteIDFromFile=satelliteIDFromFile.substring(32,82);
+                satelliteIDFromFile=satelliteIDFromFile.substring(32,83);
                 break;
             }
         }
