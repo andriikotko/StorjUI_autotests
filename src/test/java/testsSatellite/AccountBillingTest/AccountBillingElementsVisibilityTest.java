@@ -3,6 +3,7 @@ package testsSatellite.AccountBillingTest;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -41,7 +42,7 @@ public class AccountBillingElementsVisibilityTest {
     }
 
     @Test
-    public void billingTabelementsVisibility (){
+    public void billingTabelementsVisibilityTest (){
         AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
 
         Assert.assertTrue(accountTab_billing.accountBalanceHeader.isDisplayed());
@@ -63,7 +64,7 @@ public class AccountBillingElementsVisibilityTest {
     }
 
     @Test
-    public void paymentMethodsElementsVisibility (){
+    public void paymentMethodsElementsVisibilityTest (){
         AccountTab_PaymentMethods accountTab_billing = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
 
 
@@ -79,6 +80,16 @@ public class AccountBillingElementsVisibilityTest {
 
 
 
+    }
+    @Test
+    public void hintVisibilityTest (){
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(accountTab_billing.accountBalanceHint).click().perform();
+
+
+        Assert.assertTrue(accountTab_billing.accountBalanceHintText.isDisplayed());
     }
 
 

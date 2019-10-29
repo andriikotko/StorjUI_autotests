@@ -35,26 +35,44 @@ public class AccountPaymentVisibilityTests {
         Thread.sleep(4500);
 
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        homePage.paymentMethodsTab.click();
+        homePage.billingTab.click();
 
     }
-    @Ignore
+
     @Test
-    public void billingTabelementsVisibility (){
-        AccountTab_PaymentMethods accountTab_billing = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+    public void paymentElementsVisibilityTest() {
+        AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+
+//
+//        Assert.assertTrue(accountTab_billing.cardContainer.isDisplayed());
+//       // Assert.assertTrue(accountTab_billing.cardContainerstorjLogo.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.cardContainerCardInfo.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.cardContainerCardExpire.isDisplayed());
+//    //    Assert.assertTrue(accountTab_billing.cardContainerCardAddedDate.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.cardContainerMakeCardDefaultButton.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.addNewCardButton.isDisplayed());
 
 
-        Assert.assertTrue(accountTab_billing.cardContainer.isDisplayed());
-       // Assert.assertTrue(accountTab_billing.cardContainerstorjLogo.isDisplayed());
-        Assert.assertTrue(accountTab_billing.cardContainerCardInfo.isDisplayed());
-        Assert.assertTrue(accountTab_billing.cardContainerCardExpire.isDisplayed());
-    //    Assert.assertTrue(accountTab_billing.cardContainerCardAddedDate.isDisplayed());
-        Assert.assertTrue(accountTab_billing.cardContainerMakeCardDefaultButton.isDisplayed());
-        Assert.assertTrue(accountTab_billing.addNewCardButton.isDisplayed());
-
-
+        Assert.assertTrue(accountTab_paymentMethods.paymentMethodsHeader.isDisplayed());
+        Assert.assertTrue(accountTab_paymentMethods.addNewCardButton.isDisplayed());
+        Assert.assertTrue(accountTab_paymentMethods.addStorjPayButton.isDisplayed());
 
     }
+
+    @Test
+    public void paymentStorjElementsVisibilityTest() {
+        AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        accountTab_paymentMethods.addStorjPayButton.click();
+
+
+        Assert.assertTrue(accountTab_paymentMethods.depositStorjHeader.isDisplayed());
+        Assert.assertTrue(accountTab_paymentMethods.depositStorjNotification.isDisplayed());
+        Assert.assertTrue(accountTab_paymentMethods.paymentSelectButton.isDisplayed());
+        Assert.assertTrue(accountTab_paymentMethods.droplistTick.isDisplayed());
+        Assert.assertTrue(accountTab_paymentMethods.continueToCoinPaymentsButton.isDisplayed());
+        Assert.assertTrue(accountTab_paymentMethods.paymentMethodsCancelButton.isDisplayed());
+    }
+
 
 
     @AfterMethod

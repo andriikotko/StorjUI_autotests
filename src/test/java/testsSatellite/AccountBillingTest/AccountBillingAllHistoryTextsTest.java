@@ -3,6 +3,7 @@ package testsSatellite.AccountBillingTest;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -53,8 +54,17 @@ public class AccountBillingAllHistoryTextsTest {
         Assert.assertEquals(accountTab_allBillingHistory.allBillingHistoryAmountHeader.getText(),"Amount");
         Assert.assertTrue(accountTab_allBillingHistory.allBillingHistoryBackButtonText.getText().endsWith("Back to Account"));
        // Assert.assertTrue(accountTab_allBillingHistory.allBillingHistoryPaginator.isDisplayed());
+    }
+
+    @Test
+    public void hintTextTest (){
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(accountTab_billing.accountBalanceHint).click().perform();
 
 
+        Assert.assertEquals(accountTab_billing.accountBalanceHintText.getText(), "Prepaid STORJ token amount and any additional credits, minus current usage");
     }
 
 

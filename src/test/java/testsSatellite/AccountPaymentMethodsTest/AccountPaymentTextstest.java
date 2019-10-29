@@ -56,6 +56,40 @@ public class AccountPaymentTextstest {
 
     }
 
+    @Test
+    public void paymentElementsTextsTest() {
+        AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+
+//
+//        Assert.assertTrue(accountTab_billing.cardContainer.isDisplayed());
+//       // Assert.assertTrue(accountTab_billing.cardContainerstorjLogo.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.cardContainerCardInfo.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.cardContainerCardExpire.isDisplayed());
+//    //    Assert.assertTrue(accountTab_billing.cardContainerCardAddedDate.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.cardContainerMakeCardDefaultButton.isDisplayed());
+//        Assert.assertTrue(accountTab_billing.addNewCardButton.isDisplayed());
+
+
+        Assert.assertEquals(accountTab_paymentMethods.paymentMethodsHeader.getText(), "Payment Methods");
+        Assert.assertEquals(accountTab_paymentMethods.addNewCardButton.getText(),"Add Card");
+        Assert.assertEquals(accountTab_paymentMethods.addStorjPayButton.getText(),"Add STORJ");
+
+    }
+
+    @Test
+    public void paymentStorjElementsTextsTest() {
+        AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        accountTab_paymentMethods.addStorjPayButton.click();
+
+
+        Assert.assertEquals(accountTab_paymentMethods.depositStorjHeader.getText(),"Payment Methods");
+        Assert.assertEquals(accountTab_paymentMethods.depositStorjNotification.getText(),"Deposit STORJ Tokens via Coin Payments");
+        Assert.assertEquals(accountTab_paymentMethods.paymentSelectButton.getText(),"US $20 (+$5 Bonus)");
+        Assert.assertEquals(accountTab_paymentMethods.continueToCoinPaymentsButton.getText(),"Continue to Coin Payments");
+        Assert.assertEquals(accountTab_paymentMethods.paymentMethodsCancelButton.getText(),"Cancel");
+    }
+
+
 
     @AfterMethod
     public void tearDown() {
