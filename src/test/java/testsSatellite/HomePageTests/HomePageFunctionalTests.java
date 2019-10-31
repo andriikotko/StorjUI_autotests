@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -70,32 +71,32 @@ public class HomePageFunctionalTests {
     }
 
     @Test
-    public void accountSettingsDropdownWork(){
+    public void accountSettingsDropdownWork() throws IOException {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         homePage.toggleAccount_DropDown.click();
 
         homePage.account_Settings.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/account/profile");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/account/profile");
 
         homePage.toggleAccount_DropDown.click();
         homePage.button_LogOut.click();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/login");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/login");
     }
 
     @Test
-    public void switchingBetweenPages(){
+    public void switchingBetweenPages() throws IOException {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         homePage.team_tab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/project-members");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/project-members");
         homePage.API_Keys_Tab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/api-keys");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/api-keys");
         homePage.buckets.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/buckets");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/buckets");
         homePage.profileTab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/account/profile");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/account/profile");
         homePage.billingTab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:14002/account/billing");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/account/billing");
     }
 
     @Test

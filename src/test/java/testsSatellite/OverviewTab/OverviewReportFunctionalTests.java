@@ -1,5 +1,7 @@
 package testsSatellite.OverviewTab;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -15,6 +17,7 @@ import pages.LoginPage;
 import pages.Tabs.OverviewTab_Details;
 import pages.Tabs.OverviewTab_Report;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +28,7 @@ public class OverviewReportFunctionalTests {
         System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH);
 
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         //driver.manage().window().setSize(new Dimension(HomePage.Width,HomePage.Height));
         driver.get(HomePage.HOMEURL);
@@ -47,9 +50,10 @@ public class OverviewReportFunctionalTests {
     }
 
     @Test
-    public void overviewReportAdvancedReportLinkTest () {
+    public void overviewReportAdvancedReportLinkTest () throws IOException {
 
         OverviewTab_Report overviewTabReport = PageFactory.initElements(driver, OverviewTab_Report.class);
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 
         overviewTabReport.downloadAdvancedReportButton.click();
 
@@ -58,10 +62,10 @@ public class OverviewReportFunctionalTests {
 //        driver.close();
 //        driver.switchTo().window(tabs2.get(0));
 
-        Assert.assertTrue(driver.getCurrentUrl().startsWith("http://localhost:14002/usage-report/?projectID="));
+        Assert.assertTrue(driver.getCurrentUrl().startsWith("http://localhost:"+ (homePage.satellitePort()) +"/usage-report/?projectID="));
 
     }
-    @Ignore
+
     @Test
     public void overviewReportAdvancedReportTest () {
 
@@ -74,7 +78,7 @@ public class OverviewReportFunctionalTests {
 //        driver.close();
 //        driver.switchTo().window(tabs2.get(0));
 
-      //  Assert.assertEquals(driver.findElement(By.xpath("").ge ,""));
+        Assert.assertEquals(driver.findElement(By.xpath("/html/body/div/table/thead/tr[1]/th[1]")).getText() ,"Bucket Name");
 
     }
 

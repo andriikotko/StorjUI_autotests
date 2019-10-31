@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import pages.HomePage;
 
+import java.io.IOException;
+
 public class OverviewTab_Details extends HomePage {
     WebDriver driver;
 
@@ -65,7 +67,7 @@ public class OverviewTab_Details extends HomePage {
     public WebElement deleteProjectDialogErrorMessage;
 
 
-    public OverviewTab_Details(WebDriver driver) {
+    public OverviewTab_Details(WebDriver driver) throws IOException {
         super(driver);
         this.driver = driver;
     }

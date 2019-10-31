@@ -1,6 +1,7 @@
 package testsSatellite.AccountPaymentMethodsTest;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,8 +30,8 @@ public class AccountPaymentFunctionalTests {
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
+        //driver.manage().window().maximize();
         driver.get(HomePage.HOMEURL);
 
         LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);

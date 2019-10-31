@@ -6,16 +6,43 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class HomePage {
 
     public final WebDriver driver;
-    public static String HOMEURL = "http://localhost:14002/login";
-    public static String REGISTERURL= "http://localhost:14002/register";
+
+    public static String HOMEURL;
+
+    static {
+        try {
+            HOMEURL = "http://localhost:"+ (satellitePort()) +"/login";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String REGISTERURL;
+
+    static {
+        try {
+            REGISTERURL = "http://localhost:"+ (satellitePort()) +"/register";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static String ACCOUNT="test1@g.com";
     public static String PASSWORD="123qwe";
     public static String CHROMEDRIVERPATH = "./src/main/resources/chromedriver";
     public static Integer Width = 1280;
     public static Integer Height = 1000;
+
+
+
 
      //BuTTONS and DropDowns
     @FindBy(how = How.XPATH, using ="//*[@id=\"accountDropdownButton\"]")
@@ -101,11 +128,22 @@ public class HomePage {
         loginPage.linkForgotPassword.click();
     }
 
+    public static String satellitePort() throws IOException {
+        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/satellite/0/config.yaml");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String satellitePort;
+
+        while ((satellitePort = bufferedReader.readLine())!= null){
+            if (satellitePort.startsWith("console.address:")){
+                satellitePort=satellitePort.substring(27,32);
+                break;
+            }
+        } return satellitePort;
+    }
+
 
 // This is a constructor, as every page need a base driver to find web elements
-    public HomePage(WebDriver driver)
-
-    {
+    public HomePage(WebDriver driver) throws IOException {
         this.driver = driver;
     }
 
