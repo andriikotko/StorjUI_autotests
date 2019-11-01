@@ -5,6 +5,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,9 +26,32 @@ public class APIKeysFunctionalTests {
     public void tearDown()
     {driver.quit();}
     @BeforeMethod
-    public void CreateNewAPIKey() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH);
-        driver = new ChromeDriver();
+    @Parameters("browser")
+    public void setUp( @Optional("Chrome") String browser) throws Exception {
+
+        //Check if parameter passed from TestNG is 'firefox'
+        if(browser.equalsIgnoreCase("Firefox")){
+            //create firefox instance
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH);
+            driver = new FirefoxDriver();
+        }
+        //Check if parameter passed as 'chrome'
+        else if(browser.equalsIgnoreCase("Chrome")){
+            //set path to chromedriver.exe
+            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH);
+            //create chrome instance
+            driver = new ChromeDriver();
+        }
+        //  Check if parameter passed as 'Opera'
+        else if(browser.equalsIgnoreCase("Opera")){
+            //set path to Edge.exe
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH);
+            driver = new OperaDriver();
+        }
+        else{
+            //If no browser passed throw exception
+            throw new Exception("Browser is not correct");
+        }
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
         driver.get(HomePage.HOMEURL);

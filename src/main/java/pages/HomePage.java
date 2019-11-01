@@ -2,12 +2,13 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -38,6 +39,8 @@ public class HomePage {
     public static String ACCOUNT="test1@g.com";
     public static String PASSWORD="123qwe";
     public static String CHROMEDRIVERPATH = "./src/main/resources/chromedriver";
+    public static String GECKODRIVERPATH = "./src/main/resources/geckodriver";
+    public static String OPERADRIVERPATH = "./src/main/resources/operadriver";
     public static Integer Width = 1280;
     public static Integer Height = 1000;
 
@@ -140,6 +143,8 @@ public class HomePage {
             }
         } return satellitePort;
     }
+
+
 
 
 // This is a constructor, as every page need a base driver to find web elements

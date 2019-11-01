@@ -1,21 +1,377 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite"><test verbose="2" preserve-order="true" name="/home/andrii/IdeaProjects/Satellitev2">
-    <classes><class name="testsSatellite.AddPaymentCardTest">
-        <methods><include name="AddPaymentCardTest"/>
-        </methods></class><class name="testsSatellite.BaseTest"><methods>
-        <include name="main"/></methods>
-    </class><class name="testsSatellite.HomePageElementsTest"><methods>
-        <include name="HomePageElementsTest"/></methods></class>
-        <class name="testsSatellite.LoginRelatedTests.LoginPageElementsVisibilityTest"><methods>
-            <include name="elementsVisabilityTest"/>
-        </methods>
-        </class><class name="testsSatellite.LoginRelatedTests.NegativeLoginTest">
-            <methods><include name="NegativeLoginTest"/></methods>
-        </class><class name="testsSatellite.AccountRelatedTests.NegativeNewAccountCreationTest"><methods>
-            <include name="NewAccountCreationTest"/>
-        </methods></class><class name="testsSatellite.AccountRelatedTests.NegativePasswordResetTest">
-            <methods><include name="ResetPasswordTest"/></methods></class>
-        <class name="testsSatellite.NewAccountCreationTest"><methods>
-            <include name="NewAccountCreationTest"/></methods></class>
-        <class name="testsSatellite.ProjectRelatedTests.APIkeyTest"><methods><include name="TestforTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.CreateNewProjectTest"><methods><include name="CreateNewProjectTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.DeleteProjectTest"><methods><include name="DeleteProjectTest"/></methods></class><class name="testsSatellite.TeamMembers.AddAndDeleteTeamMembersTest"><methods><include name="AddNewTeamMember"/></methods></class><class name="testsSatellite.ResetPasswordTest"><methods><include name="ResetPasswordTest"/></methods></class></classes></test></suite>
+<!--<suite name="All Test Suite"><test verbose="2" preserve-order="true" name="/home/andrii/IdeaProjects/Satellitev2">-->
+<!--    <classes><class name="testsSatellite.AddPaymentCardTest">-->
+<!--        <methods><include name="AddPaymentCardTest"/>-->
+<!--        </methods></class><class name="testsSatellite.BaseTest"><methods>-->
+<!--        <include name="main"/></methods>-->
+<!--    </class><class name="testsSatellite.HomePageElementsTest"><methods>-->
+<!--        <include name="HomePageElementsTest"/></methods></class>-->
+<!--        <class name="testsSatellite.LoginRelatedTests.LoginPageElementsVisibilityTest"><methods>-->
+<!--            <include name="elementsVisabilityTest"/>-->
+<!--        </methods>-->
+<!--        </class><class name="testsSatellite.LoginRelatedTests.NegativeLoginTest">-->
+<!--            <methods><include name="NegativeLoginTest"/></methods>-->
+<!--        </class><class name="testsSatellite.AccountRelatedTests.NegativeNewAccountCreationTest"><methods>-->
+<!--            <include name="NewAccountCreationTest"/>-->
+<!--        </methods></class><class name="testsSatellite.AccountRelatedTests.NegativePasswordResetTest">-->
+<!--            <methods><include name="ResetPasswordTest"/></methods></class>-->
+<!--        <class name="testsSatellite.NewAccountCreationTest"><methods>-->
+<!--            <include name="NewAccountCreationTest"/></methods></class>-->
+<!--        <class name="testsSatellite.ProjectRelatedTests.APIkeyTest"><methods><include name="TestforTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.CreateNewProjectTest"><methods><include name="CreateNewProjectTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.DeleteProjectTest"><methods><include name="DeleteProjectTest"/></methods></class><class name="testsSatellite.TeamMembers.AddAndDeleteTeamMembersTest"><methods><include name="AddNewTeamMember"/></methods></class><class name="testsSatellite.ResetPasswordTest"><methods><include name="ResetPasswordTest"/></methods></class></classes></test></suite>-->
+
+<suite name="Default Suite" thread-count="3" parallel="tests" >
+
+    <test name="Storj_autotests_Chrome">
+
+        <parameter name="browser" value="Chrome" />
+
+        <classes>
+
+            <class name="testsNode.NodeElementsTextsTests">
+            </class>
+            <class name="testsNode.NodeElementsVisibilityTests">
+            </class>
+            <class name="testsNode.NodeFunctionalTests">
+            </class>
+
+            <class name="testsSatellite.AccountBillingTest.AccountBillingAllHistoryTextsTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingAllHistoryVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingTextsTest">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentFunctionalTests">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentTextstest">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentVisibilityTests">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileFunctionalTests">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileTextsTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.AccountTabTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativeNameChangeTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativeNewAccountCreationTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativePasswordResetTest">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysFunctionalTests">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysTabElementsVisibilityTests">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysTabTextTest">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsFunctionalTests">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsTabElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsTabTextsTest">
+            </class>
+            <class name="testsSatellite.ForgotPasswordTests.ForgotPasswordElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.ForgotPasswordTests.ForgotPasswordTextsTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageElementsTextsTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageFunctionalTests">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPageElementsTexts">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPositiveTests">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.NegativeLoginTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewDetailsElementsTextsTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewDetailsFunctionalTests">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewReportFunctionalTests">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabDetailsElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabReportElementsTextsTab">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabReportElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.APIkeyTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.CreateNewProjectTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.DeleteProjectTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationNegativeTests">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPageTextsTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPositiveTests">
+            </class>
+            <class name="testsSatellite.TeamMembers.AddAndDeleteTeamMembersTest">
+            </class>
+            <class name="testsSatellite.TeamMembers.TeamTabElementsTextsTest">
+            </class>
+            <class name="testsSatellite.TeamMembers.TeamTabElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AddPaymentCardTest">
+            </class>
+            <class name="testsSatellite.BaseTest">
+            </class>
+            <class name="testsSatellite.NewAccountCreationTest">
+            </class>
+            <class name="testsSatellite.ResetPasswordTest">
+            </class>
+
+        </classes>
+
+    </test>
+
+    <test name="Storj_autotests_Firefox">
+
+        <parameter name="browser" value="Firefox" />
+
+        <classes>
+
+
+            <class name="testsNode.NodeElementsTextsTests">
+            </class>
+            <class name="testsNode.NodeElementsVisibilityTests">
+            </class>
+            <class name="testsNode.NodeFunctionalTests">
+            </class>
+
+            <class name="testsSatellite.AccountBillingTest.AccountBillingAllHistoryTextsTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingAllHistoryVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingTextsTest">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentFunctionalTests">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentTextstest">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentVisibilityTests">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileFunctionalTests">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileTextsTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.AccountTabTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativeNameChangeTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativeNewAccountCreationTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativePasswordResetTest">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysFunctionalTests">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysTabElementsVisibilityTests">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysTabTextTest">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsFunctionalTests">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsTabElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsTabTextsTest">
+            </class>
+            <class name="testsSatellite.ForgotPasswordTests.ForgotPasswordElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.ForgotPasswordTests.ForgotPasswordTextsTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageElementsTextsTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageFunctionalTests">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPageElementsTexts">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPositiveTests">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.NegativeLoginTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewDetailsElementsTextsTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewDetailsFunctionalTests">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewReportFunctionalTests">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabDetailsElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabReportElementsTextsTab">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabReportElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.APIkeyTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.CreateNewProjectTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.DeleteProjectTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationNegativeTests">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPageTextsTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPositiveTests">
+            </class>
+            <class name="testsSatellite.TeamMembers.AddAndDeleteTeamMembersTest">
+            </class>
+            <class name="testsSatellite.TeamMembers.TeamTabElementsTextsTest">
+            </class>
+            <class name="testsSatellite.TeamMembers.TeamTabElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AddPaymentCardTest">
+            </class>
+            <class name="testsSatellite.BaseTest">
+            </class>
+            <class name="testsSatellite.NewAccountCreationTest">
+            </class>
+            <class name="testsSatellite.ResetPasswordTest">
+            </class>
+
+        </classes>
+
+    </test>
+
+    <test name="Storj_autotests_Opera">
+
+        <parameter name="browser" value="Opera" />
+
+        <classes>
+
+
+            <class name="testsNode.NodeElementsTextsTests">
+            </class>
+            <class name="testsNode.NodeElementsVisibilityTests">
+            </class>
+            <class name="testsNode.NodeFunctionalTests">
+            </class>
+
+            <class name="testsSatellite.AccountBillingTest.AccountBillingAllHistoryTextsTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingAllHistoryVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountBillingTest.AccountBillingTextsTest">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentFunctionalTests">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentTextstest">
+            </class>
+            <class name="testsSatellite.AccountPaymentMethodsTest.AccountPaymentVisibilityTests">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileFunctionalTests">
+            </class>
+            <class name="testsSatellite.AccountProfileTest.AccountProfileTextsTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.AccountTabTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativeNameChangeTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativeNewAccountCreationTest">
+            </class>
+            <class name="testsSatellite.AccountRelatedTests.NegativePasswordResetTest">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysFunctionalTests">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysTabElementsVisibilityTests">
+            </class>
+            <class name="testsSatellite.APIKeysTabTests.APIKeysTabTextTest">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsFunctionalTests">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsTabElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.BucketsTabTest.BucketsTabTextsTest">
+            </class>
+            <class name="testsSatellite.ForgotPasswordTests.ForgotPasswordElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.ForgotPasswordTests.ForgotPasswordTextsTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageElementsTextsTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.HomePageTests.HomePageFunctionalTests">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPageElementsTexts">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.LoginPositiveTests">
+            </class>
+            <class name="testsSatellite.LoginRelatedTests.NegativeLoginTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewDetailsElementsTextsTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewDetailsFunctionalTests">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewReportFunctionalTests">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabDetailsElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabReportElementsTextsTab">
+            </class>
+            <class name="testsSatellite.OverviewTab.OverviewTabReportElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.APIkeyTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.CreateNewProjectTest">
+            </class>
+            <class name="testsSatellite.ProjectRelatedTests.DeleteProjectTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationNegativeTests">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPageElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPageTextsTest">
+            </class>
+            <class name="testsSatellite.RegistrationPageTests.RegistrationPositiveTests">
+            </class>
+            <class name="testsSatellite.TeamMembers.AddAndDeleteTeamMembersTest">
+            </class>
+            <class name="testsSatellite.TeamMembers.TeamTabElementsTextsTest">
+            </class>
+            <class name="testsSatellite.TeamMembers.TeamTabElementsVisibilityTest">
+            </class>
+            <class name="testsSatellite.AddPaymentCardTest">
+            </class>
+            <class name="testsSatellite.BaseTest">
+            </class>
+            <class name="testsSatellite.NewAccountCreationTest">
+            </class>
+            <class name="testsSatellite.ResetPasswordTest">
+            </class>
+
+        </classes>
+
+    </test>
+
+
+</suite>
+

@@ -3,11 +3,14 @@ package testsNode;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.NodeDashboard.NodeDashboardPage;
 
@@ -18,10 +21,36 @@ public class NodeElementsTextsTests {
     WebDriver driver;
 
     @BeforeMethod
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
+    @Parameters("browser")
+    public void setUp(String browser) throws Exception {
+//        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
+//
+//        driver = new ChromeDriver();
 
-        driver = new ChromeDriver();
+
+        //Check if parameter passed from TestNG is 'firefox'
+        if(browser.equalsIgnoreCase("Firefox")){
+            //create firefox instance
+            System.setProperty("webdriver.gecko.driver", NodeDashboardPage.GECKODRIVERPATH);
+            driver = new FirefoxDriver();
+        }
+        //Check if parameter passed as 'chrome'
+        else if(browser.equalsIgnoreCase("Chrome")){
+            //set path to chromedriver.exe
+            System.setProperty("webdriver.chrome.driver",NodeDashboardPage.CHROMEDRIVERPATH);
+            //create chrome instance
+            driver = new ChromeDriver();
+        }
+      //  Check if parameter passed as 'Opera'
+        else if(browser.equalsIgnoreCase("Opera")){
+            //set path to Edge.exe
+            System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH);
+            driver = new OperaDriver();
+        }
+        else{
+            //If no browser passed throw exception
+            throw new Exception("Browser is not correct");
+        }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
         driver.get(NodeDashboardPage.DASHBOARDURL);

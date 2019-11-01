@@ -14,6 +14,8 @@ public class NodeDashboardPage {
 
     public static String DASHBOARDURL = "http://localhost:13002";
     public static String CHROMEDRIVERPATH = "./src/main/resources/chromedriver";
+    public static String GECKODRIVERPATH = "./src/main/resources/geckodriver";
+    public static String OPERADRIVERPATH = "./src/main/resources/operadriver";
     public static Integer Width = 1280;
     public static Integer Height = 1000;
 

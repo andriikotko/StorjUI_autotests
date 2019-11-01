@@ -4,12 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.NodeDashboard.NodeDashboardPage;
 
 import java.io.*;
@@ -18,38 +17,70 @@ import java.util.concurrent.TimeUnit;
 
 public class NodeFunctionalTests {
     private WebDriver driver;
-
-    @BeforeClass
-    public void setupEnviroment (){
-//        Process p;
-//        try {
-//            String[] cmd = { "sh", "/home/andrii/Downloads/scrips/storj_setup.sh"};
-//            p = Runtime.getRuntime().exec(cmd);
-//            p.waitFor();
-//            BufferedReader reader=new BufferedReader(new InputStreamReader(
-//                    p.getInputStream()));
-//            String line;
-//            while((line = reader.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-    }
+//
+//    @BeforeClass
+//    public void setupEnviroment (){
+////        Process p;
+////        try {
+////            String[] cmd = { "sh", "/home/andrii/Downloads/scrips/storj_setup.sh"};
+////            p = Runtime.getRuntime().exec(cmd);
+////            p.waitFor();
+////            BufferedReader reader=new BufferedReader(new InputStreamReader(
+////                    p.getInputStream()));
+////            String line;
+////            while((line = reader.readLine()) != null) {
+////                System.out.println(line);
+////            }
+////        } catch (IOException e) {
+////            // TODO Auto-generated catch block
+////            e.printStackTrace();
+////        } catch (InterruptedException e) {
+////            // TODO Auto-generated catch block
+////            e.printStackTrace();
+////        }
+//    }
 
     @BeforeMethod
-    public void setUp(){
+    @Parameters("browser")
+    public void setUp(@Optional("Chrome") String browser) throws Exception {
+//        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
+//
+//        driver = new ChromeDriver();
 
 
-        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
+        //Check if parameter passed from TestNG is 'firefox'
+        if(browser.equalsIgnoreCase("Firefox")){
+            //create firefox instance
+            System.setProperty("webdriver.gecko.driver", NodeDashboardPage.GECKODRIVERPATH);
+            driver = new FirefoxDriver();
+        }
+        //Check if parameter passed as 'chrome'
+        else if(browser.equalsIgnoreCase("Chrome")){
+            //set path to chromedriver.exe
+            System.setProperty("webdriver.chrome.driver",NodeDashboardPage.CHROMEDRIVERPATH);
+            //create chrome instance
+            driver = new ChromeDriver();
+        }
 
-        driver = new ChromeDriver();
+        //  Check if parameter passed as 'Opera'
+        else if(browser.equalsIgnoreCase("Opera")){
+            //set path to Edge.exe
+            System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH);
+            driver = new OperaDriver();
+        }
+        //Check if parameter passed as 'Edge'
+//        else if(browser.equalsIgnoreCase("Edge")){
+//            //set path to Edge.exe
+//            System.setProperty("webdriver.edge.driver",".\\MicrosoftWebDriver.exe");
+//            //create Edge instance
+//            driver = new EdgeDriver();
+//        }
+        else{
+            //If no browser passed throw exception
+            throw new Exception("Browser is not correct");
+        }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width,NodeDashboardPage.Height));
+        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
         driver.get(NodeDashboardPage.DASHBOARDURL);
 
     }
@@ -99,7 +130,7 @@ public class NodeFunctionalTests {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         Assert.assertEquals(driver.getCurrentUrl(),"https://forum.storj.io/c/sno-category");
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"ember21\"]/span/span/span[2]/span")).getText(), "Storage Node Operators");
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"ember22\"]/span/span/span[2]/span")).getText(), "Storage Node Operators");
     }
 
     @Test

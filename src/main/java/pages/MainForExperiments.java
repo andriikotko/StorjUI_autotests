@@ -1,11 +1,15 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
+import pages.NodeDashboard.NodeDashboardPage;
 import pages.Tabs.AccountTab_Billing;
 
 import java.io.*;
@@ -53,26 +57,14 @@ public class MainForExperiments {
 //
 
         //  System.out.println("done");
-//        WebDriver driver;
-//
-//        System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH);
-//
-//        driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//        //driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
-//        driver.manage().window().maximize();
-//        driver.get(HomePage.HOMEURL);
-//
-//        LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
-//
-//        LoginPage.userNameField.sendKeys(pages.HomePage.ACCOUNT);
-//        LoginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
-//        LoginPage.btn_Login.click();
-//        Thread.sleep(4500);
-//
-//        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-//        homePage.billingTab.click();
-//        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+        WebDriver driver;
+
+        System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH);
+        driver = new OperaDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
+        driver.get(NodeDashboardPage.DASHBOARDURL);
+
 //
 //
 //
@@ -87,21 +79,21 @@ public class MainForExperiments {
 //        System.out.println(driver.getCurrentUrl());
 //
 
-
-
-         //GO TO FILE - OPEN AND READ FILE FROM PC
-        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/satellite/0/config.yaml");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        String satellitePort;
-
-        while ((satellitePort = bufferedReader.readLine())!= null){
-            if (satellitePort.startsWith("console.address:")){
-                satellitePort=satellitePort.substring(27,32);
-                break;
-            }
-        }
-        System.out.println(satellitePort);
+//
+//
+//         //GO TO FILE - OPEN AND READ FILE FROM PC
+//        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/satellite/0/config.yaml");
+//        BufferedReader bufferedReader = new BufferedReader(fileReader);
+//
+//        String satellitePort;
+//
+//        while ((satellitePort = bufferedReader.readLine())!= null){
+//            if (satellitePort.startsWith("console.address:")){
+//                satellitePort=satellitePort.substring(27,32);
+//                break;
+//            }
+//        }
+//        System.out.println(satellitePort);
 
 
 
