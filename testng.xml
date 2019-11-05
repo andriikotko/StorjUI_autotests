@@ -20,7 +20,7 @@
 <!--            <include name="NewAccountCreationTest"/></methods></class>-->
 <!--        <class name="testsSatellite.ProjectRelatedTests.APIkeyTest"><methods><include name="TestforTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.CreateNewProjectTest"><methods><include name="CreateNewProjectTest"/></methods></class><class name="testsSatellite.ProjectRelatedTests.DeleteProjectTest"><methods><include name="DeleteProjectTest"/></methods></class><class name="testsSatellite.TeamMembers.AddAndDeleteTeamMembersTest"><methods><include name="AddNewTeamMember"/></methods></class><class name="testsSatellite.ResetPasswordTest"><methods><include name="ResetPasswordTest"/></methods></class></classes></test></suite>-->
 
-<suite name="Default Suite" thread-count="3" parallel="tests" >
+<suite name="Default Suite" thread-count="1" parallel="tests" >
 
     <test name="Storj_autotests_Chrome">
 

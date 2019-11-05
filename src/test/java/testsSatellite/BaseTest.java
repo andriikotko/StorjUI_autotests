@@ -41,16 +41,16 @@ public class BaseTest {
         else{
             //If no browser passed throw exception
             throw new Exception("Browser is not correct");
-        }}
-    @AfterMethod
-    public void tearDown()
-    {driver.quit();}
-   @Test
-    public void BaseTest() throws InterruptedException {
-
+        }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(HomePage.Width,HomePage.Height));
         driver.get(HomePage.HOMEURL);
+    }
+
+    @Test
+    public void BaseTest() throws InterruptedException {
+
+
 
         Thread.sleep(3000);
         // This is to Instantiate Home Page and LogIn Page class
@@ -66,4 +66,8 @@ public class BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), HomePage.HOMEURL);
 
     }
+
+    @AfterMethod
+    public void tearDown()
+    {driver.quit();}
 }

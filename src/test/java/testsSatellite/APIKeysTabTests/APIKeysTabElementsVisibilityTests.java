@@ -6,6 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.HomePage;
@@ -128,6 +131,8 @@ public class APIKeysTabElementsVisibilityTests {
         apiKeysTab.createNewAPIkeyButton.click();
         apiKeysTab.newAPIkeyNameInput.sendKeys(Integer.toString((int)(Math.random()*100+1)));
         apiKeysTab.confirmAPIKeyCreation.click();
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.visibilityOf(apiKeysTab.newCreatedAPIKeyDialogHeader));
 
         Assert.assertTrue(apiKeysTab.newCreatedAPIKeyDialogHeader.isDisplayed());
         Assert.assertTrue(apiKeysTab.newAPIKeyCopyButton.isDisplayed());

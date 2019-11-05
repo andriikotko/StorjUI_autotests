@@ -8,10 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.NodeDashboard.NodeDashboardPage;
 
 import java.util.concurrent.TimeUnit;
@@ -22,7 +19,7 @@ public class NodeElementsVisibilityTests {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp(String browser) throws Exception {
+    public void setUp(@Optional("Chrome") String browser) throws Exception {
 //        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
 //
 //        driver = new ChromeDriver();
