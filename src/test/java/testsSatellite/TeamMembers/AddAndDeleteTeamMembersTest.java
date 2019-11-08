@@ -30,23 +30,31 @@ public class AddAndDeleteTeamMembersTest {
     @Parameters("browser")
     public void setUp( @Optional("Chrome") String browser) throws Exception {
 
+        String OS = System.getProperty("os.name");
+        String chosingOS = "";
+        if (OS.equals("Linux")){
+            chosingOS = "";
+        }
+        if (OS.substring(0,4).equals("Windo")){
+            chosingOS = ".exe";
+        }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH);
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH+chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH);
+            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH+chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH);
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH+chosingOS);
             driver = new OperaDriver();
         }
         else{
@@ -113,7 +121,7 @@ public class AddAndDeleteTeamMembersTest {
 
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOf(teamTab.deleteTeamMemberNotificationError));
-        Assert.assertEquals(teamTab.deleteTeamMemberNotificationError.getText(), "Members was successfully removed from project");
+        Assert.assertEquals(teamTab.deleteTeamMemberNotificationError.getText(), "Members were successfully removed from project");
        // List<WebElement> list2 = driver.findElements(By.xpath("//*[@class=\"user-container item-component__item\"]"));
         List<WebElement> list2 = driver.findElements(By.xpath("//*[@id=\"team-container\"]/div[2]/div/div"));
         Assert.assertEquals(list2.size(), (list1.size()-1));

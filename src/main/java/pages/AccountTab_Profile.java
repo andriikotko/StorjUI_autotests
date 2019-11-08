@@ -9,7 +9,7 @@ public class AccountTab_Profile {
     public static WebDriver driver;
 
 
-    @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/h1")
+    @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/h1")
     public WebElement accountProfileHeader;
 //    @FindBy(how= How.XPATH,using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/a[1]")
 //    public WebElement accountProfileProfileTab;

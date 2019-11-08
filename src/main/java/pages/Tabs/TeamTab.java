@@ -8,13 +8,16 @@ import org.openqa.selenium.support.How;
 public class TeamTab {
     final WebDriver driver;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/h1")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div[1]/h1")
     public WebElement projectMembersHeader;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div/div/span")
-    public WebElement projectRoleNotification;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div[1]/div")
+    public WebElement projectRoleHint;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div/div/div")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div[1]/div/div/div/p[2]")
+    public WebElement projectRoleHintText;
+
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div[2]/div/div/div/div")
     public WebElement addTeamMemberButton;
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"team-container\"]/div[1]/div[1]/p")
@@ -47,7 +50,7 @@ public class TeamTab {
     @FindBy(how = How.XPATH, using = "//*[@id=\"team-container\"]/div[2]/div/div/p[2]")
     public WebElement firstUserEmail;
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div/div/input")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div[2]/div/input")
     public WebElement searchUserButton;
 
 

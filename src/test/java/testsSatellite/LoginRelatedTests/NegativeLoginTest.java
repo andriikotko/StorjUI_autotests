@@ -28,17 +28,31 @@ public class NegativeLoginTest {
             System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH);
             driver = new FirefoxDriver();
         }
+        String OS = System.getProperty("os.name");
+        String chosingOS = "";
+        if (OS.equals("Linux")){
+            chosingOS = "";
+        }
+        if (OS.substring(0,4).equals("Windo")){
+            chosingOS = ".exe";
+        }
+        //Check if parameter passed from TestNG is 'firefox'
+        if(browser.equalsIgnoreCase("Firefox")){
+            //create firefox instance
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH+chosingOS);
+            driver = new FirefoxDriver();
+        }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH);
+            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH+chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH);
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH+chosingOS);
             driver = new OperaDriver();
         }
         else{
@@ -64,7 +78,7 @@ public class NegativeLoginTest {
 //        Assert.assertTrue(loginPage.notification_area.isDisplayed());
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOf(loginPage.notificationArea));
-        Assert.assertTrue(loginPage.notificationArea.getText().endsWith("Your email or password was incorrect, please try again"));
+        Assert.assertTrue(loginPage.notificationArea.getText().endsWith("your email or password was incorrect, please try again"));
        // Assert.assertEquals(loginPage.notification_area.getText(),"Your email or password was incorrect, please try again");
     }
 

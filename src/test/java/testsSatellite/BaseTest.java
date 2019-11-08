@@ -14,28 +14,36 @@ import pages.LoginPage;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    static WebDriver driver;
+    WebDriver driver;
     @BeforeMethod
     @Parameters("browser")
     public void setUp( @Optional("Chrome") String browser) throws Exception {
 
+        String OS = System.getProperty("os.name");
+        String chosingOS = "";
+        if (OS.equals("Linux")){
+            chosingOS = "";
+        }
+        if (OS.substring(0,4).equals("Windo")){
+            chosingOS = ".exe";
+        }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH);
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH+chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH);
+            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH+chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH);
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH+chosingOS);
             driver = new OperaDriver();
         }
         else{
@@ -43,27 +51,29 @@ public class BaseTest {
             throw new Exception("Browser is not correct");
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(HomePage.Width,HomePage.Height));
+        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
+        //driver.manage().window().maximize();
         driver.get(HomePage.HOMEURL);
+
+        LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
+
+        LoginPage.userNameField.sendKeys(pages.HomePage.ACCOUNT);
+        LoginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
+        LoginPage.btn_Login.click();
+        Thread.sleep(4500);
+
+
+
     }
 
     @Test
     public void BaseTest() throws InterruptedException {
 
-
-
-        Thread.sleep(3000);
-        // This is to Instantiate Home Page and LogIn Page class
         HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
-        LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
-        // Once both classes Initialised, use their Web Element Objects
-        LoginPage.userNameField.sendKeys(pages.HomePage.ACCOUNT);
-        LoginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
-        LoginPage.btn_Login.click();
-        Thread.sleep(5000);
+
         HomePage.toggleAccount_DropDown.click();
         HomePage.button_LogOut.click();
-        Assert.assertEquals(driver.getCurrentUrl(), HomePage.HOMEURL);
+        Assert.assertEquals(driver.getCurrentUrl(), pages.HomePage.HOMEURL);
 
     }
 

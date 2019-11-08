@@ -54,7 +54,7 @@ public class APIKeysTab {
     @FindBy(how=How.XPATH, using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/input")
     // @FindBy(how=How.XPATH, using ="//*[@id=\"Name\"]")
     public WebElement newAPIkeyNameInput;
-    @FindBy (how=How.XPATH, using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[2]")
+    @FindBy (how=How.XPATH, using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[2]/h1")
     // @FindBy (how=How.XPATH, using ="//*[@id=\"addApiKeyPopup\"]/div[2]/div[2]/div[2]")
     public WebElement confirmAPIKeyCreation;
     @FindBy (how=How.XPATH, using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div[3]")

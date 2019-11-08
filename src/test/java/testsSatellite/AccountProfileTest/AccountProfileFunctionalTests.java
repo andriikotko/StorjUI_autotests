@@ -26,23 +26,31 @@ public class AccountProfileFunctionalTests {
     @Parameters("browser")
     public void setUp( @Optional("Chrome") String browser) throws Exception {
 
+        String OS = System.getProperty("os.name");
+        String chosingOS = "";
+        if (OS.equals("Linux")){
+            chosingOS = "";
+        }
+        if (OS.substring(0,4).equals("Windo")){
+            chosingOS = ".exe";
+        }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH);
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH+chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH);
+            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH+chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH);
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH+chosingOS);
             driver = new OperaDriver();
         }
         else{
@@ -182,7 +190,7 @@ public class AccountProfileFunctionalTests {
 
         wait.until(ExpectedConditions.visibilityOf(loginPage.notificationArea));
 
-        Assert.assertEquals(loginPage.notificationArea.getText(),"unauthorized error: Your email or password was incorrect, please try again");
+        Assert.assertEquals(loginPage.notificationArea.getText(),"your email or password was incorrect, please try again");
         Assert.assertEquals(loginPage.loginFormHeader.getText(),"Login to Storj");
 
     }
@@ -201,7 +209,7 @@ public class AccountProfileFunctionalTests {
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOf(accountTabProfile.errorOnPasswordChange));
 
-        Assert.assertEquals(accountTabProfile.errorOnPasswordChange.getText(),"Old password is incorrect, please try again");
+        Assert.assertEquals(accountTabProfile.errorOnPasswordChange.getText(),"old password is incorrect, please try again");
 
         Thread.sleep(4000);
 
@@ -217,7 +225,7 @@ public class AccountProfileFunctionalTests {
 
         wait.until(ExpectedConditions.visibilityOf(loginPage.notificationArea));
 
-        Assert.assertEquals(loginPage.notificationArea.getText(),"unauthorized error: Your email or password was incorrect, please try again");
+        Assert.assertEquals(loginPage.notificationArea.getText(),"your email or password was incorrect, please try again");
         Assert.assertEquals(loginPage.loginFormHeader.getText(),"Login to Storj");
     }
 
@@ -246,7 +254,7 @@ public class AccountProfileFunctionalTests {
 
         wait.until(ExpectedConditions.visibilityOf(loginPage.notificationArea));
 
-        Assert.assertEquals(loginPage.notificationArea.getText(),"unauthorized error: Your email or password was incorrect, please try again");
+        Assert.assertEquals(loginPage.notificationArea.getText(),"your email or password was incorrect, please try again");
         Assert.assertEquals(loginPage.loginFormHeader.getText(),"Login to Storj");
 
     }
@@ -304,7 +312,7 @@ public class AccountProfileFunctionalTests {
 
         wait.until(ExpectedConditions.visibilityOf(loginPage.notificationArea));
 
-        Assert.assertEquals(loginPage.notificationArea.getText(),"unauthorized error: Your email or password was incorrect, please try again");
+        Assert.assertEquals(loginPage.notificationArea.getText(),"your email or password was incorrect, please try again");
         Assert.assertEquals(loginPage.loginFormHeader.getText(),"Login to Storj");
 
     }

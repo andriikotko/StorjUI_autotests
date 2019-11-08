@@ -4,6 +4,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -21,23 +22,31 @@ public class TeamTabElementsTextsTest {
     @Parameters("browser")
     public void setUp( @Optional("Chrome") String browser) throws Exception {
 
+        String OS = System.getProperty("os.name");
+        String chosingOS = "";
+        if (OS.equals("Linux")){
+            chosingOS = "";
+        }
+        if (OS.substring(0,4).equals("Windo")){
+            chosingOS = ".exe";
+        }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH);
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH+chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH);
+            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH+chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH);
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH+chosingOS);
             driver = new OperaDriver();
         }
         else{
@@ -65,7 +74,7 @@ public class TeamTabElementsTextsTest {
         TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
 
         Assert.assertEquals(teamTab.projectMembersHeader.getText(), "Project Members");
-        Assert.assertTrue(teamTab.projectRoleNotification.getText().startsWith("The only project role currently available is Admin, which gives"));
+      //  Assert.assertTrue(teamTab.projectRoleHintText.getText().startsWith("The only project role currently available is Admin, which gives"));
         Assert.assertEquals(teamTab.addTeamMemberButton.getText(), "+Add");
         Assert.assertEquals(teamTab.membersListNameHeader.getText(), "Name");
         Assert.assertEquals(teamTab.membersListAddedHeader.getText(), "Added");
@@ -88,6 +97,16 @@ public class TeamTabElementsTextsTest {
         Assert.assertTrue(teamTab.addTeamMemberNotification.getText().startsWith("If the team member you want to invite to join the project is still not on this Satellite, please share this link to the signup page and ask them to register here"));
 
     }
+
+    @Test
+    public void teamTabHintTextsTest() {
+        TeamTab teamTab = PageFactory.initElements(driver, TeamTab.class);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(teamTab.projectRoleHint).click().perform();
+
+
+        Assert.assertTrue(teamTab.projectRoleHintText.getText().startsWith("The only project role currently available is Admin, which gives"));}
 
 
 

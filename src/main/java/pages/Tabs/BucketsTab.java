@@ -43,7 +43,7 @@ public class BucketsTab {
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/svg/path[1]")
     public WebElement noBucketsHeaderIcon;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/h1")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]XPATH/div/div/div[2]/div[2]/div/div/div[1]/h1")
     public WebElement noBucketsHeader;
     @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/p[1]")
     public WebElement noBucketsHeaderNotification;
@@ -55,7 +55,7 @@ public class BucketsTab {
     public WebElement noBucketsCreateUplinkNotification;
     @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div/a")
     public WebElement noBucketsLinkToDocumentation;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/img")
+    @FindBy(how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div > div > div.no-buckets-area__example-container > svg")
     public WebElement noBucketsImage;
     @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/p[3]/a")
     public WebElement noBucketsLinkToS3;

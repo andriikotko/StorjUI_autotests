@@ -22,23 +22,31 @@ public class AccountBillingTextsTest {
     @Parameters("browser")
     public void setUp( @Optional("Chrome") String browser) throws Exception {
 
+        String OS = System.getProperty("os.name");
+        String chosingOS = "";
+        if (OS.equals("Linux")){
+            chosingOS = "";
+        }
+        if (OS.substring(0,4).equals("Windo")){
+            chosingOS = ".exe";
+        }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH);
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH+chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH);
+            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH+chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH);
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH+chosingOS);
             driver = new OperaDriver();
         }
         else{
@@ -63,17 +71,17 @@ public class AccountBillingTextsTest {
     }
 
     @Test
-    public void billingTabelementsVisibility (){
+    public void billingTabelementsTextsTest (){
         AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
 
         Assert.assertEquals(accountTab_billing.accountBalanceHeader.getText(),"Account Balance");
         Assert.assertTrue(accountTab_billing.accountBalanceBalance.getText().startsWith("Balance"));
-        Assert.assertEquals(accountTab_billing.accountBalanceEarnCreditsButton.getText(), "Earn Credits");
+  //      Assert.assertEquals(accountTab_billing.accountBalanceEarnCreditsButton.getText(), "Earn Credits");
         Assert.assertEquals(accountTab_billing.currentMonthHeader.getText(),"Current Month");
         //Assert.assertTrue(accountTab_billing.currentMonthTitle.isDisplayed());
         Assert.assertEquals(accountTab_billing.currentMonthContentTitle.getText(),"DETAILED SUMMARY");
         Assert.assertEquals(accountTab_billing.usageCharges.getText(),"Usage Charges");
-        Assert.assertEquals(accountTab_billing.referralCredits.getText(),"Referral Credits");
+ //       Assert.assertEquals(accountTab_billing.referralCredits.getText(),"Referral Credits");
         Assert.assertEquals(accountTab_billing.depositBillingHeader.getText(),"Deposit & Billing History");
         Assert.assertEquals(accountTab_billing.depositHistoryViewAllButton.getText(),"View All");
         Assert.assertEquals(accountTab_billing.depositHistoryDateHeader.getText(),"Date");

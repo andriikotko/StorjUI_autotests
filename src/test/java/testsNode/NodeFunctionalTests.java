@@ -43,38 +43,34 @@ public class NodeFunctionalTests {
     @BeforeMethod
     @Parameters("browser")
     public void setUp(@Optional("Chrome") String browser) throws Exception {
-//        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
-//
-//        driver = new ChromeDriver();
 
-
+        String OS = System.getProperty("os.name");
+        String chosingOS = "";
+        if (OS.equals("Linux")){
+            chosingOS = "";
+        }
+        if (OS.substring(0,4).equals("Windo")){
+            chosingOS = ".exe";
+        }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", NodeDashboardPage.GECKODRIVERPATH);
+            System.setProperty("webdriver.gecko.driver", NodeDashboardPage.GECKODRIVERPATH+chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",NodeDashboardPage.CHROMEDRIVERPATH);
+            System.setProperty("webdriver.chrome.driver",NodeDashboardPage.CHROMEDRIVERPATH+chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
-
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH);
+            System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH+chosingOS);
             driver = new OperaDriver();
         }
-        //Check if parameter passed as 'Edge'
-//        else if(browser.equalsIgnoreCase("Edge")){
-//            //set path to Edge.exe
-//            System.setProperty("webdriver.edge.driver",".\\MicrosoftWebDriver.exe");
-//            //create Edge instance
-//            driver = new EdgeDriver();
-//        }
         else{
             //If no browser passed throw exception
             throw new Exception("Browser is not correct");
@@ -130,7 +126,7 @@ public class NodeFunctionalTests {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         Assert.assertEquals(driver.getCurrentUrl(),"https://forum.storj.io/c/sno-category");
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"ember22\"]/span/span/span[2]/span")).getText(), "Storage Node Operators");
+        Assert.assertEquals(driver.findElement(By.cssSelector("#ember21 > span > span > span.badge-category.clear-badge > span")).getText(), "Storage Node Operators");
     }
 
     @Test
