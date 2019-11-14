@@ -102,7 +102,7 @@ public class HomePageFunctionalTests {
     }
 
     @Test
-    public void accountSettingsDropdownWork() throws IOException {
+    public void accountSettingsDropdownWork() throws Exception {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         homePage.toggleAccount_DropDown.click();
 

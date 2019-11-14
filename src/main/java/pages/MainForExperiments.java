@@ -22,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 public class MainForExperiments {
     public static void main(String[] args) throws InterruptedException, IOException {
 
+        System.out.println(System.getProperty("os.name"));
+
 
 //        Process p;
 //        try {
@@ -57,13 +59,13 @@ public class MainForExperiments {
 //
 
         //  System.out.println("done");
-        WebDriver driver;
-
-        System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH);
-        driver = new OperaDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
-        driver.get(NodeDashboardPage.DASHBOARDURL);
+//        WebDriver driver;
+//
+//        System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH);
+//        driver = new OperaDriver();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
+//        driver.get(NodeDashboardPage.DASHBOARDURL);
 
 //
 //

@@ -132,7 +132,19 @@ public class HomePage {
     }
 
     public static String satellitePort() throws IOException {
-        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/satellite/0/config.yaml");
+        String OS = System.getProperty("os.name");
+        String path = "";
+        if (OS.equals("Linux")){
+            path = "/home/andrii/.local/share/storj/local-network/satellite/0/config.yaml";
+        }
+        else if (OS.substring(0,5).equals("Windo")){
+            path = "/home/andrii/.local/share/storj/local-network/satellite/0/config.yaml";
+        }
+        else if (OS.substring(0,3).equals("Mac")){
+            path = "/Users/andriikotko/Library/Application Support/Storj/Local-Network/satellite/0/config.yaml";
+        }
+
+        FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String satellitePort;
 

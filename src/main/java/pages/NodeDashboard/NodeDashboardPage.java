@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class NodeDashboardPage {
+
     WebDriver driver;
 
     public NodeDashboardPage(WebDriver driver) {
@@ -14,6 +15,8 @@ public class NodeDashboardPage {
 
     public static String DASHBOARDURL = "http://localhost:13002";
     public static String CHROMEDRIVERPATH = "./src/main/resources/chromedriver";
+    public static String CHROMEDRIVERPATHWIN = "./src/main/resources/chromedriver.exe";
+    public static String CHROMEDRIVERPATHMAC = "./src/main/resources/chromedrivermac";
     public static String GECKODRIVERPATH = "./src/main/resources/geckodriver";
     public static String OPERADRIVERPATH = "./src/main/resources/operadriver";
     public static Integer Width = 1280;
@@ -70,9 +73,9 @@ public class NodeDashboardPage {
     public WebElement chosenSatelliteText;
     @FindBy (how = How.XPATH, using = "//*[@id=\"satelliteDropdown\"]/div")
     public WebElement satelliteDropdown;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"satelliteDropdown\"]/div/div[1]/p")
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/div/div/div[2]/p")
     public WebElement currentSatellite;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"satelliteDropdown\"]/div/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/div/div/div[1]/div/p")
     public WebElement allSatellites;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/p[1]")
     public WebElement utilizationRemainingHeader;

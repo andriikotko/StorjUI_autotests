@@ -79,7 +79,7 @@ public class OverviewReportFunctionalTests {
     }
 
     @Test
-    public void overviewReportAdvancedReportLinkTest () throws IOException {
+    public void overviewReportAdvancedReportLinkTest () throws Exception {
 
         OverviewTab_Report overviewTabReport = PageFactory.initElements(driver, OverviewTab_Report.class);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);

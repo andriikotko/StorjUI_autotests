@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -42,40 +43,53 @@ public class NodeFunctionalTests {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp(@Optional("Chrome") String browser) throws Exception {
+    public void setUp(@Optional("Safari") String browser) throws Exception {
 
         String OS = System.getProperty("os.name");
         String chosingOS = "";
         if (OS.equals("Linux")){
-            chosingOS = "";
+            chosingOS = NodeDashboardPage.GECKODRIVERPATH;
         }
-        if (OS.substring(0,4).equals("Windo")){
-            chosingOS = ".exe";
+        else if (OS.substring(0,4).equals("Windo")){
+            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHWIN;
+        }
+        else if (OS.substring(0,3).equals("Mac")){
+            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHMAC;
+        }else{
+            //If no os passed throw exception
+            throw new Exception("os is not correct");
         }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", NodeDashboardPage.GECKODRIVERPATH+chosingOS);
+            System.setProperty("webdriver.gecko.driver", chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
+            System.out.println(chosingOS);
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",NodeDashboardPage.CHROMEDRIVERPATH+chosingOS);
+            // System.setProperty("webdriver.chrome.driver","./src/main/resources/chromedrivermac");
+            System.setProperty("webdriver.chrome.driver", chosingOS);
             //create chrome instance
+
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
-            //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH+chosingOS);
+            System.setProperty("webdriver.safari.driver", chosingOS);
             driver = new OperaDriver();
+        }
+        else if(browser.equalsIgnoreCase("Safari")){
+            System.setProperty("webdriver.safari.driver", "/usr/bin/safaridriver");
+            driver = new SafariDriver();
         }
         else{
             //If no browser passed throw exception
             throw new Exception("Browser is not correct");
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().window().maximize();
         driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
         driver.get(NodeDashboardPage.DASHBOARDURL);
 
@@ -84,7 +98,18 @@ public class NodeFunctionalTests {
     @Test
     public void compareSatteliteIDTest() throws IOException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
-        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml");
+        String OS = System.getProperty("os.name");
+        String path = "";
+        if (OS.equals("Linux")){
+            path = "/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml";
+        }
+        else if (OS.substring(0,5).equals("Windo")){
+            path = "/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml";
+        }
+        else if (OS.substring(0,3).equals("Mac")){
+            path = "/Users/andriikotko/Library/Application Support/Storj/Local-Network/storagenode/0/config.yaml";
+        }
+        FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String satelliteIDFromFile;
 
@@ -103,7 +128,18 @@ public class NodeFunctionalTests {
     @Test
     public void compareWalletAddressTest() throws IOException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
-        FileReader fileReader = new FileReader("/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml");
+        String OS = System.getProperty("os.name");
+        String path = "";
+        if (OS.equals("Linux")){
+            path = "/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml";
+        }
+        else if (OS.substring(0,5).equals("Windo")){
+            path = "/home/andrii/.local/share/storj/local-network/storagenode/0/config.yaml";
+        }
+        else if (OS.substring(0,3).equals("Mac")){
+            path = "/Users/andriikotko/Library/Application Support/Storj/Local-Network/storagenode/0/config.yaml";
+        }
+        FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String walletFromFile;
 

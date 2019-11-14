@@ -30,28 +30,37 @@ public class NodeElementsVisibilityTests {
         String OS = System.getProperty("os.name");
         String chosingOS = "";
         if (OS.equals("Linux")){
-            chosingOS = "";
+            chosingOS = NodeDashboardPage.GECKODRIVERPATH;
         }
-        if (OS.substring(0,4).equals("Windo")){
-            chosingOS = ".exe";
+        else if (OS.substring(0,4).equals("Windo")){
+            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHWIN;
+        }
+        else if (OS.substring(0,3).equals("Mac")){
+            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHMAC;
+        }else{
+            //If no os passed throw exception
+            throw new Exception("os is not correct");
         }
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("Firefox")){
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", NodeDashboardPage.GECKODRIVERPATH+chosingOS);
+            System.setProperty("webdriver.gecko.driver", chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
+            System.out.println(chosingOS);
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",NodeDashboardPage.CHROMEDRIVERPATH+chosingOS);
+            // System.setProperty("webdriver.chrome.driver","./src/main/resources/chromedrivermac");
+            System.setProperty("webdriver.chrome.driver", chosingOS);
             //create chrome instance
+
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
         else if(browser.equalsIgnoreCase("Opera")){
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", NodeDashboardPage.OPERADRIVERPATH+chosingOS);
+            System.setProperty("webdriver.opera.driver", chosingOS);
             driver = new OperaDriver();
         }
         else{
