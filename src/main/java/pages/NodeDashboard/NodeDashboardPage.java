@@ -134,7 +134,7 @@ public class NodeDashboardPage {
     public WebElement auditUptimeHeader;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/p")
     public WebElement uptimeChecksText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div")
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div")
     public WebElement uptimeChecksHintTick;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div[2]/div/p[1]")
     public WebElement uptimeCheckHintText;
@@ -142,7 +142,7 @@ public class NodeDashboardPage {
     public WebElement uptimeCheckData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/p")
     public WebElement auditChecksText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div")
+    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div/div")
     public WebElement auditChecksHintTick;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div/div[2]/div/p[1]")
     public WebElement auditCheckHintText;

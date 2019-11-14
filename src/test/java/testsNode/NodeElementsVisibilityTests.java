@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -19,7 +20,7 @@ public class NodeElementsVisibilityTests {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp(@Optional("Chrome") String browser) throws Exception {
+    public void setUp(@Optional("Safari") String browser) throws Exception {
 //        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
 //
 //        driver = new ChromeDriver();
@@ -62,13 +63,19 @@ public class NodeElementsVisibilityTests {
             //set path to Edge.exe
             System.setProperty("webdriver.opera.driver", chosingOS);
             driver = new OperaDriver();
+        } else if(browser.equalsIgnoreCase("Safari")){
+            System.setProperty("webdriver.safari.driver", "/usr/bin/safaridriver");
+            driver = new SafariDriver();
         }
         else{
             //If no browser passed throw exception
             throw new Exception("Browser is not correct");
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
+        if(browser.equalsIgnoreCase("Safari")){
+            driver.manage().window().maximize();
+        } else {
+            driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));}
         driver.get(NodeDashboardPage.DASHBOARDURL);
 
     }
@@ -181,11 +188,12 @@ public class NodeElementsVisibilityTests {
     }
 
     @Test
-    public void uptimeHintVisibilityTest() {
+    public void uptimeHintVisibilityTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
         nodeDashboardPage.currentSatellite.click();
+        Thread.sleep(1000);
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.uptimeChecksHintTick).click().perform();
@@ -194,11 +202,12 @@ public class NodeElementsVisibilityTests {
     }
 
     @Test
-    public void auditHintVisibilityTest() {
+    public void auditHintVisibilityTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
         nodeDashboardPage.currentSatellite.click();
+        Thread.sleep(1000);
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.auditChecksHintTick).click().perform();

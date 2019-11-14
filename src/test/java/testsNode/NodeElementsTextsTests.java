@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -19,7 +20,7 @@ public class NodeElementsTextsTests {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp(@Optional("Chrome") String browser) throws Exception {
+    public void setUp(@Optional("Safari") String browser) throws Exception {
 //        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
 //
 //        driver = new ChromeDriver();
@@ -59,13 +60,19 @@ public class NodeElementsTextsTests {
             //set path to Edge.exe
             System.setProperty("webdriver.opera.driver", chosingOS);
             driver = new OperaDriver();
+        } else if(browser.equalsIgnoreCase("Safari")){
+            System.setProperty("webdriver.safari.driver", "/usr/bin/safaridriver");
+            driver = new SafariDriver();
         }
         else{
             //If no browser passed throw exception
             throw new Exception("Browser is not correct");
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
+        if(browser.equalsIgnoreCase("Safari")){
+            driver.manage().window().maximize();
+        } else {
+            driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));}
         driver.get(NodeDashboardPage.DASHBOARDURL);
 
     }
@@ -86,7 +93,7 @@ public class NodeElementsTextsTests {
         Assert.assertEquals(nodeDashboardPage.nodeVersion.getText(), "v0.0.0");
 
         Assert.assertEquals(nodeDashboardPage.choosingSatelliteContainer.getText(), "Choose your satellite: All Satellites");
-        Assert.assertEquals(nodeDashboardPage.chosenSatelliteText.getText(), "Choose your satellite:");
+        Assert.assertEquals(nodeDashboardPage.chosenSatelliteText.getText(), "Choose your satellite: ");
         Assert.assertEquals(nodeDashboardPage.utilizationRemainingHeader.getText(), "Utilization & Remaining");
         Assert.assertEquals(nodeDashboardPage.bandwidthHeader.getText(), "Bandwidth Used This Month");
         Assert.assertTrue(nodeDashboardPage.bandwidthData.getText().contains("B"));
@@ -170,11 +177,12 @@ public class NodeElementsTextsTests {
     }
 
     @Test
-    public void uptimeAuditElementsTextsTest() {
+    public void uptimeAuditElementsTextsTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
         nodeDashboardPage.currentSatellite.click();
+        Thread.sleep(1000);
 
         Assert.assertEquals(nodeDashboardPage.auditUptimeHeader.getText(),"Uptime & Audit Checks by Satellite");
         Assert.assertEquals(nodeDashboardPage.uptimeChecksText.getText(),"Uptime Checks");
@@ -184,11 +192,12 @@ public class NodeElementsTextsTests {
     }
 
     @Test
-    public void uptimeHintTextTest() {
+    public void uptimeHintTextTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
         nodeDashboardPage.currentSatellite.click();
+        Thread.sleep(1000);
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.uptimeChecksHintTick).click().perform();

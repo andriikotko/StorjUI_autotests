@@ -1,11 +1,13 @@
 package testsNode;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -89,8 +91,10 @@ public class NodeFunctionalTests {
             throw new Exception("Browser is not correct");
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.manage().window().maximize();
-        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
+        if(browser.equalsIgnoreCase("Safari")){
+            driver.manage().window().maximize();
+        } else {
+            driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));}
         driver.get(NodeDashboardPage.DASHBOARDURL);
 
     }
@@ -155,9 +159,13 @@ public class NodeFunctionalTests {
     }
 
     @Test
-    public void gotoCommunityTest(){
+    public void gotoCommunityTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         nodeDashboardPage.linkToCommunity.click();
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        String browserName = cap.getBrowserName().toLowerCase();
+        if(browserName.equalsIgnoreCase("safari")){
+            Thread.sleep(5000);}
 
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
@@ -166,9 +174,13 @@ public class NodeFunctionalTests {
     }
 
     @Test
-    public void gotoSupportTest(){
+    public void gotoSupportTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         nodeDashboardPage.linkToSupport.click();
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        String browserName = cap.getBrowserName().toLowerCase();
+        if(browserName.equalsIgnoreCase("safari")){
+            Thread.sleep(5000);}
 
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
@@ -177,9 +189,13 @@ public class NodeFunctionalTests {
     }
 
     @Test
-    public void gotoViewOnEtherscanTest(){
+    public void gotoViewOnEtherscanTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         nodeDashboardPage.payoutButton.click();
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        String browserName = cap.getBrowserName().toLowerCase();
+        if(browserName.equalsIgnoreCase("safari")){
+            Thread.sleep(5000);}
 
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
