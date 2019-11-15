@@ -14,13 +14,15 @@ import pages.NodeDashboard.NodeDashboardPage;
 
 import java.util.concurrent.TimeUnit;
 
+import static pages.HomePage.DefaultBrowser;
+
 public class NodeElementsVisibilityTests {
 
     WebDriver driver;
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp(@Optional("Safari") String browser) throws Exception {
+    public void setUp(@Optional(DefaultBrowser) String browser) throws Exception {
 //        System.setProperty("webdriver.chrome.driver", NodeDashboardPage.CHROMEDRIVERPATH);
 //
 //        driver = new ChromeDriver();

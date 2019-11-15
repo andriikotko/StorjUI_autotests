@@ -39,10 +39,13 @@ public class HomePage {
     public static String ACCOUNT="test1@g.com";
     public static String PASSWORD="123qwe";
     public static String CHROMEDRIVERPATH = "./src/main/resources/chromedriver";
+    public static String CHROMEDRIVERPATHWIN = "./src/main/resources/chromedriver.exe";
+    public static String CHROMEDRIVERPATHMAC = "./src/main/resources/chromedrivermac";
     public static String GECKODRIVERPATH = "./src/main/resources/geckodriver";
     public static String OPERADRIVERPATH = "./src/main/resources/operadriver";
     public static Integer Width = 1280;
     public static Integer Height = 1000;
+    public static final String DefaultBrowser = "EDGE";
 
 
 

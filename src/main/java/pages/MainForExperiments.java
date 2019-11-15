@@ -5,6 +5,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
@@ -24,6 +25,12 @@ public class MainForExperiments {
 
         System.out.println(System.getProperty("os.name"));
 
+      WebDriver driver;
+
+        System.setProperty("webdriver.edge.driver", NodeDashboardPage.EDGEDRIVERPATH);
+        driver = new EdgeDriver();
+        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
+        driver.get(NodeDashboardPage.DASHBOARDURL);
 
 //        Process p;
 //        try {

@@ -5,6 +5,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -12,11 +13,14 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.HomePage;
 import pages.NodeDashboard.NodeDashboardPage;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+
+import static pages.HomePage.*;
 
 public class NodeFunctionalTests {
     private WebDriver driver;
@@ -45,7 +49,7 @@ public class NodeFunctionalTests {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp(@Optional("Safari") String browser) throws Exception {
+    public void setUp(@Optional(DefaultBrowser) String browser) throws Exception {
 
         String OS = System.getProperty("os.name");
         String chosingOS = "";
@@ -56,7 +60,12 @@ public class NodeFunctionalTests {
             chosingOS = NodeDashboardPage.CHROMEDRIVERPATHWIN;
         }
         else if (OS.substring(0,3).equals("Mac")){
-            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHMAC;
+            if(browser.equalsIgnoreCase("EDGE")){
+                System.setProperty("webdriver.edge.driver", NodeDashboardPage.EDGEDRIVERPATH);
+                driver = new EdgeDriver();
+            }
+            else{
+            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHMAC;}
         }else{
             //If no os passed throw exception
             throw new Exception("os is not correct");
@@ -69,7 +78,6 @@ public class NodeFunctionalTests {
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("Chrome")){
-            System.out.println(chosingOS);
             //set path to chromedriver.exe
             // System.setProperty("webdriver.chrome.driver","./src/main/resources/chromedrivermac");
             System.setProperty("webdriver.chrome.driver", chosingOS);
@@ -83,6 +91,9 @@ public class NodeFunctionalTests {
             driver = new OperaDriver();
         }
         else if(browser.equalsIgnoreCase("Safari")){
+            System.setProperty("webdriver.safari.driver", "/usr/bin/safaridriver");
+            driver = new SafariDriver();
+        }else if(browser.equalsIgnoreCase("EDGE")){
             System.setProperty("webdriver.safari.driver", "/usr/bin/safaridriver");
             driver = new SafariDriver();
         }

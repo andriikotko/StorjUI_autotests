@@ -19,6 +19,7 @@ public class NodeDashboardPage {
     public static String CHROMEDRIVERPATHMAC = "./src/main/resources/chromedrivermac";
     public static String GECKODRIVERPATH = "./src/main/resources/geckodriver";
     public static String OPERADRIVERPATH = "./src/main/resources/operadriver";
+    public static String EDGEDRIVERPATH = "./src/main/resources/msedgedriver";
     public static Integer Width = 1280;
     public static Integer Height = 1000;
 
