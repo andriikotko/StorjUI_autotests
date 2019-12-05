@@ -91,7 +91,7 @@ public class OverviewReportFunctionalTests {
 //        driver.close();
 //        driver.switchTo().window(tabs2.get(0));
 
-        Assert.assertTrue(driver.getCurrentUrl().startsWith("http://localhost:"+ (homePage.satellitePort()) +"/usage-report/?projectID="));
+        Assert.assertTrue(driver.getCurrentUrl().startsWith("http://localhost:"+ (homePage.satellitePort()) +"/usage-report?projectID="));
 
     }
 

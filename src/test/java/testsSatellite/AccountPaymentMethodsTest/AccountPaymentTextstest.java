@@ -1,6 +1,7 @@
 package testsSatellite.AccountPaymentMethodsTest;
 
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.Tabs.AccountTab_Billing;
 import pages.Tabs.AccountTab_PaymentMethods;
 
 import java.util.concurrent.TimeUnit;
@@ -109,12 +111,15 @@ public class AccountPaymentTextstest {
     @Test
     public void paymentStorjElementsTextsTest() {
         AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_paymentMethods.addStorjPayButton.click();
 
 
         Assert.assertEquals(accountTab_paymentMethods.depositStorjHeader.getText(),"Payment Methods");
         Assert.assertEquals(accountTab_paymentMethods.depositStorjNotification.getText(),"Deposit STORJ Tokens via Coin Payments");
-        Assert.assertEquals(accountTab_paymentMethods.paymentSelectButton.getText(),"US $20 (+$5 Bonus)");
+        Assert.assertEquals(accountTab_paymentMethods.paymentSelectButton.getText(),"USD $20");
         Assert.assertEquals(accountTab_paymentMethods.continueToCoinPaymentsButton.getText(),"Continue to Coin Payments");
         Assert.assertEquals(accountTab_paymentMethods.paymentMethodsCancelButton.getText(),"Cancel");
     }

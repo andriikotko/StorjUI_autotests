@@ -61,7 +61,7 @@ public class RegistrationPageElementsVisibilityTest {
         RegistrationPage registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
 
         Assert.assertTrue(registrationPage.fullNameInput.isDisplayed());
-        Assert.assertTrue(registrationPage.nicknameInput.isDisplayed());
+ //       Assert.assertTrue(registrationPage.nicknameInput.isDisplayed());
         Assert.assertTrue(registrationPage.emailInput.isDisplayed());
         Assert.assertTrue(registrationPage.passwordInput.isDisplayed());
         Assert.assertTrue(registrationPage.repeatPasswordInput.isDisplayed());
@@ -71,13 +71,13 @@ public class RegistrationPageElementsVisibilityTest {
         Assert.assertTrue(registrationPage.loginButton.isDisplayed());
         Assert.assertTrue(registrationPage.signUpHeader.isDisplayed());
         Assert.assertTrue(registrationPage.fullNameHeader.isDisplayed());
-        Assert.assertTrue(registrationPage.nicknameHeader.isDisplayed());
+      //  Assert.assertTrue(registrationPage.nicknameHeader.isDisplayed());
         Assert.assertTrue(registrationPage.emailHeader.isDisplayed());
         Assert.assertTrue(registrationPage.passwordHeader.isDisplayed());
         Assert.assertTrue(registrationPage.confirmPasswordHeader.isDisplayed());
-        Assert.assertTrue(registrationPage.hintBoxPassword.isDisplayed());
+      //  Assert.assertTrue(registrationPage.hintBoxPassword.isDisplayed());
         //Assert.assertTrue(registrationPage.passwordInfoButton.isDisplayed());
-        Assert.assertTrue(registrationPage.hintBoxConfirmPassword.isDisplayed());
+      //  Assert.assertTrue(registrationPage.hintBoxConfirmPassword.isDisplayed());
        // Assert.assertTrue(registrationPage.confirmPasswordInfoButton.isDisplayed());
         Assert.assertTrue(registrationPage.termsConditionsHeader.isDisplayed());
         Assert.assertTrue(registrationPage.termsConditionsLink.isDisplayed());

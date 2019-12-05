@@ -108,7 +108,7 @@ public class APIKeysTabTextTest {
         apiKeysTab.firstAPIKeyCheckboxContainer.click();
         apiKeysTab.deleteAPIKeyButton.click();
 
-        Assert.assertTrue(apiKeysTab.deleteAPIKeyConfirmation.getText().startsWith("Are you sure you want to delete"));
+        Assert.assertTrue(apiKeysTab.deleteAPIKeyNotification.getText().startsWith("Are you sure you want to delete"));
     }
 
     @Test

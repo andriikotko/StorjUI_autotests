@@ -76,22 +76,22 @@ public class BucketsTabElementsVisibilityTest {
     public void bucketsElementsVisibilityTest (){
         BucketsTab bucketsTab = PageFactory.initElements(driver, BucketsTab.class);
 
-        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area__header")){
+        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area")){
 
         //case without  buckets
         //Assert.assertTrue(bucketsTab.noBucketsHeaderIcon.isDisplayed());
         Assert.assertTrue(bucketsTab.noBucketsHeader.isDisplayed());
         Assert.assertTrue(bucketsTab.noBucketsHeaderNotification.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsHowCreateHeader.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsUplinkCLI.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsCreateUplinkNotification.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsLinkToDocumentation.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsImage.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsLinkToS3.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsNextStepHeader.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsNextStepText.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsTextBeforeLinkS3.isDisplayed());
-        Assert.assertTrue(bucketsTab.noBucketsIconNextStep.isDisplayed());}
+        Assert.assertTrue(bucketsTab.noBucketsStepsImage.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsHowCreateHeader1.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsHowCreateHeader2.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsHowCreateHeader3.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsSetupContainer1.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsSetupContainer2.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsSetupContainer3.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsCreateFirstButton.isDisplayed());
+        Assert.assertTrue(bucketsTab.noBucketsLinkToWhy.isDisplayed());}
+
 
         else{
         //case with buckets

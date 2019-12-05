@@ -98,7 +98,7 @@ public class HomePageFunctionalTests {
         //Thread.sleep(3000);
         Assert.assertEquals(homePage.accountHide_Show.getText(), "Show");
         List<WebElement> list2 = new ArrayList<>(driver.findElements(By.xpath("//*[@class=\"navigation-area__account-area\"]/a")));
-        Assert.assertEquals(list1.size(), list2.size()+2);
+        Assert.assertEquals(list1.size(), list2.size()+3);
     }
 
     @Test

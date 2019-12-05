@@ -75,21 +75,26 @@ public class BucketsTabTextsTest {
     public void bucketsElementsTextsTest() {
         BucketsTab bucketsTab = PageFactory.initElements(driver, BucketsTab.class);
 
-        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area__header")) {
+        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area")) {
 
             //case without  buckets
-            Assert.assertEquals(bucketsTab.noBucketsHeader.getText(), "Buckets");
-            Assert.assertEquals(bucketsTab.noBucketsHeaderNotification.getText(), "To create a bucket, please use the following CLI documentation. We will soon enable client-side encryption through the browser, at which time you will be able to create buckets and upload objects directly from this dashboard.");
-            Assert.assertEquals(bucketsTab.noBucketsHowCreateHeader.getText(), "Create Buckets and Upload Objects from the Command Line");
-            Assert.assertEquals(bucketsTab.noBucketsUplinkCLI.getText(), "Uplink CLI");
-            Assert.assertEquals(bucketsTab.noBucketsCreateUplinkNotification.getText(), "One of the ways you can interact with the network to upload and download files");
-            Assert.assertEquals(bucketsTab.noBucketsLinkToDocumentation.getText(), "Documentation");
-            Assert.assertTrue(bucketsTab.noBucketsLinkToDocumentation.getAttribute("href").startsWith("https://github.com/storj/storj/wiki/Uplink-CLI"));
-            Assert.assertTrue(bucketsTab.noBucketsLinkToS3.getAttribute("href").startsWith("https://github.com/storj/storj/wiki/S3-Gateway"));
-            Assert.assertEquals(bucketsTab.noBucketsLinkToS3.getText(), "Try our S3 Gateway");
-            Assert.assertEquals(bucketsTab.noBucketsNextStepHeader.getText(), "Next Step");
-            Assert.assertEquals(bucketsTab.noBucketsNextStepText.getText(), "After you create a bucket using the CLI, you will be able to see your buckets and usage here. This happens within 10 minutes of creating your first bucket.");
-            Assert.assertTrue(bucketsTab.noBucketsTextBeforeLinkS3.getText().startsWith("Familiar with AWS S3?"));
+            Assert.assertEquals(bucketsTab.noBucketsHeader.getText(), "Bucket Usage");
+            Assert.assertEquals(bucketsTab.noBucketsHeaderNotification.getText(), "Create Buckets & Upload Objects from the Command Line");
+            Assert.assertEquals(bucketsTab.noBucketsHowCreateHeader1.getText(), "Set Up The Uplink CLI");
+            Assert.assertEquals(bucketsTab.noBucketsHowCreateHeader2.getText(), "Upload Data Securely");
+            Assert.assertEquals(bucketsTab.noBucketsHowCreateHeader3.getText(), "View Usage Here");
+            Assert.assertEquals(bucketsTab.noBucketsCreateFirstButtonText.getText(), "Create My First Bucket");
+            Assert.assertTrue(bucketsTab.noBucketsLinkToWhy.getAttribute("href").startsWith("https://support.tardigrade.io/hc/en-us/articles/360035332472-Why-can-t-I-upload-from-the-browser-"));
+            Assert.assertTrue(bucketsTab.noBucketsCreateFirstButton.getAttribute("href").startsWith("https://documentation.tardigrade.io/api-reference/uplink-cli"));
+            Assert.assertEquals(bucketsTab.noBucketsLinkToWhy.getText(), "Why can't I upload from the browser?");
+            Assert.assertEquals(bucketsTab.noBucketsSetupStep1.getText(), "Please enter numeric choice or enter satellite address manually [1]: 1");
+            Assert.assertEquals(bucketsTab.noBucketsSetupStep2.getText(), "Enter your API key:");
+            Assert.assertEquals(bucketsTab.noBucketsSetupStep3.getText(), "13YqgbUXRiavXB1qHMtKkHGNHPydtTBgXoZeeofy6aY4n1ewBMDoBS7eV7726nsgVQDfqeL9gQRqjQTyMUGDCFC6yWGPUEHGxJsT");
+            Assert.assertEquals(bucketsTab.noBucketsUploadStep1.getText(), "./uplink mb sj://sample");
+            Assert.assertEquals(bucketsTab.noBucketsUploadStep2.getText(), "\"Sample\" Bucket Created");
+            Assert.assertEquals(bucketsTab.noBucketsUploadStep3.getText(), "./uplink cp ~/Desktop/your-large-file.mp4 sj://bucket-name");
+            Assert.assertEquals(bucketsTab.noBucketsUploadStep4.getText(), "\"your-large-file.mp4\" Successfully uploaded");
+
         } else {
             //case with buckets
             Assert.assertEquals(bucketsTab.bucketsHeader.getText(), "Buckets");

@@ -1,9 +1,6 @@
 package testsSatellite.AccountPaymentMethodsTest;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -12,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.Tabs.AccountTab_Billing;
 import pages.Tabs.AccountTab_PaymentMethods;
 
 import java.util.ArrayList;
@@ -79,6 +77,9 @@ public class AccountPaymentFunctionalTests {
     @Test
     public void paymentStorjDroplistDisplayedTest() {
         AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_paymentMethods.addStorjPayButton.click();
         accountTab_paymentMethods.paymentSelectButton.click();
 
@@ -89,6 +90,9 @@ public class AccountPaymentFunctionalTests {
     @Test
     public void paymentStorjDroplistLengthTest() {
         AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_paymentMethods.addStorjPayButton.click();
         accountTab_paymentMethods.paymentSelectButton.click();
 
@@ -99,37 +103,53 @@ public class AccountPaymentFunctionalTests {
     @Test
     public void paymentStorjDroplistValuesTest() {
         AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_paymentMethods.addStorjPayButton.click();
         accountTab_paymentMethods.paymentSelectButton.click();
+        js.executeScript("arguments[0].scrollIntoView();",driver.findElement(By.xpath("//*[@id=\"paymentSelect\"]/div[6]")));
 
         ArrayList<WebElement> list1 = new ArrayList<WebElement>(driver.findElements(By.xpath("//*[@id=\"paymentSelect\"]/div")));
         ArrayList<String > list2 = new ArrayList<>();
         for (WebElement webElement : list1) {
             list2.add(webElement.getText());
         }
-        List<String> list3 = new ArrayList<>(Arrays.asList("US $20 (+5 Bonus)", "US $5", "US $10 (+2 Bonus)", "US $100 (+20 Bonus)", "US $1000 (+200 Bonus)", "Custom Amount"));
+        List<String> list3 = new ArrayList<>(Arrays.asList("USD $20", "USD $5", "USD $10", "USD $100", "USD $1000", "Custom Amount"));
+        System.out.println(list2);
+        System.out.println(list3);
 
         Assert.assertEquals(list2,list3);
     }
     @Test
-    public void paymentStorjDroplistSelectNotDefaultTest() {
+    public void paymentStorjDroplistSelectNotDefaultTest() throws InterruptedException {
         AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_paymentMethods.addStorjPayButton.click();
         accountTab_paymentMethods.paymentSelectButton.click();
 
         ArrayList<WebElement> list1 = new ArrayList<WebElement>(driver.findElements(By.xpath("//*[@id=\"paymentSelect\"]/div")));
 
+        js.executeScript("arguments[0].scrollIntoView();", accountTab_billing.depositHistoryViewAllButton);
         list1.get(2).click();
-        Assert.assertEquals(accountTab_paymentMethods.paymentSelectButton.getText(),"US $10 (+2 Bonus)");
+        Assert.assertEquals(accountTab_paymentMethods.paymentSelectButton.getText(),"USD $10");
     }
     @Test
     public void paymentStorjDroplistSelectCustomTest() {
         AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_paymentMethods.addStorjPayButton.click();
         accountTab_paymentMethods.paymentSelectButton.click();
 
         ArrayList<WebElement> list1 = new ArrayList<WebElement>(driver.findElements(By.xpath("//*[@id=\"paymentSelect\"]/div")));
 
+        js.executeScript("arguments[0].scrollIntoView();", accountTab_billing.depositHistoryViewAllButton);
         list1.get(5).click();
         Assert.assertTrue(accountTab_paymentMethods.customInput.getAttribute("placeholder").startsWith("Enter Amount"));
 

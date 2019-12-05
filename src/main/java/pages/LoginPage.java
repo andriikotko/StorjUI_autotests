@@ -10,34 +10,34 @@ public class LoginPage {
     final WebDriver driver;
 
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[2]/input")
+    @FindBy(how = How.XPATH, using = "//*[@class=\"headerless-input\"]")
     public WebElement userNameField;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[3]/input")
+    @FindBy(how = How.XPATH, using = "//*[@class=\"headerless-input password\"]")
     public WebElement passwordField;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/div")
+    @FindBy(how = How.XPATH, using = "//*[@class=\"login-area__submit-area__login-button\"]")
     public WebElement btn_Login;
     @FindBy(how = How.CSS, using = "#app > div > div.login-container__wrapper > div.login-area-wrapper > div > div.input-wrap.login-area__password-input > svg")
     public WebElement eye_Symbol;
-    @FindBy(how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[1]/div")
+    @FindBy(how = How.XPATH,using = "//*[@class=\"login-container__register-button\"]")
     public WebElement btnCreateAccount;
     @FindBy(how = How.CSS,using = "#app > div > div.login-container__wrapper > div.login-container__header > svg")
     public WebElement storjLogo;
-    @FindBy(how =How.XPATH,using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/a/h3/strong")
+    @FindBy(how =How.XPATH,using ="//*[@class=\"login-area__navigation-area__nav-link__link\"]")
     public WebElement linkForgotPassword;
-    @FindBy(how =How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/a[1]")
+    @FindBy(how =How.XPATH,using = "//*[@class=\"login-area__info-area__terms\"]")
     public WebElement linkToTermsAndConditions;
-    @FindBy(how =How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/a[2]")
+    @FindBy(how =How.XPATH,using = "//*[@class=\"login-area__info-area__help\"]")
     public WebElement linkToSupport;
     @FindBy(how =How.XPATH,using = "//*[@id=\"notificationArea\"]/div/div[1]/p")
     //@FindBy(how =How.XPATH,using = "//*[@id=\"notificationArea\"]/div")
     public WebElement notificationArea;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[1]/h1")
+    @FindBy(how = How.XPATH, using = "//*[@class=\"login-area__title-container__title\"]")
     public WebElement loginFormHeader;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/p")
+    @FindBy(how = How.XPATH, using = "//*[@class=\"login-area__info-area__signature\"]")
     public WebElement footerLogoText;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[2]/div/h3")
+    @FindBy(how = How.XPATH, using = "(//*[@class=\"label-container__error\"])[1]")
     public WebElement emailValidationError;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[3]/div/h3")
+    @FindBy(how = How.XPATH, using = "(//*[@class=\"label-container__error\"])[2]")
     public WebElement passwordValidationError;
 
 

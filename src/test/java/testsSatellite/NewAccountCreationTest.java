@@ -63,7 +63,7 @@ public class NewAccountCreationTest {
 
         RegistrationPage registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
         registrationPage.fullNameInput.sendKeys("testFullName");
-        registrationPage.nicknameInput.sendKeys("testShortName");
+//        registrationPage.nicknameInput.sendKeys("testShortName");
         registrationPage.emailInput.sendKeys("testNewEmail@gmail.com");
         registrationPage.passwordInput.sendKeys("Welcome123");
         registrationPage.repeatPasswordInput.sendKeys("Welcome123");

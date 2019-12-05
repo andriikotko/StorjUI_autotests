@@ -89,11 +89,12 @@ public class HomePageElementsVisibilityTest {
 
     }
     @Test
-    public void hideResoursesButtonPresenceTest(){
+    public void hideResoursesButtonPresenceTest()  {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 
         Actions action = new Actions(driver);
         action.moveToElement(homePage.resoursesContainer).click().perform();
+
 
         Assert.assertTrue(homePage.resoursesHide_Show.isDisplayed());
     }

@@ -87,11 +87,12 @@ public class HomePageElementsTextsTest {
     }
 
     @Test
-    public void hideResoursesButtonTextTest(){
+    public void hideResoursesButtonTextTest() throws InterruptedException {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 
         Actions action = new Actions(driver);
         action.moveToElement(homePage.resoursesContainer).click().perform();
+        Thread.sleep(1000);
 
         Assert.assertEquals(homePage.resoursesHide_Show.getText(), "Hide");
     }

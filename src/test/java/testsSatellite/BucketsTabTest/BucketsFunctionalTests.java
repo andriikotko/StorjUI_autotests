@@ -76,14 +76,14 @@ public class BucketsFunctionalTests {
     public void gotoDocumentation() {
         BucketsTab bucketsTab = PageFactory.initElements(driver, BucketsTab.class);
 
-        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area__header")) {
+        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area")) {
 
             //case without  buckets
-            bucketsTab.noBucketsLinkToDocumentation.click();
+            bucketsTab.noBucketsCreateFirstButton.click();
             ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tabs2.get(1));
-            Assert.assertEquals(driver.getCurrentUrl(),"https://github.com/storj/storj/wiki/Uplink-CLI");
-            Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"wiki-body\"]/div/h1")).getText(), "Uplink CLI tutorial");
+            Assert.assertEquals(driver.getCurrentUrl(),"https://documentation.tardigrade.io/api-reference/uplink-cli");
+            Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"__GITBOOK__ROOT__\"]/div/div[2]/div/div[1]/div[3]/div/div[1]/div[1]/div[1]/div/div/div[1]/div[1]/h1/span")).getText(), "Uplink CLI");
         }
 
     }
@@ -92,14 +92,14 @@ public class BucketsFunctionalTests {
     public void gotoS3() {
         BucketsTab bucketsTab = PageFactory.initElements(driver, BucketsTab.class);
 
-        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area__header")) {
+        if (bucketsTab.bucketsDiv.getAttribute("class").startsWith("no-buckets-area")) {
 
             //case without  buckets
-            bucketsTab.noBucketsLinkToS3.click();
+            bucketsTab.noBucketsLinkToWhy.click();
             ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tabs2.get(1));
-            Assert.assertEquals(driver.getCurrentUrl(),"https://github.com/storj/storj/wiki/S3-Gateway");
-            Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"wiki-body\"]/div/h1")).getText(),"S3 gateway tutorial");
+            Assert.assertEquals(driver.getCurrentUrl(),"https://support.tardigrade.io/hc/en-us/articles/360035332472-Why-can-t-I-upload-from-the-browser-");
+            Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"article-container\"]/article/header/h1")).getText(),"Why can’t I upload from the browser?");
         }
 
     }

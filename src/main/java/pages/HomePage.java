@@ -45,7 +45,7 @@ public class HomePage {
     public static String OPERADRIVERPATH = "./src/main/resources/operadriver";
     public static Integer Width = 1280;
     public static Integer Height = 1000;
-    public static final String DefaultBrowser = "EDGE";
+    public static final String DefaultBrowser = "Chrome";
 
 
 
@@ -72,46 +72,46 @@ public class HomePage {
     public WebElement testsProjectList;
     @FindBy(how=How.XPATH,using="//*[@id=\"notificationArea\"]/div/div[1]/p")
     public WebElement Error_Notification;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__logo__img\"]")
     public WebElement storjLogo;
 
 
 
 
     ////MAIN TABS
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div[1]/a[1]")
+    @FindBy(how = How.XPATH, using = "//*[@aria-label=\"Overview\"]")
     public WebElement overview_tab;
-    @FindBy(how =How.XPATH, using ="//*[@id=\"app\"]/div/div/div[1]/div/a[2]")
+    @FindBy(how =How.XPATH, using ="//*[@aria-label=\"Team\"]")
     public WebElement team_tab;
-    @FindBy(how = How.XPATH, using =" //*[@id=\"app\"]/div/div/div[1]/div[1]/a[3]")
+    @FindBy(how = How.XPATH, using ="//*[@aria-label=\"API Keys\"]")
     public WebElement API_Keys_Tab;
-    @FindBy(how = How.XPATH, using ="//*[@id=\"app\"]/div/div/div[1]/div[1]/a[4]")
+    @FindBy(how = How.XPATH, using ="//*[@aria-label=\"Buckets\"]")
     public WebElement buckets;
-    @FindBy(how = How.XPATH, using ="//*[@id=\"app\"]/div/div/div[1]/div[1]/a[5]")
+    @FindBy(how = How.XPATH, using ="//*[@id=\"app\"]/div/div/div[1]/div/a[5]")
     public WebElement docs_Tab;
-    @FindBy (how =How.XPATH, using ="//*[@id=\"app\"]/div/div/div[1]/div[1]/a[6]")
+    @FindBy (how =How.XPATH, using ="//*[@class=\"navigation-area__item-container support-item\"]")
     public WebElement support_Tab;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[5]/a[1]")
+    @FindBy (how = How.XPATH, using = "//*[@href=\"/account/profile\"]")
     public WebElement profileTab;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[5]/a[2]")
+    @FindBy (how = How.XPATH, using = "//*[@href=\"/account/billing\"]")
     public WebElement billingTab;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/a[9]/div/h1")
-    public WebElement  paymentMethodsTab;
+    @FindBy (how = How.XPATH, using = "//*[@href=\"/account/referral\"]")
+    public WebElement  referralTab;
 
     // TABS HEADERS
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/p")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__project-title\"]")
     public WebElement projectHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[3]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__resources-title custom\"]")
     public WebElement resoursesContainer;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[3]/p")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__resources-title__title\"]")
     public WebElement resourcesHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[3]/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__resources-title__button\"]")
     public WebElement resoursesHide_Show;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[4]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__account-title custom\"]")
     public WebElement accountContainer;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[4]/p")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__account-title__title\"]")
     public WebElement accountHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[1]/div/div[4]/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__account-title__button\"]")
     public WebElement accountHide_Show;
 
 

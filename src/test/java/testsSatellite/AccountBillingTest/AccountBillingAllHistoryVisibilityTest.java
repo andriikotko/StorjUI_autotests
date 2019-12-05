@@ -1,9 +1,11 @@
 package testsSatellite.AccountBillingTest;
 
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -70,8 +72,10 @@ public class AccountBillingAllHistoryVisibilityTest {
     }
 
     @Test
-    public void billingHiistoryElementsVisibility (){
+    public void billingHiistoryElementsVisibility () {
         AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_billing.depositHistoryViewAllButton.click();
         AccountTab_AllBillingHistory accountTab_allBillingHistory = PageFactory.initElements(driver, AccountTab_AllBillingHistory.class);
 

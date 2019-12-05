@@ -75,7 +75,7 @@ public class TeamTabElementsTextsTest {
 
         Assert.assertEquals(teamTab.projectMembersHeader.getText(), "Project Members");
       //  Assert.assertTrue(teamTab.projectRoleHintText.getText().startsWith("The only project role currently available is Admin, which gives"));
-        Assert.assertEquals(teamTab.addTeamMemberButton.getText(), "+Add");
+        Assert.assertEquals(teamTab.addTeamMemberButton.getText(), "+ Add");
         Assert.assertEquals(teamTab.membersListNameHeader.getText(), "Name");
         Assert.assertEquals(teamTab.membersListAddedHeader.getText(), "Added");
         Assert.assertEquals(teamTab.membersListEmailHeader.getText(), "Email");
@@ -93,7 +93,7 @@ public class TeamTabElementsTextsTest {
         Assert.assertTrue(teamTab.addTeamMemberInput.getAttribute("placeholder").startsWith("email@example.com"));
         Assert.assertEquals(teamTab.addMoreTeamMemberButton.getText(), "Add More");
         Assert.assertEquals(teamTab.addTeamMemberCancel.getText(), "Cancel");
-        Assert.assertEquals(teamTab.addTeamMemberADD.getText(), "Add Team Members");
+       // Assert.assertEquals(teamTab.addTeamMemberADD.getText(), "Add Team Members");
         Assert.assertTrue(teamTab.addTeamMemberNotification.getText().startsWith("If the team member you want to invite to join the project is still not on this Satellite, please share this link to the signup page and ask them to register here"));
 
     }

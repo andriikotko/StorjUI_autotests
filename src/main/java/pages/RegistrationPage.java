@@ -10,66 +10,65 @@ public class RegistrationPage {
 
     ////INPUTS
 
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[2]/input")
+    @FindBy(how = How.XPATH, using = "//*[@class = \"headerless-input\"][1]")
     public WebElement fullNameInput;
+//    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[3]/input")
+//    public WebElement nicknameInput;
     @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[3]/input")
-    public WebElement nicknameInput;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/input")
     public  WebElement emailInput;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div/input")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/div[1]/input")
     public WebElement passwordInput;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[6]/div/input")
+    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div[1]/input")
     public WebElement repeatPasswordInput;
-    @FindBy(how = How.CSS, using = "#app > div > div.register-container__wrapper > div.register-area-wrapper > div > div.register-area__submit-container > div.register-area__submit-container__terms-area > label > span")
+    @FindBy(how = How.XPATH, using = "//*[@class = \"checkmark\"]")
     public WebElement termsConditionsCheckbox;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"createAccountButton\"]")
+    @FindBy(how = How.XPATH, using = "//*[@class = \"register-area__submit-container__create-button\"]")
     public WebElement createAccountButton;
-
 
     /////OTHER ELEMENTS
 
-    @FindBy(how = How.CSS, using = "#app > div > div.register-container__wrapper > div.register-container__header > svg")
+    @FindBy(how = How.XPATH, using = "//*[@class = \"register-container__logo\"]")
     public WebElement logoStorj;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div")
+    @FindBy(how = How.XPATH, using = "//*[@class = \"register-container__register-button\"]")
     public WebElement loginButton;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[1]/h1")
+    @FindBy (how = How.XPATH,using = "//*[@class = \"register-area__title-container__title\"]")
     public WebElement signUpHeader;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[2]/div/h3")
+    @FindBy (how = How.XPATH,using = "//*[text() = \"Full Name\"]")
     public WebElement fullNameHeader;
     @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[3]/div/h3")
     public WebElement nicknameHeader;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/div/h3")
+    @FindBy (how = How.XPATH,using = "//*[text() = \"Email\"]")
     public WebElement emailHeader;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div[1]/div/h3")
+    @FindBy (how = How.XPATH,using = "//*[text() = \"Password\"]")
     public WebElement passwordHeader;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[6]/div[1]/div/h3")
+    @FindBy (how = How.XPATH,using = "//*[text() = \"Confirm Password\"]")
     public WebElement confirmPasswordHeader;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div[2]")
-    public WebElement hintBoxPassword;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div[2]/div")
+    @FindBy (how = How.XPATH,using = "//*[@class = \"password-strength-container\"]")
+    public WebElement hintPasswordStrength;
+    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/div[2]/div/div")
     public WebElement passwordInfoButton;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[6]/div[2]")
+    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div[2]")
     public WebElement hintBoxConfirmPassword;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[6]/div[2]/div")
+    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div[2]/div/div")
     public WebElement confirmPasswordInfoButton;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[7]/div[1]/h2")
+    @FindBy (how = How.XPATH,using = "//*[@class = \"register-area__submit-container__terms-area__terms-confirmation\"]")
     public WebElement termsConditionsHeader;
-    @FindBy (how = How.XPATH,using = "//*[@id=\"app\"]/div/div[2]/div[2]/div/div[7]/div[1]/h2/a")
+    @FindBy (how = How.XPATH,using = "//*[@class = \"register-area__submit-container__terms-area__link\"]")
     public WebElement termsConditionsLink;
 
 
 
 
     //ERRORS
-    @FindBy(how =How.XPATH,using = ("//*[@id=\"app\"]/div/div[2]/div[2]/div/div[2]/div"))
+    @FindBy(how =How.XPATH,using = ("//*[@id=\"app\"]/div/div[2]/div[2]/div/div[2]/div/h3"))
     public WebElement fullNameValidationError;
-    @FindBy(how = How.XPATH, using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/div/h3")
+    @FindBy(how = How.XPATH, using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[3]/div/h3")
     public  WebElement emailValidationError;
-    @FindBy(how = How.XPATH,using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div/div/h3")
+    @FindBy(how = How.XPATH,using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/div[1]/div/h3")
     public WebElement passwordValidationError;
-    @FindBy(how = How.XPATH,using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[6]/div[1]/div/h3")
+    @FindBy(how = How.XPATH,using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[5]/div[1]/div/h3")
     public WebElement confirmPasswordValidationError;
-    @FindBy(how = How.XPATH,using ="//*[@id=\"app\"]/div/div[2]/div[2]/div/div[4]/div/h3")
+    @FindBy(how = How.XPATH,using ="//*[@class = \"checkmark error\"]")
     public WebElement checkBoxValidationError;
 
     //Error Notifications

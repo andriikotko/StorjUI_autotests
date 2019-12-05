@@ -30,7 +30,19 @@ public class NodeElementsTextsTests {
         String OS = System.getProperty("os.name");
         String chosingOS = "";
         if (OS.equals("Linux")){
-            chosingOS = NodeDashboardPage.GECKODRIVERPATH;
+            switch (browser){
+                case "Firefox":
+                    chosingOS=NodeDashboardPage.GECKODRIVERPATH;
+                    break;
+                case "Chrome":
+                    chosingOS=NodeDashboardPage.CHROMEDRIVERPATH;
+                    break;
+                case "Opera":
+                    chosingOS=NodeDashboardPage.OPERADRIVERPATH;
+                    break;
+                default:
+                    chosingOS = "";
+            }
         }
         else if (OS.substring(0,4).equals("Windo")){
             chosingOS = NodeDashboardPage.CHROMEDRIVERPATHWIN;
@@ -95,7 +107,7 @@ public class NodeElementsTextsTests {
         Assert.assertEquals(nodeDashboardPage.nodeVersion.getText(), "v0.0.0");
 
         Assert.assertEquals(nodeDashboardPage.choosingSatelliteContainer.getText(), "Choose your satellite: All Satellites");
-        Assert.assertEquals(nodeDashboardPage.chosenSatelliteText.getText(), "Choose your satellite: ");
+        Assert.assertEquals(nodeDashboardPage.chosenSatelliteText.getText(), "Choose your satellite:");
         Assert.assertEquals(nodeDashboardPage.utilizationRemainingHeader.getText(), "Utilization & Remaining");
         Assert.assertEquals(nodeDashboardPage.bandwidthHeader.getText(), "Bandwidth Used This Month");
         Assert.assertTrue(nodeDashboardPage.bandwidthData.getText().contains("B"));

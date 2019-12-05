@@ -181,7 +181,7 @@ public class AddAndDeleteTeamMembersTest {
         } else {
             list1.get(1).click();
         }
-        teamTab.addTeamMemberButton.click();
+        teamTab.deleteTeamMemberButton.click();
 
         Assert.assertTrue(teamTab.deleteTeamMemberConfirmNotification.getText().startsWith("Are you sure you want to delete"));
     }
@@ -221,7 +221,7 @@ public class AddAndDeleteTeamMembersTest {
             i++;
         }
 
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div/div/div")).getText(), "+Add");
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/div/div/div/div/div/div")).getText(), "+ Add");
     }
 
     @Test(priority = 3)

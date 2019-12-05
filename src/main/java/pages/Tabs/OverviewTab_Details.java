@@ -17,33 +17,33 @@ public class OverviewTab_Details extends HomePage {
     public WebElement deleteProjectNameInput;
     @FindBy(how = How.XPATH, using = "//*[@id=\"deleteProjectPopup\"]/div[2]/div[2]/div[2]")
     public WebElement Confirm_Project_Delete_Button;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/h1")
+    @FindBy(how = How.XPATH, using = "//*[@class=\"project-details__title\"]")
     public WebElement headerProjectDetails;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/a[1]/p")
+    @FindBy (how = How.XPATH, using = "//*[@href=\"/project-overview/details\"]")
     public WebElement detailsTab;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[1]/a[2]/p")
+    @FindBy (how = How.XPATH, using = "//*[@href=\"/project-overview/usage-report\"]")
     public WebElement reportTab;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[1]/div/h2")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"project-details-info-container__name-container__title\"]")
     public WebElement projectNameHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[1]/div/h3")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"project-details-info-container__name-container__project-name\"]")
     public WebElement currentProjectName;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/h2")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"project-details-info-container__description-container__text__title\"]")
     public WebElement descriptionHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/h3")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"project-details-info-container__description-container__text__project-description\"]")
     public WebElement currentProjectDescription;
-    @FindBy (how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div > div:nth-child(2) > div > div:nth-child(3) > div > svg")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"project-details-svg\"]")
     public WebElement editDescriptionButton;
 
 
     //EDIT DESCRIPTION DIALOG
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/h3[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"label-container__label\"]")
     public WebElement editDescriptionHeader;
     @FindBy (how = How.XPATH, using = "//*[@id=\"Description\"]")
     public WebElement editDescriptionText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"container white\"]")
     public WebElement editDescriptionCancelButton;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Save\"]")
     public WebElement editDescriptionSaveButton;
 
 

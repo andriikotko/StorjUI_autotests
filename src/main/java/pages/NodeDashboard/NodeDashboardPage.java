@@ -1,9 +1,16 @@
 package pages.NodeDashboard;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import java.util.concurrent.TimeUnit;
 
 public class NodeDashboardPage {
 
@@ -149,6 +156,70 @@ public class NodeDashboardPage {
     public WebElement auditCheckHintText;
     @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/p/b")
     public WebElement auditCheckData;
+
+//    public void choosingBrowserOS () {
+//        String OS = System.getProperty("os.name");
+//        String chosingOS = "";
+//        if (OS.equals("Linux")){
+//            switch (browser){
+//                case "Firefox":
+//                    chosingOS=NodeDashboardPage.GECKODRIVERPATH;
+//                    break;
+//                case "Chrome":
+//                    chosingOS=NodeDashboardPage.CHROMEDRIVERPATH;
+//                    break;
+//                case "Opera":
+//                    chosingOS=NodeDashboardPage.OPERADRIVERPATH;
+//                    break;
+//                default:
+//                    chosingOS = "";
+//            }
+//        }
+//        else if (OS.substring(0,4).equals("Windo")){
+//            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHWIN;
+//        }
+//        else if (OS.substring(0,3).equals("Mac")){
+//            chosingOS = NodeDashboardPage.CHROMEDRIVERPATHMAC;
+//        }else{
+//            //If no os passed throw exception
+//            throw new Exception("os is not correct");
+//        }
+//        //Check if parameter passed from TestNG is 'firefox'
+//        if(browser.equalsIgnoreCase("Firefox")){
+//            //create firefox instance
+//            System.setProperty("webdriver.gecko.driver", chosingOS);
+//            driver = new FirefoxDriver();
+//        }
+//        //Check if parameter passed as 'chrome'
+//        else if(browser.equalsIgnoreCase("Chrome")){
+//            System.out.println(chosingOS);
+//            //set path to chromedriver.exe
+//            // System.setProperty("webdriver.chrome.driver","./src/main/resources/chromedrivermac");
+//            System.setProperty("webdriver.chrome.driver", chosingOS);
+//            //create chrome instance
+//
+//            driver = new ChromeDriver();
+//        }
+//        //  Check if parameter passed as 'Opera'
+//        else if(browser.equalsIgnoreCase("Opera")){
+//            //set path to Edge.exe
+//            System.setProperty("webdriver.opera.driver", chosingOS);
+//            driver = new OperaDriver();
+//        } else if(browser.equalsIgnoreCase("Safari")){
+//            System.setProperty("webdriver.safari.driver", "/usr/bin/safaridriver");
+//            driver = new SafariDriver();
+//        }
+//        else{
+//            //If no browser passed throw exception
+//            throw new Exception("Browser is not correct");
+//        }
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        if(browser.equalsIgnoreCase("Safari")){q
+//            driver.manage().window().maximize();
+//        } else {
+//            driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));}
+//        driver.get(NodeDashboardPage.DASHBOARDURL);
+//    }
 
 
 }

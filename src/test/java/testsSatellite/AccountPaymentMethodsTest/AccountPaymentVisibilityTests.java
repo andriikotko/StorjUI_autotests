@@ -1,6 +1,7 @@
 package testsSatellite.AccountPaymentMethodsTest;
 
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.Tabs.AccountTab_Billing;
 import pages.Tabs.AccountTab_PaymentMethods;
 
 import java.util.concurrent.TimeUnit;
@@ -92,6 +94,9 @@ public class AccountPaymentVisibilityTests {
     @Test
     public void paymentStorjElementsVisibilityTest() {
         AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        AccountTab_Billing accountTab_billing = PageFactory.initElements(driver, AccountTab_Billing.class);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
         accountTab_paymentMethods.addStorjPayButton.click();
 
 

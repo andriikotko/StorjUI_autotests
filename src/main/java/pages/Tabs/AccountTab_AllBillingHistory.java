@@ -12,28 +12,28 @@ public class AccountTab_AllBillingHistory {
         this.driver = driver;
     }
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/h1")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"billing-history-area__content__title\"]")
     public WebElement allBillingHistoryHeader;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[1]/div[1]")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Date\"] ")
     public WebElement allBillingHistoryDateHeader;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[1]/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Description\"] ")
     public WebElement allBillingHistoryDescriptionHeader;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[1]/div[3]")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Status\"] ")
     public WebElement allBillingHistoryStatusHeader;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[2]/div[1]/div[4]")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Amount\"] ")
     public WebElement allBillingHistoryAmountHeader;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/div")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"billing-history-area__title-area__back-button\"]")
     public WebElement allBillingHistoryBackButton;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[1]/p")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Back to Account\"] ")
     public WebElement allBillingHistoryBackButtonText;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div[3]/div")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"billing-history-area__content__title\"]")
     public WebElement allBillingHistoryPaginator;
 
 

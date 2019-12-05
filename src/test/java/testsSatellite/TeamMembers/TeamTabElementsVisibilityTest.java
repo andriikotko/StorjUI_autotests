@@ -180,7 +180,7 @@ public class TeamTabElementsVisibilityTest {
         } else {
             list1.get(1).click();
         }
-        teamTab.addTeamMemberButton.click();
+        teamTab.deleteTeamMemberButton.click();
 
         Assert.assertTrue(teamTab.deleteTeamMemberConfirmNotification.isDisplayed());
     }
