@@ -1,6 +1,7 @@
 package testsNode;
 
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -33,7 +34,19 @@ public class NodeElementsVisibilityTests {
         String OS = System.getProperty("os.name");
         String chosingOS = "";
         if (OS.equals("Linux")){
-            chosingOS = NodeDashboardPage.GECKODRIVERPATH;
+            switch (browser){
+                case "Firefox":
+                    chosingOS=NodeDashboardPage.GECKODRIVERPATH;
+                    break;
+                case "Chrome":
+                    chosingOS=NodeDashboardPage.CHROMEDRIVERPATH;
+                    break;
+                case "Opera":
+                    chosingOS=NodeDashboardPage.OPERADRIVERPATH;
+                    break;
+                default:
+                    chosingOS = "";
+            }
         }
         else if (OS.substring(0,4).equals("Windo")){
             chosingOS = NodeDashboardPage.CHROMEDRIVERPATHWIN;
@@ -178,7 +191,10 @@ public class NodeElementsVisibilityTests {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
-        nodeDashboardPage.currentSatellite.click();
+        nodeDashboardPage.chooseFirstSatellite();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
 
         Assert.assertTrue(nodeDashboardPage.auditUptimeHeader.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.uptimeChecksText.isDisplayed());
@@ -194,7 +210,10 @@ public class NodeElementsVisibilityTests {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
-        nodeDashboardPage.currentSatellite.click();
+        nodeDashboardPage.chooseFirstSatellite();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
         Thread.sleep(1000);
 
         Actions action = new Actions(driver);
@@ -208,7 +227,10 @@ public class NodeElementsVisibilityTests {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
-        nodeDashboardPage.currentSatellite.click();
+        nodeDashboardPage.chooseFirstSatellite();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
         Thread.sleep(1000);
 
         Actions action = new Actions(driver);

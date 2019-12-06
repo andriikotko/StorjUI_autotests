@@ -1,5 +1,6 @@
 package pages.NodeDashboard;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,8 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class NodeDashboardPage {
@@ -31,131 +34,149 @@ public class NodeDashboardPage {
     public static Integer Height = 1000;
 
 
-    @FindBy (how = How.CSS, using = "#app > div > div.header > div > div.header__content-holder__logo-area > svg")
+    @FindBy (how = How.XPATH, using = "//*[@class = \"header__content-holder__icon\"]")
     public WebElement dashboardStorjLogo;
-    @FindBy (how = How.CSS, using = "#app > div > div.header > div > div.header__content-holder__logo-area > div > svg")
+    @FindBy (how = How.XPATH, using = "//*[@alt=\"refresh image\"]")
     public WebElement refreshButton;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__node-id-container\"]")
     public WebElement nodeIDContainer;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[2]/p")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__node-id-container__id\"]")
     public WebElement nodeID;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[1]/div/div[2]/b")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__node-id-container__title\"]")
     public WebElement nodeIDText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/h1")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title__name__title\"]")
     public WebElement nodeHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/p")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Current period: \"]")
     public WebElement currentPeriod;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[1]/p/b")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title__name__info\"]/b")
     public WebElement currentMonth;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info__status-title\"]")
     public WebElement nodeStatusText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info\"]/p[2]")
     public WebElement nodeStatus;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]")
+    @FindBy (how = How.XPATH, using = "//*[@alt=\"online status image\"]")
     public WebElement statusInfoTick;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box customPosition\"]")
     public WebElement nodeStatusInfoPopUp;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[2]")
     public WebElement lastPingedText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/p[3]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[3]")
     public WebElement uptimeText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/p[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__green-text\"]/p[1]")
     public WebElement lastPingedData;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__green-text\"]/p[2]")
     public WebElement uptimeData;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[3]/b")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info__version-title\"]")
     public WebElement nodeVersionText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/p[4]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info__version-value\"]")
     public WebElement nodeVersion;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[@alt=\"version status image\"]")
     public WebElement nodeVersionInfoTick;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box customPosition\"]")
     public WebElement nodeVersionPopUp;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]/div[2]/div/p[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[1]")
     public WebElement versionPopUpText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div[2]/div[2]/div/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[2]")
     public WebElement versionPopUpVersion;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"satellite-selection-toggle-container\"]")
     public WebElement choosingSatelliteContainer;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/p/b")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"satellite-selection-toggle-container__bold-text\"]")
     public WebElement chosenSatelliteText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"satelliteDropdown\"]/div")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"satellite-selection-toggle-container__image\"]")
     public WebElement satelliteDropdown;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/div/div/div[2]/p")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"satellite-selection-toggle-container\"]/p")
     public WebElement currentSatellite;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/div/div/div[1]/div/p")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"All Satellites\"]")
     public WebElement allSatellites;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/p[1]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"info-area__title\"])[1]")
     public WebElement utilizationRemainingHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[1]/p[1]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__title-area__title\"])[1]")
     public WebElement bandwidthHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[1]/p[2]/b")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Egress\"]")
+    public WebElement bandwidthEgress;
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Ingress\"]")
+    public WebElement bandwidthIngress;
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__amount\"])[1]/b")
     public WebElement bandwidthData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"bandwidth-chart\"]")
     public WebElement bandwidthGraph;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[2]/p[1]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__title-area__title\"])[2]")
     public WebElement diskSpaceHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[2]/p[2]/b")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__amount\"])[2]/b")
     public WebElement diskSpaceData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"disk-space-chart\"]")
     public WebElement diskSpaceGraph;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/p")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Remaining on the Node\"]")
     public WebElement remainingHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/p[1]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__title\"])[1]")
     public WebElement bandwidthRemainingText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/p[2]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__amount\"])[1]")
     public WebElement bandwidthRemainData;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__bar\"])[1]")
     public WebElement bandwidthRemainBar;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box\"]")
     public WebElement bandwidthRemainBarHint;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/p[1]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__title\"])[2]")
     public WebElement diskRemainText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/p[2]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__amount\"])[2]")
     public WebElement diskRemainData;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__bar\"])[2]")
     public WebElement diskRemainBar;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div/div[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box\"]")
     public WebElement diskRemainBarHint;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[text() = \"Payout\"]")
     public WebElement payoutHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/p[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"payout-container__wallet-address-section__label\"]")
     public WebElement storjWalletAddressText;
-    @FindBy (how = How.CSS, using = "#app > div > div.content > div.info-area > div.payout-container > svg")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"payout-container__image\"]")
     public WebElement walletLogo;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/p[2]/b")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"payout-container__wallet-address-section__bold-text\"]")
     public WebElement walletData;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/a/div")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"payout-container__button\"]")
     public WebElement payoutButton;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/a")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"payout-container\"]/a")
     public WebElement payoutLink;
-    @FindBy (how = How.CSS, using = "#app > div > div.footer > div > svg")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__icon\"]")
     public WebElement footerLogo;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/a[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__community-link\"]")
     public WebElement linkToCommunity;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[3]/div/a[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__support-link\"]")
     public WebElement linkToSupport;
 
 
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/p")
+    @FindBy (how = How.XPATH, using = "//*[text()=\"Uptime & Audit Checks by Satellite\"]")
     public WebElement auditUptimeHeader;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/p")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"checks-area-container__header__title\"])[1]")
     public WebElement uptimeChecksText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"checks-area-image\"])[1]")
     public WebElement uptimeChecksHintTick;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/div/div/div[2]/div/p[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box extraPadding customPosition\"]")
     public WebElement uptimeCheckHintText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[1]/p/b")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"checks-area-container__amount\"])[1]/b")
     public WebElement uptimeCheckData;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/p")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"checks-area-container__header__title\"])[2]")
     public WebElement auditChecksText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div/div")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"checks-area-image\"])[2]")
     public WebElement auditChecksHintTick;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/div/div/div[2]/div/p[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box extraPadding customPosition\"]")
     public WebElement auditCheckHintText;
-    @FindBy (how = How.XPATH, using = "//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div[2]/p/b")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"checks-area-container__amount\"])[2]/b")
     public WebElement auditCheckData;
+
+
+    public void  chooseFirstSatellite (){
+        List<WebElement> satellites = driver.findElements(By.xpath("//*[@class=\"satellite-selection-overflow-container__satellite-choice\"]"));
+        satellites.get(1).click();
+    }
+    public void  chooseSecondSatellite (){
+        List<WebElement> satellites = driver.findElements(By.xpath("//*[@class=\"satellite-selection-overflow-container__satellite-choice\"]"));
+        satellites.get(2).click();
+    }
+    public void  chooseAllSatellites (){
+        List<WebElement> satellites = driver.findElements(By.xpath("//*[@class=\"satellite-selection-overflow-container__satellite-choice\"]"));
+        satellites.get(0).click();
+    }
 
 //    public void choosingBrowserOS () {
 //        String OS = System.getProperty("os.name");

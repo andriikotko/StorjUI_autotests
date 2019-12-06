@@ -54,7 +54,19 @@ public class NodeFunctionalTests {
         String OS = System.getProperty("os.name");
         String chosingOS = "";
         if (OS.equals("Linux")){
-            chosingOS = NodeDashboardPage.GECKODRIVERPATH;
+            switch (browser){
+                case "Firefox":
+                    chosingOS=NodeDashboardPage.GECKODRIVERPATH;
+                    break;
+                case "Chrome":
+                    chosingOS=NodeDashboardPage.CHROMEDRIVERPATH;
+                    break;
+                case "Opera":
+                    chosingOS=NodeDashboardPage.OPERADRIVERPATH;
+                    break;
+                default:
+                    chosingOS = "";
+            }
         }
         else if (OS.substring(0,4).equals("Windo")){
             chosingOS = NodeDashboardPage.CHROMEDRIVERPATHWIN;
@@ -111,7 +123,7 @@ public class NodeFunctionalTests {
     }
 
     @Test
-    public void compareSatteliteIDTest() throws IOException {
+    public void compareFirstSatteliteNameTest() throws IOException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         String OS = System.getProperty("os.name");
         String path = "";
@@ -130,12 +142,13 @@ public class NodeFunctionalTests {
 
         while ((satelliteIDFromFile = bufferedReader.readLine())!= null){
             if (satelliteIDFromFile.startsWith("storage.whitelisted-satellites:")){
-                satelliteIDFromFile=satelliteIDFromFile.substring(32,satelliteIDFromFile.indexOf("@"));
+                satelliteIDFromFile=satelliteIDFromFile.substring(satelliteIDFromFile.indexOf("@")+1, satelliteIDFromFile.indexOf(","));
                 break;
             }
         }
         nodeDashboardPage.choosingSatelliteContainer.click();
-        String satelliteFromPage = nodeDashboardPage.currentSatellite.getText();
+        nodeDashboardPage.chooseFirstSatellite();
+        String satelliteFromPage = nodeDashboardPage.currentSatellite.getText().substring(23);
 
         Assert.assertEquals(satelliteFromPage, satelliteIDFromFile);
     }
@@ -212,6 +225,41 @@ public class NodeFunctionalTests {
         driver.switchTo().window(tabs2.get(1));
         Assert.assertTrue(driver.getCurrentUrl().startsWith("https://etherscan.io/address/"));
         Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"body\"]/footer/div/div[1]/div[1]/div/div[1]/span")).getText(), "Powered by Ethereum");
+    }
+
+    @Test
+    public void refreshButtonWorkTestg(){
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        nodeDashboardPage.refreshButton.click();
+
+        nodeDashboardPage.statusInfoTick.click();
+        String lastpingedTime = nodeDashboardPage.lastPingedData.getText();
+
+        Assert.assertEquals(lastpingedTime,"0m ago");
+    }
+
+    @Test
+    public void ingress_egressClicking () throws InterruptedException {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Assert.assertTrue(nodeDashboardPage.bandwidthEgress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
+        Assert.assertTrue(nodeDashboardPage.bandwidthIngress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
+
+        nodeDashboardPage.bandwidthEgress.click();
+        Assert.assertTrue(nodeDashboardPage.bandwidthEgress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item egress-chart-shown"));
+
+        nodeDashboardPage.bandwidthIngress.click();
+        Thread.sleep(1000);
+        Assert.assertTrue(nodeDashboardPage.bandwidthIngress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item ingress-chart-shown"));
+        Assert.assertTrue(nodeDashboardPage.bandwidthEgress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
+
+        nodeDashboardPage.bandwidthEgress.click();
+        Thread.sleep(1000);
+        Assert.assertTrue(nodeDashboardPage.bandwidthIngress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
+        Assert.assertTrue(nodeDashboardPage.bandwidthEgress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item egress-chart-shown"));
+
+        nodeDashboardPage.bandwidthEgress.click();
+        Thread.sleep(1000);
+        Assert.assertTrue(nodeDashboardPage.bandwidthEgress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
     }
 
 

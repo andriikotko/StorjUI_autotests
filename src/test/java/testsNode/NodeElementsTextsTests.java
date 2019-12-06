@@ -1,6 +1,7 @@
 package testsNode;
 
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -115,6 +116,9 @@ public class NodeElementsTextsTests {
         Assert.assertEquals(nodeDashboardPage.diskSpaceHeader.getText(), "Disk Space Used This Month");
         Assert.assertTrue(nodeDashboardPage.diskSpaceData.getText().endsWith("*h"));
 
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
+
         Assert.assertEquals(nodeDashboardPage.remainingHeader.getText(), "Remaining on the Node");
         Assert.assertEquals(nodeDashboardPage.bandwidthRemainingText.getText(), "Bandwidth Remaining");
         Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.getText().endsWith("B"));
@@ -195,7 +199,10 @@ public class NodeElementsTextsTests {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
-        nodeDashboardPage.currentSatellite.click();
+        nodeDashboardPage.chooseFirstSatellite();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
         Thread.sleep(1000);
 
         Assert.assertEquals(nodeDashboardPage.auditUptimeHeader.getText(),"Uptime & Audit Checks by Satellite");
@@ -210,7 +217,10 @@ public class NodeElementsTextsTests {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
-        nodeDashboardPage.currentSatellite.click();
+        nodeDashboardPage.chooseFirstSatellite();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
         Thread.sleep(1000);
 
         Actions action = new Actions(driver);
@@ -224,7 +234,10 @@ public class NodeElementsTextsTests {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
-        nodeDashboardPage.currentSatellite.click();
+        nodeDashboardPage.chooseFirstSatellite();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.auditChecksHintTick).click().perform();
