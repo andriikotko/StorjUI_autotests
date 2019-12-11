@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class HomePage {
 
@@ -55,6 +56,8 @@ public class HomePage {
     public WebElement toggleAccount_DropDown;
     @FindBy(how = How.XPATH, using ="//*[@id=\"accountDropdownButton\"]/div/h1")
     public WebElement currentUserName;
+    @FindBy(how = How.XPATH, using ="(//*[@id = \"projectDropdownButton\"])[2]")
+    public WebElement currentProjectName;
     @FindBy(how = How.XPATH, using ="//*[@id=\"accountDropdownButton\"]/div/div[1]/h1")
     public WebElement currentUserFirstSymbol;
     @FindBy(how= How.XPATH,using ="//*[@id=\"accountDropdown\"]/div/div[1]")
@@ -122,6 +125,27 @@ public class HomePage {
         loginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
         loginPage.btn_Login.click();
         Thread.sleep(4500);
+    }
+
+    public void createUserWithProjectLimit_1 (){
+        Process p;
+        try {
+            String[] cmd = { "sh", "/home/andrii/Downloads/scrips/storj_setup_projectLimit_1.sh"};
+            p = Runtime.getRuntime().exec(cmd);
+            p.waitFor();
+            BufferedReader reader=new BufferedReader(new InputStreamReader(
+                    p.getInputStream()));
+            String line;
+            while((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void gotoRegisterPage (){

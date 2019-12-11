@@ -12,10 +12,22 @@ public class NewProjectFlow {
     public WebElement project_Name_input;
     @FindBy(how = How.XPATH, using = "//*[@id=\"Description\"]")
     public WebElement project_Description_input;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"newProjectPopup\"]/div[2]/div[3]/div[2]")
+    @FindBy(how = How.XPATH, using = "//*[text() = \"Next\"]")
     public WebElement create_Project_Button;
-    @FindBy(how = How.XPATH, using = "//*[@id=\"successfulProjectCreationPopup\"]/div[3]")
+    @FindBy(how = How.XPATH, using = "//*[@class = \"project-creation-success-popup__close-cross-container\"]")
     public WebElement close_cross_button_on_Congrats;
+    @FindBy(how = How.XPATH, using = "//*[@class = \"project-creation-success-popup__form-container__main-label-text\"]")
+    public WebElement congratsHeader;
+    @FindBy(how = How.XPATH, using = "//*[@class = \"project-creation-success-popup__form-container__confirmation-text\"]")
+    public WebElement congratsText;
+    @FindBy(how = How.XPATH, using = "//*[@class = \"project-creation-success-popup__form-container__confirmation-text__link\"]")
+    public WebElement congratsLinkToUplink;
+    @FindBy(how = How.XPATH, using = "//*[@class = \"project-creation-success-popup__info-panel-container\"]")
+    public WebElement congratsImage;
+    @FindBy(how = How.XPATH, using = "//*[@class = \"container white\"]")
+    public WebElement congratsLaterButton;
+    @FindBy(how = How.XPATH, using = "//*[@class = \"container\"]")
+    public WebElement congratsAPICreateButton;
 
 
 

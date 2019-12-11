@@ -122,7 +122,7 @@ public class NodeElementsVisibilityTests {
         Assert.assertTrue(nodeDashboardPage.diskSpaceHeader.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.diskSpaceData.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.diskSpaceGraph.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.remainingHeader.isDisplayed());
+      //  Assert.assertTrue(nodeDashboardPage.remainingHeader.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.bandwidthRemainingText.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.bandwidthRemainBar.isDisplayed());

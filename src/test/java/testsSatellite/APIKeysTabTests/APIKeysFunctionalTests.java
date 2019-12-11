@@ -194,7 +194,7 @@ public class APIKeysFunctionalTests {
     }
 
     @Test
-    public void deleteAPIKeyDeleteTest() {
+    public void deleteAPIKeyDeleteTest() throws InterruptedException {
         HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
         APIKeysTab APIkeysTab = PageFactory.initElements(driver, APIKeysTab.class);
         HomePage.API_Keys_Tab.click();
@@ -205,6 +205,7 @@ public class APIKeysFunctionalTests {
 
         APIkeysTab.deleteAPIKeyButton.click();
         APIkeysTab.deleteAPIKeyConfirmation.click();
+        Thread.sleep(1000);
 
         List<WebElement> list2 = driver.findElements(By.xpath("//*[@class=\"apikey-item-container item-component__item\"]"));
 

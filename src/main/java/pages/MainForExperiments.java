@@ -24,17 +24,19 @@ public class MainForExperiments {
     public static void main(String[] args) throws InterruptedException, IOException {
 
         System.out.println(System.getProperty("os.name"));
+//
+//      WebDriver driver;
+//
+//        System.setProperty("webdriver.edge.driver", NodeDashboardPage.EDGEDRIVERPATH);
+//        driver = new EdgeDriver();
+//        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
+//        driver.get(NodeDashboardPage.DASHBOARDURL);
 
-      WebDriver driver;
 
-        System.setProperty("webdriver.edge.driver", NodeDashboardPage.EDGEDRIVERPATH);
-        driver = new EdgeDriver();
-        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
-        driver.get(NodeDashboardPage.DASHBOARDURL);
-
+        //executing bash script
 //        Process p;
 //        try {
-//            String[] cmd = { "sh", "/home/andrii/Downloads/scrips/storj_setup2.sh"};
+//            String[] cmd = { "sh", "/home/andrii/Downloads/scrips/storj_setup_projectLimit_1.sh"};
 //            p = Runtime.getRuntime().exec(cmd);
 //            p.waitFor();
 //            BufferedReader reader=new BufferedReader(new InputStreamReader(
@@ -51,7 +53,7 @@ public class MainForExperiments {
 //            e.printStackTrace();
 //        }
 
-//
+//          ANOTHER WAY EXECUTE BASH SCRIPT
 //        Process p;
 //
 //            String[] cmd = { "sh", "/home/andrii/Downloads/scrips/storj_setup.sh"};
@@ -106,9 +108,9 @@ public class MainForExperiments {
 
 
 
-//
-//        // connection to databace with SQLITE
-//        int database_result =0;
+
+        // connection to databace with SQLITE
+//        long database_result =0;
 //        Connection conn = null;
 //        try {
 //            // db parameters
@@ -119,9 +121,10 @@ public class MainForExperiments {
 //            System.out.println("Connection to SQLite has been established.");
 //
 //            Statement stmt = conn.createStatement();
-//            ResultSet rs = stmt.executeQuery("select amount from bandwidth_usage_rollups");
-//            System.out.println(rs.getInt("amount"));
-//            database_result = rs.getInt("amount");
+//            ResultSet rs = stmt.executeQuery("select SUM(amount) from bandwidth_usage_rollups where action = 3");
+//
+//            System.out.println(rs.getLong(1));
+//            database_result = rs.getLong("amount");
 //
 //        } catch (SQLException e) {
 //            System.out.println(e.getMessage());

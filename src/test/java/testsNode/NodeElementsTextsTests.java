@@ -119,7 +119,7 @@ public class NodeElementsTextsTests {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
 
-        Assert.assertEquals(nodeDashboardPage.remainingHeader.getText(), "Remaining on the Node");
+      //  Assert.assertEquals(nodeDashboardPage.remainingHeader.getText(), "Remaining on the Node");
         Assert.assertEquals(nodeDashboardPage.bandwidthRemainingText.getText(), "Bandwidth Remaining");
         Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.getText().endsWith("B"));
 

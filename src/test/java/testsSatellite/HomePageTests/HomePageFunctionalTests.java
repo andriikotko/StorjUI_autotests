@@ -9,8 +9,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.Flows.NewProjectFlow;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -25,41 +28,40 @@ public class HomePageFunctionalTests {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp( @Optional("Chrome") String browser) throws Exception {
+    public void setUp(@Optional("Chrome") String browser) throws Exception {
 
         String OS = System.getProperty("os.name");
         String chosingOS = "";
-        if (OS.equals("Linux")){
+        if (OS.equals("Linux")) {
             chosingOS = "";
         }
-        if (OS.substring(0,4).equals("Windo")){
+        if (OS.substring(0, 4).equals("Windo")) {
             chosingOS = ".exe";
         }
         //Check if parameter passed from TestNG is 'firefox'
-        if(browser.equalsIgnoreCase("Firefox")){
+        if (browser.equalsIgnoreCase("Firefox")) {
             //create firefox instance
-            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH+chosingOS);
+            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH + chosingOS);
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
-        else if(browser.equalsIgnoreCase("Chrome")){
+        else if (browser.equalsIgnoreCase("Chrome")) {
             //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver",HomePage.CHROMEDRIVERPATH+chosingOS);
+            System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH + chosingOS);
             //create chrome instance
             driver = new ChromeDriver();
         }
         //  Check if parameter passed as 'Opera'
-        else if(browser.equalsIgnoreCase("Opera")){
+        else if (browser.equalsIgnoreCase("Opera")) {
             //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH+chosingOS);
+            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH + chosingOS);
             driver = new OperaDriver();
-        }
-        else{
+        } else {
             //If no browser passed throw exception
             throw new Exception("Browser is not correct");
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(HomePage.Width,HomePage.Height));
+        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
         driver.get(HomePage.HOMEURL);
 
         Thread.sleep(3000);
@@ -74,21 +76,21 @@ public class HomePageFunctionalTests {
     }
 
     @Test
-    public void hideResoursesButtonWorkTest(){
+    public void hideResoursesButtonWorkTest() {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> list1 = new ArrayList<>(driver.findElements(By.xpath("//*[@id=\"app\"]/div/div/div[1]/div/a")));
         Actions action = new Actions(driver);
         action.moveToElement(homePage.resoursesContainer).click().perform();
-       // Thread.sleep(3000);
+        // Thread.sleep(3000);
         action.moveToElement(homePage.resoursesHide_Show).click().perform();
         //Thread.sleep(3000);
         Assert.assertEquals(homePage.resoursesHide_Show.getText(), "Show");
         List<WebElement> list2 = new ArrayList<>(driver.findElements(By.xpath("//*[@id=\"app\"]/div/div/div[1]/div/a")));
-        Assert.assertEquals(list1.size(), list2.size()+2);
+        Assert.assertEquals(list1.size(), list2.size() + 2);
     }
 
     @Test
-    public void hideAccountButtonWorkTest()  {
+    public void hideAccountButtonWorkTest() {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         List<WebElement> list1 = new ArrayList<>(driver.findElements(By.xpath("//*[@class=\"navigation-area__account-area\"]/a")));
         Actions action = new Actions(driver);
@@ -98,7 +100,7 @@ public class HomePageFunctionalTests {
         //Thread.sleep(3000);
         Assert.assertEquals(homePage.accountHide_Show.getText(), "Show");
         List<WebElement> list2 = new ArrayList<>(driver.findElements(By.xpath("//*[@class=\"navigation-area__account-area\"]/a")));
-        Assert.assertEquals(list1.size(), list2.size()+3);
+        Assert.assertEquals(list1.size(), list2.size() + 3);
     }
 
     @Test
@@ -107,51 +109,90 @@ public class HomePageFunctionalTests {
         homePage.toggleAccount_DropDown.click();
 
         homePage.account_Settings.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/account/profile");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:" + (homePage.satellitePort()) + "/account/profile");
 
         homePage.toggleAccount_DropDown.click();
         homePage.button_LogOut.click();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/login");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:" + (homePage.satellitePort()) + "/login");
     }
 
     @Test
     public void switchingBetweenPages() throws IOException {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         homePage.team_tab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/project-members");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:" + (homePage.satellitePort()) + "/project-members");
         homePage.API_Keys_Tab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/api-keys");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:" + (homePage.satellitePort()) + "/api-keys");
         homePage.buckets.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/buckets");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:" + (homePage.satellitePort()) + "/buckets");
         homePage.profileTab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/account/profile");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:" + (homePage.satellitePort()) + "/account/profile");
         homePage.billingTab.click();
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:"+ (homePage.satellitePort()) +"/account/billing");
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:" + (homePage.satellitePort()) + "/account/billing");
     }
 
     @Test
-    public void switchToDocsTest (){
+    public void switchToDocsTest() {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         homePage.docs_Tab.click();
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        Assert.assertEquals(driver.getCurrentUrl(),"https://github.com/storj/docs/blob/master/Vanguard-Release-Setup-Instructions.md");
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"readme\"]/article/h1")).getText(),"Vanguard Alpha Release - Setup Instructions!");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://github.com/storj/docs/blob/master/Vanguard-Release-Setup-Instructions.md");
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"readme\"]/article/h1")).getText(), "Vanguard Alpha Release - Setup Instructions!");
     }
 
     @Test
-    public void referenceToSupport(){
+    public void referenceToSupport() {
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         Assert.assertTrue(homePage.support_Tab.getAttribute("href").startsWith("mailto:support@storj.io"));
     }
 
+    @Test
+    public void moreThanProjectLimitCreation() throws InterruptedException {
 
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        NewProjectFlow newProjectFlow= PageFactory.initElements(driver, NewProjectFlow.class);
+        homePage.createUserWithProjectLimit_1();
+        homePage.toggleAccount_DropDown.click();
+        homePage.button_LogOut.click();
 
+        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
+        loginPage.userNameField.sendKeys("test101@g.com");
+        loginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
+        loginPage.btn_Login.click();
+        Thread.sleep(4500);
+        WebDriverWait wait = new WebDriverWait(driver,10);
+
+        if (homePage.currentProjectName.getText().contentEquals("You have no projects")){
+            homePage.btn_New_Project.click();
+            newProjectFlow.project_Name_input.sendKeys("TestProject");
+            newProjectFlow.project_Description_input.sendKeys("TestDescription");
+            newProjectFlow.create_Project_Button.click();
+            newProjectFlow.close_cross_button_on_Congrats.click();
+
+            homePage.btn_New_Project.click();
+            newProjectFlow.project_Name_input.sendKeys("TestProject1");
+            newProjectFlow.project_Description_input.sendKeys("TestDescription1");
+            newProjectFlow.create_Project_Button.click();
+
+        } else {
+
+            homePage.btn_New_Project.click();
+            newProjectFlow.project_Name_input.sendKeys("TestProject");
+            newProjectFlow.project_Description_input.sendKeys("TestDescription");
+
+            newProjectFlow.create_Project_Button.click();
+
+        }
+        wait.until(ExpectedConditions.visibilityOf(homePage.Error_Notification));
+        Assert.assertEquals(homePage.Error_Notification.getText(), "Project created successfully!");
+    }
 
 
     @AfterMethod
-    public void tearDown()
-    {driver.quit();}
+    public void tearDown() {
+        driver.quit();
+    }
 }
