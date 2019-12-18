@@ -187,7 +187,7 @@ public class HomePageFunctionalTests {
 
         }
         wait.until(ExpectedConditions.visibilityOf(homePage.Error_Notification));
-        Assert.assertEquals(homePage.Error_Notification.getText(), "Project created successfully!");
+        Assert.assertEquals(homePage.Error_Notification.getText(), "Sorry, during the Pioneer release you have a limited number of projects");
     }
 
 

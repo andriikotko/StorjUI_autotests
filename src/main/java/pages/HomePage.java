@@ -117,6 +117,18 @@ public class HomePage {
     @FindBy (how = How.XPATH, using = "//*[@class=\"navigation-area__account-title__button\"]")
     public WebElement accountHide_Show;
 
+    //BANNER ADD CARD
+    @FindBy (how = How.XPATH, using = "//*[@class=\"banner\"]")
+    public WebElement bannerAddCard;
+    @FindBy (how = How.XPATH, using = "//*[@class=\"banner__text\"]")
+    public WebElement bannerAddCardHeader;
+    @FindBy (how = How.XPATH, using = "//*[@class=\"banner__additional-text\"]")
+    public WebElement bannerAddCardText;
+    @FindBy (how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div.banner > svg")
+    public WebElement bannerAddCardIcon;
+
+
+
 
     public void loginToAccountWithValidCreds () throws InterruptedException {
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);

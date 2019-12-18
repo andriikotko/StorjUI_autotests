@@ -1,15 +1,14 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.NodeDashboard.NodeDashboardPage;
 import pages.Tabs.AccountTab_Billing;
 
@@ -107,38 +106,116 @@ public class MainForExperiments {
 //        System.out.println(satellitePort);
 
 
+//
+        //         connection to databace with SQLITE
+        long database_result = 0;
+        Connection conn = null;
+        try {
+            // db parameters
+            String url = "jdbc:sqlite:/home/andrii/.local/share/storj/local-network/storagenode/0/storage/bandwidth.db";
+            // create a connection to the database
+            conn = DriverManager.getConnection(url);
 
+            System.out.println("Connection to SQLite has been established.");
 
-        // connection to databace with SQLITE
-//        long database_result =0;
-//        Connection conn = null;
-//        try {
-//            // db parameters
-//            String url = "jdbc:sqlite:/home/andrii/.local/share/storj/local-network/storagenode/0/storage/bandwidth.db";
-//            // create a connection to the database
-//            conn = DriverManager.getConnection(url);
-//
-//            System.out.println("Connection to SQLite has been established.");
-//
-//            Statement stmt = conn.createStatement();
-//            ResultSet rs = stmt.executeQuery("select SUM(amount) from bandwidth_usage_rollups where action = 3");
-//
-//            System.out.println(rs.getLong(1));
-//            database_result = rs.getLong("amount");
-//
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        } finally {
-//            try {
-//                if (conn != null) {
-//                    conn.close();
-//                }
-//            } catch (SQLException ex) {
-//                System.out.println(ex.getMessage());
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select SUM(amount) from bandwidth_usage_rollups");
+
+            System.out.println(rs.getLong(1));
+            //database_result = rs.getLong("amount");
+            database_result = rs.getLong(1);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+
+        System.out.println(database_result);
+
+        database_result = 12345678;
+        String someresult = Double.toString(database_result / 1.0);
+        int rozryad = someresult.indexOf(".");
+        System.out.println(someresult);
+        System.out.println(rozryad);
+
+        String shortValue = "";
+        Double shownResult1 = database_result / 1.0;
+        String shownResult = "";
+        System.out.println(shownResult);
+//        if (someresult.indexOf(".")>0){
+//            switch (rozryad){
+//                case (rozryad<=3 && rozryad>1):
+//                    shortValue = " Bytes";
+//                    shownResult = Double.toString(shownResult1)+ shortValue;
+//                    break;
+//                case (rozryad<=6 && rozryad>3):
+//                    shortValue = " kB";
+//                    shownResult = Math.round((shownResult1/1000)*100.0)/100.0 + shortValue;
+//                    break;
+//                case rozryad<=9 && rozryad>6:
+//                    shortValue = " MB";
+//                    shownResult = Math.round((shownResult1/1000000)*100.0)/100.0 + shortValue;
+//                    break;
+//                case rozryad<=12 && rozryad>9:
+//                    shortValue = " GB";
+//                    shownResult = Math.round((shownResult1/1000000000)*100.0)/100.0 + shortValue;
+//                    break;
+//                default:
+//                    shownResult = "something went wrong";
 //            }
 //        }
-//
-//        System.out.println(database_result);
+
+        if (rozryad <= 3 && rozryad > 1) {
+            shortValue = " Bytes";
+            shownResult = Double.toString(shownResult1) + shortValue;
+            System.out.println(shownResult);
+        }
+
+
+        if (rozryad <= 6 && rozryad > 3) {
+            shortValue = " kB";
+            shownResult = Math.round((shownResult1 / 1000) * 100.0) / 100.0 + shortValue;
+            System.out.println(shownResult);
+        }
+        if (rozryad <= 9 && rozryad > 6) {
+            shortValue = " MB";
+            shownResult = Math.round((shownResult1 / 1000000) * 100.0) / 100.0 + shortValue;
+            System.out.println(shownResult);
+
+        }
+        if (rozryad <= 12 && rozryad > 9) {
+            shortValue = " GB";
+            shownResult = Math.round((shownResult1 / 1000000000) * 100.0) / 100.0 + shortValue;
+            System.out.println(shownResult);
+        } else {
+            shownResult = "something went wrong";
+        }
+        System.out.println(shownResult);
+
+
+
+
+        //SCROLL TO ELEMENT
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
+
+
+        // WEBDRIVER WAIT
+//        WebDriverWait wait = new WebDriverWait(driver,10);
+//        wait.until(ExpectedConditions.visibilityOf(loginPage.notificationArea));
+
+
+
+
+
+
     }
 }
 

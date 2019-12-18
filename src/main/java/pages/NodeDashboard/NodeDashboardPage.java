@@ -102,7 +102,7 @@ public class NodeDashboardPage {
     public WebElement bandwidthGraph;
     @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__title-area__title\"])[2]")
     public WebElement diskSpaceHeader;
-    @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__amount\"])[2]/b")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"chart-container__amount disk-space-amount\"]/b")
     public WebElement diskSpaceData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"disk-space-chart\"]")
     public WebElement diskSpaceGraph;
