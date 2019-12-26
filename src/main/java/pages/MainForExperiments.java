@@ -1,5 +1,9 @@
 package pages;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import okhttp3.Response;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -13,6 +17,7 @@ import pages.NodeDashboard.NodeDashboardPage;
 import pages.Tabs.AccountTab_Billing;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,8 +26,9 @@ import java.util.concurrent.TimeUnit;
 
 public class MainForExperiments {
     public static void main(String[] args) throws InterruptedException, IOException {
+        final HttpClient httpClient = new HttpClient();
 
-        System.out.println(System.getProperty("os.name"));
+//        System.out.println(System.getProperty("os.name"));
 //
 //      WebDriver driver;
 //
@@ -30,6 +36,34 @@ public class MainForExperiments {
 //        driver = new EdgeDriver();
 //        driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));
 //        driver.get(NodeDashboardPage.DASHBOARDURL);
+
+
+
+
+//        static String test() {
+            final String url = "http://localhost:10002/registrationToken/?projectsLimit=2";
+            final String token = " secure_token";
+
+            try (final Response response = httpClient.post(url, "",token)) {
+                if (response.code() == 200) {
+                    System.out.println(response.body().string());
+                }
+
+       }
+
+
+
+        // CURL REQUEST
+//
+//        String command = "curl --header \"Authorization: secure_token\" http://localhost:10002/registrationToken/?projectsLimit=2";
+//        Process process = Runtime.getRuntime().exec(command);
+//        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+//        System.out.println(process.exitValue());
+//        String strTemp = "";
+//        while (null != (strTemp = br.readLine())) {
+//            System.out.println(strTemp);}
+//
+//        process.destroy();
 
 
         //executing bash script
@@ -108,47 +142,50 @@ public class MainForExperiments {
 
 //
         //         connection to databace with SQLITE
-        long database_result = 0;
-        Connection conn = null;
-        try {
-            // db parameters
-            String url = "jdbc:sqlite:/home/andrii/.local/share/storj/local-network/storagenode/0/storage/bandwidth.db";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
+//        long database_result = 0;
+//        Connection conn = null;
+//        try {
+//            // db parameters
+//            String url = "jdbc:sqlite:/home/andrii/.local/share/storj/local-network/storagenode/0/storage/bandwidth.db";
+//            // create a connection to the database
+//            conn = DriverManager.getConnection(url);
+//
+//            System.out.println("Connection to SQLite has been established.");
+//
+//            Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery("select SUM(amount) from bandwidth_usage_rollups");
+//
+//            System.out.println(rs.getLong(1));
+//            //database_result = rs.getLong("amount");
+//            database_result = rs.getLong(1);
+//
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        } finally {
+//            try {
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//            } catch (SQLException ex) {
+//                System.out.println(ex.getMessage());
+//            }
+//        }
+//
+//        System.out.println(database_result);
+//
+//        database_result = 12345678;
+//        String someresult = Double.toString(database_result / 1.0);
+//        int rozryad = someresult.indexOf(".");
+//        System.out.println(someresult);
+//        System.out.println(rozryad);
+//
+//        String shortValue = "";
+//        Double shownResult1 = database_result / 1.0;
+//        String shownResult = "";
+//        System.out.println(shownResult);
 
-            System.out.println("Connection to SQLite has been established.");
 
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select SUM(amount) from bandwidth_usage_rollups");
 
-            System.out.println(rs.getLong(1));
-            //database_result = rs.getLong("amount");
-            database_result = rs.getLong(1);
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-
-        System.out.println(database_result);
-
-        database_result = 12345678;
-        String someresult = Double.toString(database_result / 1.0);
-        int rozryad = someresult.indexOf(".");
-        System.out.println(someresult);
-        System.out.println(rozryad);
-
-        String shortValue = "";
-        Double shownResult1 = database_result / 1.0;
-        String shownResult = "";
-        System.out.println(shownResult);
 //        if (someresult.indexOf(".")>0){
 //            switch (rozryad){
 //                case (rozryad<=3 && rozryad>1):
@@ -171,33 +208,33 @@ public class MainForExperiments {
 //                    shownResult = "something went wrong";
 //            }
 //        }
-
-        if (rozryad <= 3 && rozryad > 1) {
-            shortValue = " Bytes";
-            shownResult = Double.toString(shownResult1) + shortValue;
-            System.out.println(shownResult);
-        }
-
-
-        if (rozryad <= 6 && rozryad > 3) {
-            shortValue = " kB";
-            shownResult = Math.round((shownResult1 / 1000) * 100.0) / 100.0 + shortValue;
-            System.out.println(shownResult);
-        }
-        if (rozryad <= 9 && rozryad > 6) {
-            shortValue = " MB";
-            shownResult = Math.round((shownResult1 / 1000000) * 100.0) / 100.0 + shortValue;
-            System.out.println(shownResult);
-
-        }
-        if (rozryad <= 12 && rozryad > 9) {
-            shortValue = " GB";
-            shownResult = Math.round((shownResult1 / 1000000000) * 100.0) / 100.0 + shortValue;
-            System.out.println(shownResult);
-        } else {
-            shownResult = "something went wrong";
-        }
-        System.out.println(shownResult);
+//
+//        if (rozryad <= 3 && rozryad > 1) {
+//            shortValue = " Bytes";
+//            shownResult = Double.toString(shownResult1) + shortValue;
+//            System.out.println(shownResult);
+//        }
+//
+//
+//        if (rozryad <= 6 && rozryad > 3) {
+//            shortValue = " kB";
+//            shownResult = Math.round((shownResult1 / 1000) * 100.0) / 100.0 + shortValue;
+//            System.out.println(shownResult);
+//        }
+//        if (rozryad <= 9 && rozryad > 6) {
+//            shortValue = " MB";
+//            shownResult = Math.round((shownResult1 / 1000000) * 100.0) / 100.0 + shortValue;
+//            System.out.println(shownResult);
+//
+//        }
+//        if (rozryad <= 12 && rozryad > 9) {
+//            shortValue = " GB";
+//            shownResult = Math.round((shownResult1 / 1000000000) * 100.0) / 100.0 + shortValue;
+//            System.out.println(shownResult);
+//        } else {
+//            shownResult = "something went wrong";
+//        }
+//        System.out.println(shownResult);
 
 
 

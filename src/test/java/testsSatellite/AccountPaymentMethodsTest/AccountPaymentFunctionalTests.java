@@ -177,6 +177,26 @@ public class AccountPaymentFunctionalTests {
     }
 
     @Test
+    public void proceedingToBillingWithNoPaymentMethods () throws InterruptedException {
+        Thread.sleep(5500);
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+        homePage.toggleAccount_DropDown.click();
+        homePage.button_LogOut.click();
+
+        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+
+        loginPage.userNameField.sendKeys("test888@g.com"); //without added card account
+        loginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
+        loginPage.btn_Login.click();
+        Thread.sleep(4500);
+
+        homePage.bannerLinkToBilling.click();
+        Assert.assertTrue(driver.getCurrentUrl().endsWith("/account/billing"));
+    }
+
+
+    @Test
     public void presence_disapearingAddCardNotification() throws InterruptedException {
         Thread.sleep(5500);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
@@ -192,8 +212,8 @@ public class AccountPaymentFunctionalTests {
         Thread.sleep(4500);
 
         Assert.assertTrue(homePage.bannerAddCard.isDisplayed());
-        Assert.assertEquals(homePage.bannerAddCardHeader.getText(), "You have no payment method added.");
-        Assert.assertEquals(homePage.bannerAddCardText.getText(), "To start work with your account please add Credit Card or add $50.00 or more worth of STORJ tokens to your balance.");
+        Assert.assertEquals(homePage.bannerAddCardHeader.getText(), "We’ve Now Added Billing!");
+        Assert.assertEquals(homePage.bannerAddCardText.getText(), "Your attention is required. Add a credit card to set up your account.");
         Assert.assertTrue(homePage.bannerAddCardIcon.isDisplayed());
 
         homePage.profileTab.click();
@@ -214,7 +234,10 @@ public class AccountPaymentFunctionalTests {
 
         Thread.sleep(5000);
 
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@class=\"dashboard-container__main-area\"]/div")).getAttribute("class").equals("dashboard-container__main-area__content"));
+        //Assert.assertTrue(driver.findElement(By.xpath("//*[@class=\"dashboard-container__main-area\"]/div")).getAttribute("class").equals("dashboard-container__main-area__content"));
+
+        List<WebElement> list =  driver.findElements(By.xpath("//*[@class=\"dashboard-container__main-area__banner-area\"]/div"));
+        Assert.assertEquals(list.size(),0);
 
 
     }

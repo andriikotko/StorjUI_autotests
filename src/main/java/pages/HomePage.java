@@ -124,7 +124,9 @@ public class HomePage {
     public WebElement bannerAddCardHeader;
     @FindBy (how = How.XPATH, using = "//*[@class=\"banner__additional-text\"]")
     public WebElement bannerAddCardText;
-    @FindBy (how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div.banner > svg")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"banner__link\"]")
+    public WebElement bannerLinkToBilling;
+    @FindBy (how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div.dashboard-container__main-area__banner-area > div > svg")
     public WebElement bannerAddCardIcon;
 
 
