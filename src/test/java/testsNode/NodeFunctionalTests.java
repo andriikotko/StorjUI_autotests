@@ -141,7 +141,7 @@ public class NodeFunctionalTests {
         String satelliteIDFromFile;
 
         while ((satelliteIDFromFile = bufferedReader.readLine())!= null){
-            if (satelliteIDFromFile.startsWith("storage.whitelisted-satellites:")){
+            if (satelliteIDFromFile.startsWith("storage2.trust.sources:")){
                 satelliteIDFromFile=satelliteIDFromFile.substring(satelliteIDFromFile.indexOf("@")+1, satelliteIDFromFile.indexOf(","));
                 break;
             }
@@ -190,11 +190,12 @@ public class NodeFunctionalTests {
         String browserName = cap.getBrowserName().toLowerCase();
         if(browserName.equalsIgnoreCase("safari")){
             Thread.sleep(5000);}
+        Thread.sleep(5000);
 
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         Assert.assertEquals(driver.getCurrentUrl(),"https://forum.storj.io/c/sno-category");
-        Assert.assertEquals(driver.findElement(By.cssSelector("#ember21 > span > span > span.badge-category.clear-badge > span")).getText(), "Storage Node Operators");
+        Assert.assertEquals(driver.findElement(By.cssSelector("#ember34 > span > span > span.badge-category.clear-badge > span")).getText(), "Storage Node Operators");
     }
 
     @Test

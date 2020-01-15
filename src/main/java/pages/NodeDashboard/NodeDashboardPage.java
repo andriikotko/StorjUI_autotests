@@ -38,11 +38,11 @@ public class NodeDashboardPage {
     public WebElement dashboardStorjLogo;
     @FindBy (how = How.XPATH, using = "//*[@alt=\"refresh image\"]")
     public WebElement refreshButton;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__node-id-container\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__right-area__node-id-container\"]")
     public WebElement nodeIDContainer;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__node-id-container__id\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__right-area__node-id-container__id\"]")
     public WebElement nodeID;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__node-id-container__title\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__right-area__node-id-container__title\"]")
     public WebElement nodeIDText;
     @FindBy (how = How.XPATH, using = "//*[@class=\"title__name__title\"]")
     public WebElement nodeHeader;
@@ -163,6 +163,11 @@ public class NodeDashboardPage {
     public WebElement auditCheckHintText;
     @FindBy (how = How.XPATH, using = "(//*[@class=\"checks-area-container__amount\"])[2]/b")
     public WebElement auditCheckData;
+
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info-area__blurred-checks\"]")
+    public WebElement auditCheckBlur;
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info-area__blurred-checks__title\"]")
+    public WebElement auditCheckBlurText;
 
 
     public void  chooseFirstSatellite (){

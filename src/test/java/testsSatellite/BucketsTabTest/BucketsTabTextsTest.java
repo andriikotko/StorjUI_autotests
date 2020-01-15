@@ -101,7 +101,7 @@ public class BucketsTabTextsTest {
             Assert.assertEquals(bucketsTab.bucketsNOtificationText.getText(), "Usage will appear within an hour of activity.");
             Assert.assertTrue(bucketsTab.bucketsSearch.getAttribute("placeholder").startsWith("Search Buckets"));
             Assert.assertEquals(bucketsTab.bucketNameHeader.getText(), "Bucket Name");
-            Assert.assertEquals(bucketsTab.storageUsedHeader.getText(), "Storage Used, GBh");
+            Assert.assertEquals(bucketsTab.storageUsedHeader.getText(), "Storage Used, GB");
             Assert.assertEquals(bucketsTab.egressUsedHeader.getText(), "Egress Used, GB");
             Assert.assertEquals(bucketsTab.objectsStoredHeader.getText(), "Objects Stored");
         }

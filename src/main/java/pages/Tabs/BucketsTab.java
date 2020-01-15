@@ -23,7 +23,7 @@ public class BucketsTab {
     public WebElement bucketsSearch;
     @FindBy(how = How.XPATH, using = "//*[text() = \"Bucket Name\"]")
     public WebElement bucketNameHeader;
-    @FindBy(how = How.XPATH, using = "//*[text() = \"Storage Used, GBh\"]")
+    @FindBy(how = How.XPATH, using = "//*[text() = \"Storage Used, GB\"]")
     public WebElement storageUsedHeader;
     @FindBy(how = How.XPATH, using = "//*[text() = \"Egress Used, GB\"]")
     public WebElement egressUsedHeader;

@@ -206,7 +206,7 @@ public class AccountPaymentFunctionalTests {
 
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-        loginPage.userNameField.sendKeys("test777@g.com"); //without added card account
+        loginPage.userNameField.sendKeys("test444@g.com"); //without added card account
         loginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
         loginPage.btn_Login.click();
         Thread.sleep(4500);

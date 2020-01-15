@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.ConnectionToPostgres;
 import pages.Flows.NewProjectFlow;
 import pages.HomePage;
 import pages.LoginPage;
@@ -152,8 +153,10 @@ public class HomePageFunctionalTests {
     public void moreThanProjectLimitCreation() throws InterruptedException {
 
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        ConnectionToPostgres sql = PageFactory.initElements(driver,ConnectionToPostgres.class);
         NewProjectFlow newProjectFlow= PageFactory.initElements(driver, NewProjectFlow.class);
         homePage.createUserWithProjectLimit_1();
+        sql.connectionToPostgres("UPDATE users SET Status = 1","status");
         homePage.toggleAccount_DropDown.click();
         homePage.button_LogOut.click();
 

@@ -18,15 +18,18 @@ import pages.Tabs.AccountTab_Billing;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import org.postgresql.jdbc4.Jdbc4Connection;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class MainForExperiments {
     public static void main(String[] args) throws InterruptedException, IOException {
-        final HttpClient httpClient = new HttpClient();
+
 
 //        System.out.println(System.getProperty("os.name"));
 //
@@ -38,24 +41,27 @@ public class MainForExperiments {
 //        driver.get(NodeDashboardPage.DASHBOARDURL);
 
 
+        // REQUEST FOR SECRET WITH HTTP CLIENT
 
-
-//        static String test() {
-            final String url = "http://localhost:10002/registrationToken/?projectsLimit=2";
-            final String token = " secure_token";
-
-            try (final Response response = httpClient.post(url, "",token)) {
-                if (response.code() == 200) {
-                    System.out.println(response.body().string());
-                }
-
-       }
+//        final HttpClient httpClient = new HttpClient();
+//        final String url = "http://localhost:10002/registrationToken/?projectsLimit=2";
+//        final String token = " secure_token";
+//        String secret = "";
+//
+//        try (final Response response = httpClient.post(url, "", token)) {
+//            if (response.code() == 200) {
+//                System.out.println(response.body().toString());
+//                secret = response.body().string();}
+//
+//            }
+//
+//        secret = (secret.split("\""))[3];
 
 
 
         // CURL REQUEST
 //
-//        String command = "curl --header \"Authorization: secure_token\" http://localhost:10002/registrationToken/?projectsLimit=2";
+//        String command = "curl --header \"Authorization: secure_token\" http://localhost:10002/registrationToken/?projectsLimit=2" ;
 //        Process process = Runtime.getRuntime().exec(command);
 //        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 //        System.out.println(process.exitValue());
@@ -185,7 +191,6 @@ public class MainForExperiments {
 //        System.out.println(shownResult);
 
 
-
 //        if (someresult.indexOf(".")>0){
 //            switch (rozryad){
 //                case (rozryad<=3 && rozryad>1):
@@ -237,8 +242,6 @@ public class MainForExperiments {
 //        System.out.println(shownResult);
 
 
-
-
         //SCROLL TO ELEMENT
 //        JavascriptExecutor js = (JavascriptExecutor) driver;
 //        js.executeScript("arguments[0].scrollIntoView();",accountTab_billing.depositHistoryViewAllButton);
@@ -248,9 +251,43 @@ public class MainForExperiments {
 //        WebDriverWait wait = new WebDriverWait(driver,10);
 //        wait.until(ExpectedConditions.visibilityOf(loginPage.notificationArea));
 
-
-
-
+            // CONNECTION TO POSTGRESql
+//        Connection conn = null;
+//        try {// db parameters
+//            String url = "jdbc:postgresql://localhost/test123?sslmode=disable";
+//            // create a connection to the database
+//            conn = DriverManager.getConnection(url, "postgres", "postgres");
+//
+//            System.out.println("Connection to postgresql has been established.");
+//
+//            String schema = "satellite/0";
+//
+//            Statement stmt = conn.createStatement();
+//
+//            stmt.execute("set search_path to '" + schema + "'");
+//
+//            System.out.println("done");
+//
+//            ResultSet rs = stmt.executeQuery("select email from users where short_name like 'shortName2%'");
+//
+//            while (rs.next()){
+//                String mail = rs.getString("email");
+//                System.out.println(mail);
+//            }
+//            //database_result = rs.getLong("amount");
+//           // database_result = rs.getLong(1);
+//
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        } finally {
+//            try {
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//            } catch (SQLException ex) {
+//                System.out.println(ex.getMessage());
+//            }
+//        }
 
 
     }

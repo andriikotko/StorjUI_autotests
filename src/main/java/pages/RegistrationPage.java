@@ -76,6 +76,24 @@ public class RegistrationPage {
     public WebElement errorNotification;
 
 
+    // CHECK YOUR EMAIL POPUP
+    @FindBy(how = How.CSS,using ="#successfulRegistrationPopup > div > div.register-success-popup__info-panel-container > svg")
+    public WebElement checkEmailLogo;
+    @FindBy(how = How.XPATH,using ="//*[@class = \"register-success-popup__form-container__title\"]")
+    public WebElement checkEmailHeader;
+    @FindBy(how = How.XPATH,using ="//*[@class = \"register-success-popup__form-container__text\"]")
+    public WebElement checkEmailText;
+    @FindBy(how = How.XPATH,using ="//*[@class = \"register-success-popup__form-container__text\"]/b")
+    public WebElement checkEmailTimer;
+    @FindBy(how = How.XPATH,using ="//*[@class = \"register-success-popup__form-container__button-container\"]/div")
+    public WebElement checkEmailResendButton;
+    @FindBy(how = How.XPATH,using ="//*[@class = \"register-success-popup__close-cross-container\"]")
+    public WebElement checkEmailClose;
+
+
+
+
+
 
 
 

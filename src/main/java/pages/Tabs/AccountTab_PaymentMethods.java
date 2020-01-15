@@ -1,5 +1,6 @@
 package pages.Tabs;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -71,7 +72,7 @@ public class AccountTab_PaymentMethods {
     public WebElement cardCVCInput;
     @FindBy(how = How.XPATH, using = "//*[@class=\"payment-methods-area__adding-container__label\"]")
     public WebElement addNewCardNotification;
-    @FindBy(how = How.XPATH, using = "//*[@class=\"container\"]")
+    @FindBy(how = How.XPATH, using = "//*[text() = 'Add card']")
     public WebElement saveCardButton;
 
 
@@ -84,6 +85,9 @@ public class AccountTab_PaymentMethods {
         cardExpirationInput.sendKeys("0424");
         cardCVCInput.sendKeys("12312345");
         driver.switchTo().defaultContent();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", saveCardButton);
         Thread.sleep(2000);
         saveCardButton.click();
     }
