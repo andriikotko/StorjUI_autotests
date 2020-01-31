@@ -134,7 +134,7 @@ public class APIKeysTabTextTest {
         wait.until(ExpectedConditions.visibilityOf(apiKeysTab.newAPIKeyCopyButton));
 
 
-        Assert.assertEquals(apiKeysTab.newCreatedAPIKeyDialogHeader.getText(), "Save Your API Key! It Will Appear Only Once.");
+        Assert.assertEquals(apiKeysTab.newCreatedAPIKeyDialogHeader.getText(), "Save Your Secret API Key! It Will Appear Only Once.");
         Assert.assertEquals(apiKeysTab.newAPIKeyCopyButton.getText(), "Copy");
 
     }

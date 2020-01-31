@@ -81,7 +81,7 @@ public class OverviewTabReportElementsTextsTab {
         Assert.assertEquals(overviewTabReport.currentBillingPeriod.getText(), "Current Billing Period");
         Assert.assertEquals(overviewTabReport.previousBillingPeriod.getText(), "Previous Billing Period");
         Assert.assertEquals(overviewTabReport.customDateRange.getText(), "Custom Date Range");
-        Assert.assertEquals(overviewTabReport.storageHeader.getText(), "Storage, GBh");
+        Assert.assertEquals(overviewTabReport.storageHeader.getText(), "Storage, GB x Hours");
         Assert.assertEquals(overviewTabReport.egressHeader.getText(), "Egress, GB");
         Assert.assertEquals(overviewTabReport.objectHoursHeader.getText(), "Object Hours");
         Assert.assertTrue(overviewTabReport.currentRollUpPeriod.getText().startsWith("Roll Up Period"));

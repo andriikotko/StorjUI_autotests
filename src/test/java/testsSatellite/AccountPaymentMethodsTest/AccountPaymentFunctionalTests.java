@@ -186,7 +186,7 @@ public class AccountPaymentFunctionalTests {
 
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-        loginPage.userNameField.sendKeys("test888@g.com"); //without added card account
+        loginPage.userNameField.sendKeys("test999@g.com"); //without added card account
         loginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
         loginPage.btn_Login.click();
         Thread.sleep(4500);
@@ -219,11 +219,11 @@ public class AccountPaymentFunctionalTests {
         homePage.profileTab.click();
         Assert.assertTrue(homePage.bannerAddCard.isDisplayed());
 
-        homePage.referralTab.click();
-        Assert.assertTrue(homePage.bannerAddCard.isDisplayed());
+//        homePage.referralTab.click();
+//        Assert.assertTrue(homePage.bannerAddCard.isDisplayed());
 
         homePage.billingTab.click();
-        Assert.assertTrue(homePage.bannerAddCard.isDisplayed());
+        Assert.assertTrue(homePage.bannerOnBilling.isDisplayed());
 
         //ADD CARD
         accountTab_paymentMethods.addCreditCard();

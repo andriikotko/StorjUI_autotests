@@ -195,7 +195,7 @@ public class NodeFunctionalTests {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         Assert.assertEquals(driver.getCurrentUrl(),"https://forum.storj.io/c/sno-category");
-        Assert.assertEquals(driver.findElement(By.cssSelector("#ember34 > span > span > span.badge-category.clear-badge > span")).getText(), "Storage Node Operators");
+        Assert.assertEquals(driver.findElement(By.cssSelector("#ember35 > span > span > span.badge-category.clear-badge > span")).getText(), "Storage Node Operators");
     }
 
     @Test

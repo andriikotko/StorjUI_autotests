@@ -77,16 +77,23 @@ public class AccountTab_PaymentMethods {
 
 
     public void addCreditCard () throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",addNewCardButton);
         addNewCardButton.click();
+
+
+        js.executeScript("arguments[0].scrollIntoView();",cardIframe);
+
 //        cardIframe.click();
 //        Thread.sleep(1000);
         driver.switchTo().frame(cardIframe);
+        Thread.sleep(500);
         cardNumberInput.sendKeys("4242424242424242");
         cardExpirationInput.sendKeys("0424");
         cardCVCInput.sendKeys("12312345");
         driver.switchTo().defaultContent();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+      //  JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", saveCardButton);
         Thread.sleep(2000);
         saveCardButton.click();

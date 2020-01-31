@@ -260,7 +260,7 @@ public class AccountProfileFunctionalTests {
     }
 
     @Test
-    public void EditPasswordEmptyFildsTest() {
+    public void EditPasswordEmptyFildsTest() throws InterruptedException {
         AccountTab_Profile accountTabProfile = PageFactory.initElements(driver, AccountTab_Profile.class);
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -269,10 +269,11 @@ public class AccountProfileFunctionalTests {
         accountTabProfile.newPasswordInput.sendKeys("");
         accountTabProfile.confirmPasswordInput.sendKeys("");
         accountTabProfile.updatePasswordButton.click();
+        Thread.sleep(1000);
+        Assert.assertEquals(accountTabProfile.changePasswordEmptyError.getText(),"Invalid old password. Must be 6 or more characters");
 
         Assert.assertEquals(accountTabProfile.newPasswordError.getText(),"Invalid password. Use 6 or more characters");
         Assert.assertEquals(accountTabProfile.confirmPasswordError.getText(),"Password required");
-        Assert.assertEquals(accountTabProfile.changePasswordEmptyError.getText(),"Invalid old password. Must be 6 or more characters");
 
         accountTabProfile.closeUpdatePasswordDialogButton.click();
         homePage.toggleAccount_DropDown.click();

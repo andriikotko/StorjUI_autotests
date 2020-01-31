@@ -3,6 +3,8 @@ package pages;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.http.ContentType;
 import okhttp3.Response;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +21,7 @@ import pages.Tabs.AccountTab_Billing;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import org.postgresql.jdbc4.Jdbc4Connection;
+import pages.Tabs.AccountTab_PaymentMethods;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,8 +30,19 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import static com.jayway.restassured.RestAssured.given;
+
 public class MainForExperiments {
     public static void main(String[] args) throws InterruptedException, IOException {
+
+        RestAssured.baseURI = "https://satellite.qa.storj.io";
+        given().authentication().
+                oauth2("eyJpZCI6IjBiM2QwNWQ0LWYwYzYtNDM4OS05OWJjLTNmMjhkNzAyNmU4YyIsImV4cGlyZXMiOiIyMDIwLTAxLTE3VDE0OjUzOjAxLjg1NTAwOTk3N1oifQo=.jC7wo6cAU7xjHGw033Llph4nU8TEtUFszxYjLE7-kfk=").
+                when().get("/api/v0/payments/cards").then().assertThat().statusCode(200).and().contentType(ContentType.JSON);
+
+
+
+
 
 
 //        System.out.println(System.getProperty("os.name"));
@@ -288,6 +302,51 @@ public class MainForExperiments {
 //                System.out.println(ex.getMessage());
 //            }
 //        }
+
+//
+
+
+           //  ADD USER CARD AND PROJECT / INCREASING LIMITS
+//        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver");
+//        //create chrome instance
+//        WebDriver driver = new ChromeDriver();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
+//
+//        for (int i = 1; i < 113; i++) {
+//            // login
+//
+//            try {
+//                driver.get(HomePage.HOMEURL);
+//                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//
+//                Thread.sleep(500);
+//                // This is to Instantiate Home Page and LogIn Page class
+//                HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+//                LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
+//                // Once both classes Initialised, use their Web Element Objects
+//                LoginPage.userNameField.sendKeys("test"+i+"@g.com");
+//                LoginPage.passwordField.sendKeys("123qwe");
+//                LoginPage.btn_Login.click();
+//                //Thread.sleep(4500);
+//
+//
+//                homePage.billingTab.click();
+//                AccountTab_PaymentMethods accountTab_paymentMethods = PageFactory.initElements(driver, AccountTab_PaymentMethods.class);
+//                accountTab_paymentMethods.addCreditCard();
+//                WebDriverWait wait = new WebDriverWait(driver, 30);
+//                wait.until(ExpectedConditions.visibilityOf(LoginPage.notificationArea));
+//
+//                homePage.createNewProject();
+//                System.out.println(i);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//        }
+
+
 
 
     }

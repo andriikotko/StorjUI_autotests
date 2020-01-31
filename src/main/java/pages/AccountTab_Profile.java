@@ -90,11 +90,11 @@ public class AccountTab_Profile {
     @FindBy(how=How.XPATH,using ="//*[@class=\"change-password-popup__close-cross-container\"]")
     public WebElement closeUpdatePasswordDialogButton;
 
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div/div[3]/div/div[1]/div[3]/div/h3")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div/div/div[3]/div/div[1]/div[3]/div/div")
     public WebElement newPasswordError;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div/div[3]/div/div[1]/div[4]/div/h3")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div/div/div[3]/div/div[1]/div[4]/div")
     public WebElement confirmPasswordError;
-    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div/div/div/div[3]/div/div[1]/div[2]/div/h3")
+    @FindBy(how=How.XPATH,using ="//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div/div/div[3]/div/div[1]/div[2]/div")
     public WebElement changePasswordEmptyError;
     @FindBy(how=How.XPATH,using ="//*[@id=\"notificationArea\"]/div/div[1]")
     public WebElement errorOnPasswordChange;

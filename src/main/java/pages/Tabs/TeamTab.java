@@ -58,7 +58,7 @@ public class TeamTab {
 
     @FindBy(how = How.XPATH, using = "//*[@class=\"add-user__info-panel-container__main-label-text\"]")
     public WebElement addTeamMemberHeader;
-    @FindBy(how = How.CSS, using = "#addTeamMemberPopup > div.add-user__main > div.add-user__info-panel-container > svg")
+    @FindBy(how = How.CSS, using = "#addTeamMemberPopup > div.add-user__main > div.add-user__info-panel-container > img")
     public WebElement addTeamMemberLogo;
     @FindBy(how = How.XPATH, using = "//*[@class=\"add-user__form-container__common-label\"]")
     public WebElement addTeamMemberTableHeader;

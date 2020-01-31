@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import pages.Flows.NewProjectFlow;
 
 import java.io.BufferedReader;
 
@@ -90,7 +91,7 @@ public class HomePage {
     public WebElement API_Keys_Tab;
     @FindBy(how = How.XPATH, using ="//*[@aria-label=\"Buckets\"]")
     public WebElement buckets;
-    @FindBy(how = How.XPATH, using ="//*[@id=\"app\"]/div/div/div[1]/div/a[5]")
+    @FindBy(how = How.XPATH, using ="//*[@id=\"app\"]/div/div/div[1]/div/a[6]")
     public WebElement docs_Tab;
     @FindBy (how =How.XPATH, using ="//*[@class=\"navigation-area__item-container support-item\"]")
     public WebElement support_Tab;
@@ -118,25 +119,27 @@ public class HomePage {
     public WebElement accountHide_Show;
 
     //BANNER ADD CARD
-    @FindBy (how = How.XPATH, using = "//*[@class=\"banner\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"banner link\"]")
     public WebElement bannerAddCard;
+    @FindBy (how = How.XPATH, using = "//*[@class=\"banner\"]")
+    public WebElement bannerOnBilling;
     @FindBy (how = How.XPATH, using = "//*[@class=\"banner__text\"]")
     public WebElement bannerAddCardHeader;
     @FindBy (how = How.XPATH, using = "//*[@class=\"banner__additional-text\"]")
     public WebElement bannerAddCardText;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"banner__link\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"banner__link__svg banner__arrow\"]")
     public WebElement bannerLinkToBilling;
-    @FindBy (how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div.dashboard-container__main-area__banner-area > div > svg")
+    @FindBy (how = How.CSS, using = "#app > div > div > div.dashboard-container__wrap__column > div.dashboard-container__main-area > div.dashboard-container__main-area__banner-area > div > div > svg:nth-child(1)")
     public WebElement bannerAddCardIcon;
 
 
 
 
-    public void loginToAccountWithValidCreds () throws InterruptedException {
+    public void loginToAccountWithValidCreds (String login, String password) throws InterruptedException {
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-        loginPage.userNameField.sendKeys(pages.HomePage.ACCOUNT);
-        loginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
+        loginPage.userNameField.sendKeys(login);
+        loginPage.passwordField.sendKeys(password);
         loginPage.btn_Login.click();
         Thread.sleep(4500);
     }
@@ -160,6 +163,14 @@ public class HomePage {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public void createNewProject(){
+        btn_New_Project.click();
+        NewProjectFlow newProjectFlow = PageFactory.initElements(driver, NewProjectFlow.class);
+        newProjectFlow.project_Name_input.sendKeys("TestProject");
+        newProjectFlow.project_Description_input.sendKeys("TestDescription");
+        newProjectFlow.create_Project_Button.click();
     }
 
     public void gotoRegisterPage (){

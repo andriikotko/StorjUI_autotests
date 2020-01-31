@@ -101,7 +101,7 @@ public class HomePageFunctionalTests {
         //Thread.sleep(3000);
         Assert.assertEquals(homePage.accountHide_Show.getText(), "Show");
         List<WebElement> list2 = new ArrayList<>(driver.findElements(By.xpath("//*[@class=\"navigation-area__account-area\"]/a")));
-        Assert.assertEquals(list1.size(), list2.size() + 3);
+        Assert.assertEquals(list1.size(), list2.size() + 2);
     }
 
     @Test
@@ -139,8 +139,8 @@ public class HomePageFunctionalTests {
         homePage.docs_Tab.click();
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        Assert.assertEquals(driver.getCurrentUrl(), "https://github.com/storj/docs/blob/master/Vanguard-Release-Setup-Instructions.md");
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"readme\"]/article/h1")).getText(), "Vanguard Alpha Release - Setup Instructions!");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://documentation.tardigrade.io/setup/buckets-objects");
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"__GITBOOK__ROOT__CLIENT__\"]/div[1]/div[2]/div/div[1]/div[3]/div/div[1]/div[1]/div[1]/div/div/div[1]/div[1]/h1/span")).getText(), "Buckets & Objects");
     }
 
     @Test

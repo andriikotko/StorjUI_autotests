@@ -99,7 +99,7 @@ public class AccountBillingAllHistoryTextsTest {
         action.moveToElement(accountTab_billing.accountBalanceHint).click().perform();
 
 
-        Assert.assertEquals(accountTab_billing.accountBalanceHintText.getText(), "Prepaid STORJ token amount and any additional credits, minus current usage");
+        Assert.assertEquals(accountTab_billing.accountBalanceHintText.getText(), "Prepaid STORJ token amount and any additional credits.");
     }
 
 
