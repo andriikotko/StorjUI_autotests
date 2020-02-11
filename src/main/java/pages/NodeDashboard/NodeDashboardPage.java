@@ -44,37 +44,40 @@ public class NodeDashboardPage {
     public WebElement nodeID;
     @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__right-area__node-id-container__title\"]")
     public WebElement nodeIDText;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"title__name__title\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"header__content-holder__right-area__bell-area\"]")
+    public WebElement notificationIcon;
+
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title-area__title\"]")
     public WebElement nodeHeader;
-    @FindBy (how = How.XPATH, using = "//*[text() = \"Current period: \"]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__title\"])[5]")
     public WebElement currentPeriod;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"title__name__info\"]/b")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__content\"])[4]")
     public WebElement currentMonth;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info__status-title\"]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__title\"])[1]")
     public WebElement nodeStatusText;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info\"]/p[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"title-area__info-container__info-item__content online-status\"]")
     public WebElement nodeStatus;
     @FindBy (how = How.XPATH, using = "//*[@alt=\"online status image\"]")
     public WebElement statusInfoTick;
     @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box customPosition\"]")
     public WebElement nodeStatusInfoPopUp;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[2]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__title\"])[3]")
     public WebElement lastPingedText;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[3]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__title\"])[2]")
     public WebElement uptimeText;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__green-text\"]/p[1]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__content\"])[2]")
     public WebElement lastPingedData;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__green-text\"]/p[2]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__content\"])[1]")
     public WebElement uptimeData;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info__version-title\"]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__title\"])[4]")
     public WebElement nodeVersionText;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"title__info__version-value\"]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item__content\"])[3]")
     public WebElement nodeVersion;
-    @FindBy (how = How.XPATH, using = "//*[@alt=\"version status image\"]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"title-area__info-container__info-item\"])[4]")
     public WebElement nodeVersionInfoTick;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box customPosition\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box\"]")
     public WebElement nodeVersionPopUp;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[1]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text__regular-text\"]")
     public WebElement versionPopUpText;
     @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box__text\"]/p[2]")
     public WebElement versionPopUpVersion;

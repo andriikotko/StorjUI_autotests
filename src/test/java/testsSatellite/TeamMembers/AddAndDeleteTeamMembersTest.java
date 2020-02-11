@@ -149,7 +149,8 @@ public class AddAndDeleteTeamMembersTest {
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOf(teamTab.addTeamMemberNotificationEmailError));
 
-        Assert.assertEquals(teamTab.addTeamMemberNotificationEmailError.getText(), "Error during adding project members. There is no account on this Satellite for the user(s) you have entered. Please add team members with active accounts");
+        Assert.
+                assertEquals(teamTab.addTeamMemberNotificationEmailError.getText(), "Error during adding project members. There is no account on this Satellite for the user(s) you have entered. Please add team members with active accounts");
     }
 
     @Test(priority = 3)

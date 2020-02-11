@@ -109,7 +109,7 @@ public class NodeElementsVisibilityTests {
         Assert.assertTrue(nodeDashboardPage.currentMonth.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.nodeStatusText.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.nodeStatus.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.statusInfoTick.isDisplayed());
+//        Assert.assertTrue(nodeDashboardPage.statusInfoTick.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.nodeVersionText.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.nodeVersion.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.nodeVersionInfoTick.isDisplayed());
@@ -139,7 +139,7 @@ public class NodeElementsVisibilityTests {
         Assert.assertTrue(nodeDashboardPage.linkToSupport.isDisplayed());
 
     }
-
+    @Ignore
     @Test
     public void nodeStatusHintVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);

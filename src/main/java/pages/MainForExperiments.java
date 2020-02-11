@@ -5,7 +5,9 @@ import com.google.gson.JsonParser;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
-import okhttp3.Response;
+import com.jayway.restassured.path.json.JsonPath;
+import com.jayway.restassured.response.Response;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -23,6 +25,7 @@ import java.nio.charset.StandardCharsets;
 import org.postgresql.jdbc4.Jdbc4Connection;
 import pages.Tabs.AccountTab_PaymentMethods;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,15 +33,42 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import static com.jayway.restassured.RestAssured.enableLoggingOfRequestAndResponseIfValidationFails;
 import static com.jayway.restassured.RestAssured.given;
 
 public class MainForExperiments {
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        RestAssured.baseURI = "https://satellite.qa.storj.io";
-        given().authentication().
-                oauth2("eyJpZCI6IjBiM2QwNWQ0LWYwYzYtNDM4OS05OWJjLTNmMjhkNzAyNmU4YyIsImV4cGlyZXMiOiIyMDIwLTAxLTE3VDE0OjUzOjAxLjg1NTAwOTk3N1oifQo=.jC7wo6cAU7xjHGw033Llph4nU8TEtUFszxYjLE7-kfk=").
-                when().get("/api/v0/payments/cards").then().assertThat().statusCode(200).and().contentType(ContentType.JSON);
+//        RestAssured.baseURI = "http://127.0.0.1:10002/";
+//        Response response = given().
+//                headers("cookie","_tokenKey=eyJpZCI6IjJhYTMxOGMyLTlmODItNDU3MC05MjZkLTVkZDdkZTI1NDc1YSIsImV4cGlyZXMiOiIyMDIwLTAyLTA0VDEyOjQzOjQ1LjIwNTQ3NzU3NiswMjowMCJ9Cg==.dACXbnCInzqj4qhKEn-IDCqFNLpkby-aVN7ojyvtR2c=").
+//                log().all().
+//                when().get("/api/v0/payments/cards").
+//                then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().log().status().
+//                extract().response();
+//
+//        String responceToString = response.asString();
+//        System.out.println(responceToString);
+//
+//        JsonPath jsonPath = new JsonPath(String.valueOf(response));
+//        String cardID = jsonPath.get("[0].expMonth");
+//        System.out.println(cardID);
+
+
+        for (int i = 0; i <150 ; i++) {
+
+
+        RestAssured.baseURI = "http://192.168.1.23:8080";
+        Response response = given().
+                log().all().
+                when().get("/solutions").
+                then().assertThat().statusCode(200).
+                extract().response();
+
+        String responceToString = response.asString();
+        System.out.println(responceToString);}
+
+
 
 
 

@@ -233,7 +233,7 @@ public class NodeFunctionalTests {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         nodeDashboardPage.refreshButton.click();
 
-        nodeDashboardPage.statusInfoTick.click();
+       //nodeDashboardPage.statusInfoTick.click();
         String lastpingedTime = nodeDashboardPage.lastPingedData.getText();
 
         Assert.assertEquals(lastpingedTime,"0m ago");
