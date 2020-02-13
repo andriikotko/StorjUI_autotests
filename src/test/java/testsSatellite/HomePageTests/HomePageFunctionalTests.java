@@ -17,6 +17,7 @@ import pages.ConnectionToPostgres;
 import pages.Flows.NewProjectFlow;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.SystemParams;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,50 +31,11 @@ public class HomePageFunctionalTests {
     @BeforeMethod
     @Parameters("browser")
     public void setUp(@Optional("Chrome") String browser) throws Exception {
+        SystemParams systemParams = new SystemParams(driver);
+        driver = systemParams.selecting(browser);
 
-        String OS = System.getProperty("os.name");
-        String chosingOS = "";
-        if (OS.equals("Linux")) {
-            chosingOS = "";
-        }
-        if (OS.substring(0, 4).equals("Windo")) {
-            chosingOS = ".exe";
-        }
-        //Check if parameter passed from TestNG is 'firefox'
-        if (browser.equalsIgnoreCase("Firefox")) {
-            //create firefox instance
-            System.setProperty("webdriver.gecko.driver", HomePage.GECKODRIVERPATH + chosingOS);
-            driver = new FirefoxDriver();
-        }
-        //Check if parameter passed as 'chrome'
-        else if (browser.equalsIgnoreCase("Chrome")) {
-            //set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver", HomePage.CHROMEDRIVERPATH + chosingOS);
-            //create chrome instance
-            driver = new ChromeDriver();
-        }
-        //  Check if parameter passed as 'Opera'
-        else if (browser.equalsIgnoreCase("Opera")) {
-            //set path to Edge.exe
-            System.setProperty("webdriver.opera.driver", HomePage.OPERADRIVERPATH + chosingOS);
-            driver = new OperaDriver();
-        } else {
-            //If no browser passed throw exception
-            throw new Exception("Browser is not correct");
-        }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(HomePage.Width, HomePage.Height));
-        driver.get(HomePage.HOMEURL);
-
-        Thread.sleep(3000);
-        // This is to Instantiate Home Page and LogIn Page class
-        HomePage HomePage = PageFactory.initElements(driver, HomePage.class);
-        LoginPage LoginPage = PageFactory.initElements(driver, LoginPage.class);
-        // Once both classes Initialised, use their Web Element Objects
-        LoginPage.userNameField.sendKeys(pages.HomePage.ACCOUNT);
-        LoginPage.passwordField.sendKeys(pages.HomePage.PASSWORD);
-        LoginPage.btn_Login.click();
-        Thread.sleep(4500);
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        homePage.loginToAccountWithValidCreds(homePage.ACCOUNT, homePage.PASSWORD);
     }
 
     @Test
