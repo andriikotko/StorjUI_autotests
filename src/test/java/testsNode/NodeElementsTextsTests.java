@@ -110,18 +110,18 @@ public class NodeElementsTextsTests {
         Assert.assertEquals(nodeDashboardPage.choosingSatelliteContainer.getText(), "Choose your satellite: All Satellites");
         Assert.assertEquals(nodeDashboardPage.chosenSatelliteText.getText(), "Choose your satellite:");
         Assert.assertEquals(nodeDashboardPage.utilizationRemainingHeader.getText(), "Utilization & Remaining");
-        Assert.assertEquals(nodeDashboardPage.bandwidthHeader.getText(), "Bandwidth Used This Month");
-        Assert.assertTrue(nodeDashboardPage.bandwidthData.getText().contains("B"));
+//        Assert.assertEquals(nodeDashboardPage.bandwidthHeader.getText(), "Bandwidth Used This Month");
+//        Assert.assertTrue(nodeDashboardPage.bandwidthData.getText().contains("B"));
 
         Assert.assertEquals(nodeDashboardPage.diskSpaceHeader.getText(), "Disk Space Used This Month");
         Assert.assertTrue(nodeDashboardPage.diskSpaceData.getText().endsWith("*h"));
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.payoutHeader);
 
       //  Assert.assertEquals(nodeDashboardPage.remainingHeader.getText(), "Remaining on the Node");
-        Assert.assertEquals(nodeDashboardPage.bandwidthRemainingText.getText(), "Bandwidth Remaining");
-        Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.getText().endsWith("B"));
+//        Assert.assertEquals(nodeDashboardPage.bandwidthRemainingText.getText(), "Bandwidth Remaining");
+//        Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.getText().endsWith("B"));
 
         Assert.assertEquals(nodeDashboardPage.diskRemainText.getText(), "Disk Space Remaining");
         Assert.assertTrue(nodeDashboardPage.diskRemainData.getText().endsWith("B"));
@@ -173,6 +173,7 @@ public class NodeElementsTextsTests {
         Assert.assertEquals(nodeDashboardPage.versionPopUpVersion.getText(), "v0.0.0");
     }
 
+    @Ignore
     @Test
     public void bandwidthRemainBarHintTextTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
@@ -185,8 +186,12 @@ public class NodeElementsTextsTests {
     }
 
     @Test
-    public void diskRemainBarHintTextTest() {
+    public void diskRemainBarHintTextTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.payoutHeader);
+        Thread.sleep(1000);
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.diskRemainBar).click().perform();

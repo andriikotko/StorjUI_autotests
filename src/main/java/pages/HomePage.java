@@ -45,7 +45,7 @@ public class HomePage {
     public static String CHROMEDRIVERPATHMAC = "./src/main/resources/chromedrivermac";
     public static String GECKODRIVERPATH = "./src/main/resources/geckodriver";
     public static String OPERADRIVERPATH = "./src/main/resources/operadriver";
-    public static Integer Width = 1280;
+    public static Integer Width = 1290;
     public static Integer Height = 1000;
     public static final String DefaultBrowser = "Chrome";
 

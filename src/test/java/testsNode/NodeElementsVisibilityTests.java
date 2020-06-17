@@ -123,9 +123,9 @@ public class NodeElementsVisibilityTests {
         Assert.assertTrue(nodeDashboardPage.diskSpaceData.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.diskSpaceGraph.isDisplayed());
       //  Assert.assertTrue(nodeDashboardPage.remainingHeader.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.bandwidthRemainingText.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.bandwidthRemainBar.isDisplayed());
+//        Assert.assertTrue(nodeDashboardPage.bandwidthRemainingText.isDisplayed());
+   //     Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.isDisplayed());
+ //       Assert.assertTrue(nodeDashboardPage.bandwidthRemainBar.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.diskRemainText.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.diskRemainData.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.diskRemainBar.isDisplayed());
@@ -166,6 +166,8 @@ public class NodeElementsVisibilityTests {
         Assert.assertTrue(nodeDashboardPage.versionPopUpVersion.isDisplayed());
     }
 
+
+    @Ignore
     @Test
     public void bandwidthRemainBarHintVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);

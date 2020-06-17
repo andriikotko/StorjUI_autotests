@@ -34,7 +34,7 @@ public class NodeDashboardPage {
     public static Integer Height = 1000;
 
 
-    @FindBy (how = How.XPATH, using = "//*[@class = \"header__content-holder__icon\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class = \"storj-logo header__content-holder__logo\"]")
     public WebElement dashboardStorjLogo;
     @FindBy (how = How.XPATH, using = "//*[@alt=\"refresh image\"]")
     public WebElement refreshButton;
@@ -103,7 +103,7 @@ public class NodeDashboardPage {
     public WebElement bandwidthData;
     @FindBy (how = How.XPATH, using = "//*[@id=\"bandwidth-chart\"]")
     public WebElement bandwidthGraph;
-    @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__title-area__title\"])[2]")
+    @FindBy (how = How.XPATH, using = "(//*[@class=\"chart-container__title-area__title\"])[1]")
     public WebElement diskSpaceHeader;
     @FindBy (how = How.XPATH, using = "//*[@class=\"chart-container__amount disk-space-amount\"]/b")
     public WebElement diskSpaceData;
@@ -119,11 +119,11 @@ public class NodeDashboardPage {
     public WebElement bandwidthRemainBar;
     @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box\"]")
     public WebElement bandwidthRemainBarHint;
-    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__title\"])[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"bar-info-container__title\"]")
     public WebElement diskRemainText;
-    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__amount\"])[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"bar-info-container__amount\"]")
     public WebElement diskRemainData;
-    @FindBy (how = How.XPATH, using = "(//*[@class=\"remaining-space-container__bar\"])[2]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"bar-container__fill\"]")
     public WebElement diskRemainBar;
     @FindBy (how = How.XPATH, using = "//*[@class=\"info__message-box\"]")
     public WebElement diskRemainBarHint;
@@ -139,11 +139,11 @@ public class NodeDashboardPage {
     public WebElement payoutButton;
     @FindBy (how = How.XPATH, using = "//*[@class=\"payout-container\"]/a")
     public WebElement payoutLink;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__icon\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"storj-logo footer__content-holder__icon\"]")
     public WebElement footerLogo;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__community-link\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__links-area__community-link\"]")
     public WebElement linkToCommunity;
-    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__support-link\"]")
+    @FindBy (how = How.XPATH, using = "//*[@class=\"footer__content-holder__links-area__support-link\"]")
     public WebElement linkToSupport;
 
 
@@ -171,6 +171,8 @@ public class NodeDashboardPage {
     public WebElement auditCheckBlur;
     @FindBy (how = How.XPATH, using = "//*[@class=\"info-area__blurred-checks__title\"]")
     public WebElement auditCheckBlurText;
+    @FindBy (how = How.XPATH, using = "//*[@class=\"info-area__payout-header__link\"]")
+    public WebElement linkToPayouts;
 
 
     public void  chooseFirstSatellite (){
