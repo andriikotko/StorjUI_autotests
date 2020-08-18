@@ -1,5 +1,6 @@
 package testsNode;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
@@ -15,6 +16,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.NodeDashboard.NodeDashboardPage;
+import pages.NodeDashboard.NodeNotifications;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -123,7 +125,7 @@ public class NodeFunctionalTests {
     }
 
     @Test
-    public void compareFirstSatteliteNameTest() throws IOException {
+    public void compareFirstSatteliteNameTest() throws IOException, InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         String OS = System.getProperty("os.name");
         String path = "";
@@ -146,8 +148,9 @@ public class NodeFunctionalTests {
                 break;
             }
         }
+        Thread.sleep(2000);
         nodeDashboardPage.choosingSatelliteContainer.click();
-        nodeDashboardPage.chooseFirstSatellite();
+        nodeDashboardPage.chooseSecondSatellite();
         String satelliteFromPage = nodeDashboardPage.currentSatellite.getText().substring(23);
 
         Assert.assertEquals(satelliteFromPage, satelliteIDFromFile);
@@ -185,6 +188,7 @@ public class NodeFunctionalTests {
     @Test
     public void gotoCommunityTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(2000);
         nodeDashboardPage.linkToCommunity.click();
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         String browserName = cap.getBrowserName().toLowerCase();
@@ -194,14 +198,15 @@ public class NodeFunctionalTests {
 
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        Assert.assertEquals(driver.getCurrentUrl(),"https://forum.storj.io/c/sno-category");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://forum.storj.io/c/sno-category/10");
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.cssSelector("#ember23 > span > span > span.badge-category.clear-badge > span")).getText(), "Storage Node Operators");
+        Assert.assertEquals(driver.findElement(By.xpath("//*[text() = \"Topic\"]")).getText(), "Topic");
     }
 
     @Test
     public void gotoSupportTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(2000);
         nodeDashboardPage.linkToSupport.click();
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         String browserName = cap.getBrowserName().toLowerCase();
@@ -217,6 +222,7 @@ public class NodeFunctionalTests {
     @Test
     public void gotoViewOnEtherscanTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(2000);
         nodeDashboardPage.payoutButton.click();
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         String browserName = cap.getBrowserName().toLowerCase();
@@ -230,8 +236,9 @@ public class NodeFunctionalTests {
     }
 
     @Test
-    public void refreshButtonWorkTestg(){
+    public void refreshButtonWorkTestg() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(2000);
         nodeDashboardPage.refreshButton.click();
 
        //nodeDashboardPage.statusInfoTick.click();
@@ -243,6 +250,7 @@ public class NodeFunctionalTests {
     @Test
     public void ingress_egressClicking () throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(4000);
         Assert.assertTrue(nodeDashboardPage.bandwidthEgress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
         Assert.assertTrue(nodeDashboardPage.bandwidthIngress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
 
@@ -263,6 +271,58 @@ public class NodeFunctionalTests {
         Thread.sleep(1000);
         Assert.assertTrue(nodeDashboardPage.bandwidthEgress.getAttribute("class").endsWith("chart-container__title-area__chart-choice-item"));
     }
+
+    @Test
+    public void changingDark_Lite() throws InterruptedException {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(2000);
+        nodeDashboardPage.optionsButton.click();
+        Assert.assertEquals(nodeDashboardPage.optionsLigth_Dark.getText(), "Dark Mode");
+
+        nodeDashboardPage.optionsLigth_Dark.click();
+
+        nodeDashboardPage.optionsButton.click();
+        Assert.assertEquals(nodeDashboardPage.optionsLigth_Dark.getText(),"Light Mode");
+    }
+
+    @Test
+    public void gotoNotificationScreenAndReturn() throws InterruptedException {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        NodeNotifications nodeNotifications= PageFactory.initElements(driver, NodeNotifications.class);
+        Thread.sleep(2000);
+        nodeDashboardPage.bellButton.click();
+
+        nodeDashboardPage.notificationsPopupSeeAll.click();
+
+
+        Assert.assertEquals(driver.getCurrentUrl(),"http://localhost:13002/notifications");
+
+        nodeNotifications.notificationsBackButton.click();
+
+        Assert.assertEquals(driver.getCurrentUrl(),"http://localhost:13002/");
+    }
+
+    @Test
+    public void showingSatelliteName() throws InterruptedException {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(2000);
+
+        nodeDashboardPage.satelliteDropdown.click();
+
+        Assert.assertEquals(nodeDashboardPage.showSatelliteID_NameButton.getText(),"ID");
+
+        nodeDashboardPage.showSatelliteID_NameButton.click();
+
+        Assert.assertEquals(nodeDashboardPage.showSatelliteID_NameButton.getText(),"Name");
+        Assert.assertTrue(nodeDashboardPage.satelliteID.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.copySatelliteIDButton.isDisplayed());
+
+        nodeDashboardPage.showSatelliteID_NameButton.click();
+
+        Assert.assertEquals(nodeDashboardPage.showSatelliteID_NameButton.getText(),"ID");
+    }
+
+
 
 
 

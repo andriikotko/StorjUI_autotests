@@ -36,7 +36,7 @@ public class NodePayouts {
     public WebElement satelliteDropdown;
     @FindBy(how = How.XPATH, using = "//*[@class=\"satellite-selection-toggle-container\"]/p")
     public WebElement currentSatellite;
-    @FindBy(how = How.XPATH, using = "//*[text() = \"All Satellites\"]")
+    @FindBy(how = How.XPATH, using = "//*[@class=\"satellite-selection-toggle-container\"]")
     public WebElement allSatellites;
 
     @FindBy(how = How.XPATH, using = "(//*[@class = \"payout-area-container__section-title\"])[1]")
@@ -131,4 +131,36 @@ public class NodePayouts {
     public WebElement heldAmountProgress;
     @FindBy(how = How.XPATH, using = "//*[@class = \"held-progress__main-text\"]")
     public WebElement heldAmountMonthOnNetwork;
+
+
+
+    // Held Amount History\
+
+    @FindBy(how = How.XPATH, using = "//*[@class = \"held-history-container__header__title\"]")
+    public WebElement heldAmountHistoryTitle;
+    @FindBy(how = How.XPATH, using = "//*[text() = \" All Stats \"]")
+    public WebElement heldAmountHistoryAllStats;
+    @FindBy(how = How.XPATH, using = "//*[text() = \" Monthly Breakdown \"]")
+    public WebElement heldAmountHistoryMonthlyBreakdown;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__labels-area__text\"])[1]")
+    public WebElement heldHistorySatelliteTitle;
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__labels-area__text\"])[2]")
+    public WebElement heldHistorySecondColumnTitle;
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__labels-area__text\"])[3]")
+    public WebElement heldHistoryThirdColumnTitle;
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__labels-area__text\"])[4]")
+    public WebElement heldHistoryFourthColumnTitle;
+
+
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__info-area__text\"])[1]")
+    public WebElement heldHistorySatelliteData_Name;
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__info-area__months\"])[1]")
+    public WebElement heldHistorySatelliteData_Month;
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__info-area__text\"])[2]")
+    public WebElement heldHistorySecondColumnData;
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__info-area__text\"])[3]")
+    public WebElement heldHistoryThirdColumnData;
+    @FindBy(how = How.XPATH, using = "(//*[@class = \"held-history-table-container--large__info-area__text\"])[4]")
+    public WebElement heldHistoryFourthColumnData;
 }

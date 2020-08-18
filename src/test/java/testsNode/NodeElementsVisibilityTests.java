@@ -92,6 +92,7 @@ public class NodeElementsVisibilityTests {
         } else {
             driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));}
         driver.get(NodeDashboardPage.DASHBOARDURL);
+        Thread.sleep(2000);
 
     }
 
@@ -126,9 +127,9 @@ public class NodeElementsVisibilityTests {
 //        Assert.assertTrue(nodeDashboardPage.bandwidthRemainingText.isDisplayed());
    //     Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.isDisplayed());
  //       Assert.assertTrue(nodeDashboardPage.bandwidthRemainBar.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.diskRemainText.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.diskRemainData.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.diskRemainBar.isDisplayed());
+ //       Assert.assertTrue(nodeDashboardPage.diskRemainText.isDisplayed());
+//        Assert.assertTrue(nodeDashboardPage.diskRemainData.isDisplayed());
+//        Assert.assertTrue(nodeDashboardPage.diskRemainBar.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.payoutHeader.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.storjWalletAddressText.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.walletLogo.isDisplayed());
@@ -137,6 +138,7 @@ public class NodeElementsVisibilityTests {
         Assert.assertTrue(nodeDashboardPage.footerLogo.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.linkToCommunity.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.linkToSupport.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.auditCheckBlur.isDisplayed());
 
     }
     @Ignore
@@ -152,6 +154,21 @@ public class NodeElementsVisibilityTests {
         Assert.assertTrue(nodeDashboardPage.uptimeText.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.lastPingedData.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.uptimeData.isDisplayed());
+    }
+
+    @Test
+    public void diskRemainElementsVisibilityTest(){
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(nodeDashboardPage.bandwidthRemainTrash).click().perform();
+
+        Assert.assertTrue(nodeDashboardPage.remainingHeader.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.bandwidthRemainingAmount.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.bandwidthRemainingCanvas.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.bandwidthRemainUsed.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.bandwidthRemainFree.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.bandwidthRemainTrash.isDisplayed());
     }
 
     @Test
@@ -177,7 +194,7 @@ public class NodeElementsVisibilityTests {
 
         Assert.assertTrue(nodeDashboardPage.bandwidthRemainBarHint.isDisplayed());
     }
-
+    @Ignore
     @Test
     public void diskRemainBarHintVisibilityTest() {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
@@ -200,7 +217,7 @@ public class NodeElementsVisibilityTests {
 
         Assert.assertTrue(nodeDashboardPage.auditUptimeHeader.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.uptimeChecksText.isDisplayed());
-        Assert.assertTrue(nodeDashboardPage.uptimeChecksHintTick.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.suspentionScoreHintTick.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.uptimeCheckData.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.auditChecksText.isDisplayed());
         Assert.assertTrue(nodeDashboardPage.auditChecksHintTick.isDisplayed());
@@ -219,9 +236,10 @@ public class NodeElementsVisibilityTests {
         Thread.sleep(1000);
 
         Actions action = new Actions(driver);
-        action.moveToElement(nodeDashboardPage.uptimeChecksHintTick).click().perform();
+        action.moveToElement(nodeDashboardPage.suspentionScoreHintTick).click().perform();
+        Thread.sleep(2000);
 
-        Assert.assertTrue(nodeDashboardPage.uptimeCheckHintText.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.suspentionScoreHintText.isDisplayed());
     }
 
     @Test
@@ -237,7 +255,7 @@ public class NodeElementsVisibilityTests {
 
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.auditChecksHintTick).click().perform();
-
+        Thread.sleep(2000);
         Assert.assertTrue(nodeDashboardPage.auditCheckHintText.isDisplayed());
     }
 

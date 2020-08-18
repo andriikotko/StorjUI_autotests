@@ -89,7 +89,7 @@ public class NodeElementsTextsTests {
         } else {
             driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));}
         driver.get(NodeDashboardPage.DASHBOARDURL);
-
+        Thread.sleep(2000);
     }
 
     @Test
@@ -109,7 +109,7 @@ public class NodeElementsTextsTests {
 
         Assert.assertEquals(nodeDashboardPage.choosingSatelliteContainer.getText(), "Choose your satellite: All Satellites");
         Assert.assertEquals(nodeDashboardPage.chosenSatelliteText.getText(), "Choose your satellite:");
-        Assert.assertEquals(nodeDashboardPage.utilizationRemainingHeader.getText(), "Utilization & Remaining");
+        Assert.assertEquals(nodeDashboardPage.utilizationRemainingHeader.getText(), "Disk Utilization & Remaining");
 //        Assert.assertEquals(nodeDashboardPage.bandwidthHeader.getText(), "Bandwidth Used This Month");
 //        Assert.assertTrue(nodeDashboardPage.bandwidthData.getText().contains("B"));
 
@@ -122,9 +122,9 @@ public class NodeElementsTextsTests {
       //  Assert.assertEquals(nodeDashboardPage.remainingHeader.getText(), "Remaining on the Node");
 //        Assert.assertEquals(nodeDashboardPage.bandwidthRemainingText.getText(), "Bandwidth Remaining");
 //        Assert.assertTrue(nodeDashboardPage.bandwidthRemainData.getText().endsWith("B"));
-
-        Assert.assertEquals(nodeDashboardPage.diskRemainText.getText(), "Disk Space Remaining");
-        Assert.assertTrue(nodeDashboardPage.diskRemainData.getText().endsWith("B"));
+//
+//        Assert.assertEquals(nodeDashboardPage.diskRemainText.getText(), "Disk Space Remaining");
+//        Assert.assertTrue(nodeDashboardPage.diskRemainData.getText().endsWith("B"));
 
         Assert.assertEquals(nodeDashboardPage.payoutHeader.getText(), "Payout");
         Assert.assertEquals(nodeDashboardPage.storjWalletAddressText.getText(), "STORJ Wallet Address");
@@ -136,6 +136,9 @@ public class NodeElementsTextsTests {
         Assert.assertEquals(nodeDashboardPage.linkToCommunity.getText(), "Community");
 
         Assert.assertEquals(nodeDashboardPage.linkToSupport.getText(), "Support");
+
+
+        Assert.assertEquals(nodeDashboardPage.auditCheckBlurText.getText(),"Select a Specific Satellite to View Audit and Uptime Percentages");
 
 
     }
@@ -186,6 +189,21 @@ public class NodeElementsTextsTests {
     }
 
     @Test
+    public void diskRemainElementsTextTest(){
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(nodeDashboardPage.bandwidthRemainTrash).click().perform();
+
+        Assert.assertEquals(nodeDashboardPage.remainingHeader.getText(),"Total Disk Space");
+        Assert.assertTrue(nodeDashboardPage.bandwidthRemainingAmount.getText().endsWith("TB"));
+        Assert.assertEquals(nodeDashboardPage.bandwidthRemainUsed.getText(),"Used");
+        Assert.assertEquals(nodeDashboardPage.bandwidthRemainFree.getText(),"Free");
+        Assert.assertEquals(nodeDashboardPage.bandwidthRemainTrash.getText(),"Trash");
+    }
+
+    @Ignore
+    @Test
     public void diskRemainBarHintTextTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
@@ -211,10 +229,10 @@ public class NodeElementsTextsTests {
         js.executeScript("arguments[0].scrollIntoView();",nodeDashboardPage.footerLogo);
         Thread.sleep(1000);
 
-        Assert.assertEquals(nodeDashboardPage.auditUptimeHeader.getText(),"Uptime & Audit Checks by Satellite");
-        Assert.assertEquals(nodeDashboardPage.uptimeChecksText.getText(),"Uptime Checks");
+        Assert.assertEquals(nodeDashboardPage.auditUptimeHeader.getText(),"Suspension & Audit");
+        Assert.assertEquals(nodeDashboardPage.uptimeChecksText.getText(),"Suspension Score");
         Assert.assertTrue(nodeDashboardPage.uptimeCheckData.getText().endsWith("%"));
-        Assert.assertEquals(nodeDashboardPage.auditChecksText.getText(),"Audit Checks");
+        Assert.assertEquals(nodeDashboardPage.auditChecksText.getText(),"Audit Score");
         Assert.assertTrue(nodeDashboardPage.auditCheckData.getText().endsWith("%"));
     }
 
@@ -230,13 +248,15 @@ public class NodeElementsTextsTests {
         Thread.sleep(1000);
 
         Actions action = new Actions(driver);
-        action.moveToElement(nodeDashboardPage.uptimeChecksHintTick).click().perform();
+        action.moveToElement(nodeDashboardPage.suspentionScoreHintTick).click().perform();
 
-        Assert.assertEquals(nodeDashboardPage.uptimeCheckHintText.getText(),"Uptime checks occur to make sure your node is still online. This is the percentage of uptime checks you’ve passed.");
+        Thread.sleep(4000);
+
+        Assert.assertEquals(nodeDashboardPage.suspentionScoreHintText.getText(),"This score shows how close your node is to getting suspended on a satellite. A score of 60% or below will result in suspension. If your node stays suspended for more than one week you will be disqualified from this satellite, so please correct the errors that lead to suspension asap.");
     }
 
     @Test
-    public void auditHintTextTest() {
+    public void auditHintTextTest() throws InterruptedException {
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
 
         nodeDashboardPage.choosingSatelliteContainer.click();
@@ -248,9 +268,47 @@ public class NodeElementsTextsTests {
         Actions action = new Actions(driver);
         action.moveToElement(nodeDashboardPage.auditChecksHintTick).click().perform();
 
+        Thread.sleep(5000);
+
         Assert.assertEquals(nodeDashboardPage.auditCheckHintText.getText(),"Percentage of successful pings/communication between the node & satellite.");
     }
 
+
+    @Test
+    public void mainPayoutsElementsTextTest() {
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(nodeDashboardPage.footerLogo).click().perform();
+
+        Assert.assertEquals(nodeDashboardPage.payoutCurrentMonthEarningsTitle.getText(), "Current Month Earnings");
+        Assert.assertTrue(nodeDashboardPage.payoutCurrentMonthEarningsAmount.getText().startsWith("$"));
+        Assert.assertEquals(nodeDashboardPage.payoutTotalEarnedTitle.getText(), "Total Earned");
+        Assert.assertTrue(nodeDashboardPage.payoutTotalEarnedAmount.getText().startsWith("$"));
+        Assert.assertEquals(nodeDashboardPage.payoutTotalHeldTitle.getText(), "Total Held Amount");
+        Assert.assertTrue(nodeDashboardPage.payoutTotalHeldAmount.getText().startsWith("$"));
+    }
+
+    @Test
+    public void notificationsPopupElementsVisibilityTests(){
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        nodeDashboardPage.bellButton.click();
+
+        Assert.assertTrue(nodeDashboardPage.notificationsPopupSeeAll.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.notificationsPopupImage.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.notificationsPopupNoYet.isDisplayed());
+        Assert.assertTrue(nodeDashboardPage.notificationsPopupTitle.isDisplayed());
+    }
+
+    @Test
+    public void notificationsPopupElementsTextTests(){
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        nodeDashboardPage.bellButton.click();
+
+        Assert.assertEquals(nodeDashboardPage.notificationsPopupSeeAll.getText(),"See All");
+        Assert.assertEquals(nodeDashboardPage.notificationsPopupTitle.getText(),"Notifications");
+        Assert.assertEquals(nodeDashboardPage.notificationsPopupNoYet.getText(),"No notifications yet");
+    }
 
 
     @AfterMethod

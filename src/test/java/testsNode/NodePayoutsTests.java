@@ -1,5 +1,6 @@
 package testsNode;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -92,15 +93,19 @@ public class NodePayoutsTests {
             driver.manage().window().setSize(new Dimension(NodeDashboardPage.Width, NodeDashboardPage.Height));}
         driver.get(NodeDashboardPage.DASHBOARDURL);
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Thread.sleep(2000);
         nodeDashboardPage.linkToPayouts.click();
+
+
 
     }
 
     @Test
-    public void nodePayoutsElementsVisibilityYTest (){
+    public void nodePayoutsElementsVisibilityYTest () throws InterruptedException {
         NodePayouts nodePayoutsPage = PageFactory.initElements(driver, NodePayouts.class);
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         Assert.assertTrue(nodePayoutsPage.allSatellites.isDisplayed());
+        Thread.sleep(2000);
         nodeDashboardPage.choosingSatelliteContainer.click();
         nodeDashboardPage.chooseFirstSatellite();
 
@@ -113,7 +118,7 @@ public class NodePayoutsTests {
 
         Assert.assertTrue(nodePayoutsPage.payoutSectionHeader.isDisplayed());
         Assert.assertTrue(nodePayoutsPage.payoutTableInfoEstimation.isDisplayed());
-        Assert.assertTrue(nodePayoutsPage.payoutTablePeriodDropList.isDisplayed());
+//        Assert.assertTrue(nodePayoutsPage.payoutTablePeriodDropList.isDisplayed());
         Assert.assertTrue(nodePayoutsPage.payoutTableHeaderName.isDisplayed());
         Assert.assertTrue(nodePayoutsPage.payoutTableHeaderType.isDisplayed());
         Assert.assertTrue(nodePayoutsPage.payoutTableHeaderPrice.isDisplayed());
@@ -163,10 +168,11 @@ public class NodePayoutsTests {
     }
 
     @Test
-    public void nodePayoutsElementsTextsTests(){
+    public void nodePayoutsElementsTextsTests() throws InterruptedException {
         NodePayouts nodePayoutsPage = PageFactory.initElements(driver, NodePayouts.class);
         NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
         Assert.assertEquals(nodePayoutsPage.allSatellites.getText(),"Choose your satellite: All Satellites");
+        Thread.sleep(3000);
         nodeDashboardPage.choosingSatelliteContainer.click();
         nodeDashboardPage.chooseFirstSatellite();
 
@@ -200,7 +206,7 @@ public class NodePayoutsTests {
         Assert.assertEquals(nodePayoutsPage.payoutTableDownload_Disk.getText(),"--");
         Assert.assertEquals(nodePayoutsPage.payoutTableRepairAudit_Disk.getText(),"--");
         Assert.assertTrue(nodePayoutsPage.payoutTableDiskMonth_Disk.isDisplayed());
-        Assert.assertTrue(nodePayoutsPage.payoutTableTotal_Disk.getText().endsWith("h"));
+        Assert.assertTrue(nodePayoutsPage.payoutTableTotal_Disk.getText().endsWith("m"));
         Assert.assertTrue(nodePayoutsPage.payoutTableDownload_Bandwidth.getText().contains("B"));
         Assert.assertTrue(nodePayoutsPage.payoutTableRepairAudit_Bandwidth.getText().contains("B"));
         Assert.assertEquals(nodePayoutsPage.payoutTableDiskAverage_Bandwidth.getText(),"--");
@@ -215,7 +221,7 @@ public class NodePayoutsTests {
         Actions action = new Actions(driver);
         action.moveToElement(nodePayoutsPage.heldAmountTotal_value).click().perform();
 
-        Assert.assertEquals(nodePayoutsPage.payoutTableHeldback_Name.getText(),"Held Back");
+      //  Assert.assertEquals(nodePayoutsPage.payoutTableHeldback_Name.getText(),"Held Back");
         Assert.assertTrue(nodePayoutsPage.payoutTableHeldback_Payout.getText().startsWith("-$"));
         Assert.assertEquals(nodePayoutsPage.heldAmountSectionHeader.getText(),"Held Amount");
         Assert.assertEquals(nodePayoutsPage.heldAmountText.getText(),"Learn more about held back here");
@@ -226,7 +232,58 @@ public class NodePayoutsTests {
         Assert.assertEquals(nodePayoutsPage.heldAmountTotal_label.getText(),"Total Held Amount");
 
         Assert.assertTrue(nodePayoutsPage.heldAmountMonthOnNetwork.getText().startsWith("It is your"));
+
+
+
+
     }
+
+    @Test
+    public void heldHistoryTests() throws InterruptedException {
+        NodePayouts nodePayoutsPage = PageFactory.initElements(driver, NodePayouts.class);
+        NodeDashboardPage nodeDashboardPage = PageFactory.initElements(driver, NodeDashboardPage.class);
+        Assert.assertEquals(nodePayoutsPage.allSatellites.getText(),"Choose your satellite: All Satellites");
+        Thread.sleep(3000);
+        nodeDashboardPage.choosingSatelliteContainer.click();
+        nodeDashboardPage.chooseFirstSatellite();
+        Actions action = new Actions(driver);
+        action.moveToElement(nodePayoutsPage.heldAmountTotal_value).click().perform();
+        // Held Amount History
+
+        Assert.assertEquals(nodePayoutsPage.heldAmountHistoryTitle.getText(),"Held Amount History");
+        Assert.assertEquals(nodePayoutsPage.heldAmountHistoryAllStats.getText(),"All Stats");
+        Assert.assertEquals(nodePayoutsPage.heldAmountHistoryMonthlyBreakdown.getText(),"Monthly Breakdown");
+
+        Assert.assertEquals(nodePayoutsPage.heldHistorySatelliteTitle.getText(),"Satellite");
+        Assert.assertEquals(nodePayoutsPage.heldHistorySecondColumnTitle.getText(),"First Contact");
+        Assert.assertEquals(nodePayoutsPage.heldHistoryThirdColumnTitle.getText(),"Held Total");
+        Assert.assertEquals(nodePayoutsPage.heldHistoryFourthColumnTitle.getText(),"Held Returned");
+
+
+        Assert.assertEquals(nodePayoutsPage.heldHistorySatelliteData_Name.getText(),"127.0.0.1:10010");
+        Assert.assertEquals(nodePayoutsPage.heldHistorySatelliteData_Month.getText(),"0 month");
+        Assert.assertTrue(nodePayoutsPage.heldHistorySecondColumnData.getText().startsWith("2020-"));
+        Assert.assertTrue(nodePayoutsPage.heldHistoryThirdColumnData.getText().startsWith("$"));
+        Assert.assertTrue(nodePayoutsPage.heldHistoryFourthColumnData.getText().startsWith("$"));
+
+
+        // change tab to monthly Breakdown
+        Thread.sleep(2000);
+        nodePayoutsPage.heldAmountHistoryMonthlyBreakdown.click();
+
+        Assert.assertEquals(nodePayoutsPage.heldHistorySatelliteTitle.getText(),"Satellite");
+        Assert.assertEquals(nodePayoutsPage.heldHistorySecondColumnTitle.getText(),"Month 1-3");
+        Assert.assertEquals(nodePayoutsPage.heldHistoryThirdColumnTitle.getText(),"Month 4-6");
+        Assert.assertEquals(nodePayoutsPage.heldHistoryFourthColumnTitle.getText(),"Month 7-9");
+
+        Assert.assertEquals(nodePayoutsPage.heldHistorySatelliteData_Name.getText(),"127.0.0.1:10010");
+        Assert.assertEquals(nodePayoutsPage.heldHistorySatelliteData_Month.getText(),"0 month");
+        Assert.assertTrue(nodePayoutsPage.heldHistorySecondColumnData.getText().startsWith("$"));
+        Assert.assertTrue(nodePayoutsPage.heldHistoryThirdColumnData.getText().startsWith("$"));
+        Assert.assertTrue(nodePayoutsPage.heldHistoryFourthColumnData.getText().startsWith("$"));
+
+    }
+
 
 
 
